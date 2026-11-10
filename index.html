@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurante Acajutla — Mariscos a lo Salvadoreño desde 1989</title>
+<meta name="description" content="Restaurante Acajutla: mariscos a lo salvadoreño desde 1989. Menú digital interactivo, Bar de Ceviches, 7 sucursales, reservas y eventos por WhatsApp, y Villavela Hotel Boutique.">
+<meta name="theme-color" content="#07111e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+window.tailwind = window.tailwind || {};
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { serif: ['"Playfair Display"', 'Georgia', 'serif'], sans: ['Inter', 'system-ui', 'sans-serif'] },
+      colors: { ocean: { 950: '#07111e', 900: '#0b1a2c', 800: '#0f1d30', 700: '#16294a' } }
+    }
+  }
+}
+</script>
+<style>
+  :root { --ocean: #07111e; --panel: rgba(15, 29, 48, 0.85); }
+  html, body { background: var(--ocean); color: #e2e8f0; }
+  body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .glass { background: var(--panel); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(148, 163, 184, 0.12); }
+  .glass-soft { background: rgba(15, 29, 48, 0.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(148, 163, 184, 0.10); }
+  .gold-text { background: linear-gradient(120deg, #fde68a 0%, #f59e0b 45%, #d97706 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero-bg {
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(56, 189, 248, 0.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 30%, rgba(245, 158, 11, 0.12), transparent 60%),
+      linear-gradient(180deg, #07111e 0%, #0a1a2e 60%, #07111e 100%);
+  }
+  .waves { position: absolute; inset: auto 0 0 0; height: 160px; pointer-events: none; opacity: .5; }
+  .grain::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .06;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .tab-active { background: #f59e0b !important; color: #07111e !important; border-color: #f59e0b !important; }
+  .tab-sky-active { background: #38bdf8 !important; color: #07111e !important; border-color: #38bdf8 !important; }
+  .opt input:checked + .opt-card { border-color: #38bdf8; background: rgba(56, 189, 248, 0.12); box-shadow: 0 0 0 1px #38bdf8 inset; }
+  .opt input:checked + .opt-card .opt-dot { background: #38bdf8; border-color: #38bdf8; }
+  .opt input:focus-visible + .opt-card { outline: 2px solid #38bdf8; outline-offset: 2px; }
+  .dish-art { background: radial-gradient(circle at 30% 20%, rgba(245, 158, 11, .25), transparent 55%), radial-gradient(circle at 80% 90%, rgba(56, 189, 248, .22), transparent 55%), linear-gradient(135deg, #0f2238, #0a1626); }
+  .fade-up { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .fade-up.in { opacity: 1; transform: none; }
+  .drawer { transform: translateX(100%); transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+  .drawer.open { transform: translateX(0); }
+  .overlay { opacity: 0; pointer-events: none; transition: opacity .3s; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .bump { animation: bump .45s ease; }
+  @keyframes bump { 0%{transform:scale(1)} 40%{transform:scale(1.35)} 100%{transform:scale(1)} }
+  .toast { animation: toastIn .35s ease forwards; }
+  .toast.out { animation: toastOut .3s ease forwards; }
+  @keyframes toastIn { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
+  @keyframes toastOut { to { opacity: 0; transform: translateY(10px); } }
+  input, select, textarea { color-scheme: dark; }
+  .field { width: 100%; background: rgba(7, 17, 30, .7); border: 1px solid rgba(148, 163, 184, .2); border-radius: .75rem; padding: .75rem 1rem; color: #f1f5f9; font-size: .95rem; transition: border-color .2s, box-shadow .2s; }
+  .field:focus { outline: none; border-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, .2); }
+  .field::placeholder { color: #64748b; }
+  .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { scrollbar-width: none; }
+  ::selection { background: #f59e0b; color: #07111e; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .fade-up { opacity: 1; transform: none; } }
+</style>
+</head>
+<body class="bg-slate-950">
+
+<!-- ============ HEADER ============ -->
+<header id="top" class="fixed top-0 inset-x-0 z-40 transition-all duration-300">
+  <div id="headerBar" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between gap-3 py-3">
+      <a href="#inicio" class="flex items-center gap-3 min-w-0" aria-label="Restaurante Acajutla, inicio">
+        <span class="relative grid place-items-center w-11 h-11 shrink-0 rounded-full bg-gradient-to-br from-amber-300 via-amber-500 to-amber-700 shadow-lg shadow-amber-500/20 ring-1 ring-amber-200/40">
+          <span class="font-serif text-2xl font-bold text-slate-950 leading-none">A</span>
+        </span>
+        <span class="min-w-0">
+          <span class="block font-serif text-[15px] sm:text-lg font-bold tracking-[0.14em] text-white truncate">RESTAURANTE ACAJUTLA</span>
+          <span class="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-amber-400">Desde 1989 • 7 Sucursales</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1 text-sm font-medium" aria-label="Principal">
+        <a href="#inicio" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5">Inicio</a>
+        <a href="#menu" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5">Menú Digital</a>
+        <a href="#ceviches" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5">Bar de Ceviches</a>
+        <a href="#sucursales" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5">7 Sucursales</a>
+        <a href="#reservas" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5">Reservas &amp; Eventos</a>
+        <a href="#hotel" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5">Hotel Villavela</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="cartBtn" type="button" class="relative inline-flex items-center gap-2 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm px-4 py-2.5 shadow-lg shadow-amber-500/25 transition" aria-label="Abrir mi pedido">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          <span class="hidden sm:inline">Mi Pedido</span>
+          <span id="cartCount" class="absolute -top-1.5 -right-1.5 min-w-[22px] h-[22px] px-1 grid place-items-center rounded-full bg-sky-400 text-slate-950 text-[11px] font-extrabold ring-2 ring-slate-950">0</span>
+        </button>
+        <button id="menuToggle" type="button" class="lg:hidden grid place-items-center w-11 h-11 rounded-full glass text-white" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
+          <svg id="icoBurger" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg id="icoClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobileNav" class="lg:hidden hidden pb-4" aria-label="Móvil">
+      <div class="glass rounded-2xl p-2 grid gap-1 text-base font-medium">
+        <a href="#inicio" class="m-link px-4 py-3 rounded-xl hover:bg-white/5">Inicio</a>
+        <a href="#menu" class="m-link px-4 py-3 rounded-xl hover:bg-white/5">Menú Digital</a>
+        <a href="#ceviches" class="m-link px-4 py-3 rounded-xl hover:bg-white/5 text-sky-300">Bar de Ceviches</a>
+        <a href="#sucursales" class="m-link px-4 py-3 rounded-xl hover:bg-white/5">7 Sucursales</a>
+        <a href="#reservas" class="m-link px-4 py-3 rounded-xl hover:bg-white/5">Reservas &amp; Eventos</a>
+        <a href="#hotel" class="m-link px-4 py-3 rounded-xl hover:bg-white/5 text-sky-300">Hotel Villavela</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section id="inicio" class="hero-bg grain relative overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32">
+  <svg class="waves" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="rgba(56,189,248,0.07)" d="M0,96 C240,140 480,40 720,72 C960,104 1200,150 1440,96 L1440,160 L0,160 Z"/>
+    <path fill="rgba(245,158,11,0.05)" d="M0,120 C300,80 520,150 780,118 C1040,86 1240,130 1440,112 L1440,160 L0,160 Z"/>
+  </svg>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 fade-up">
+      <span class="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Mariscos a lo Salvadoreño
+      </span>
+      <h1 class="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] text-white">
+        El Auténtico Sabor de los <span class="gold-text italic">Mariscos</span> a lo Salvadoreño
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-slate-300 max-w-2xl">
+        Todo comenzó el <strong class="text-white">28 de diciembre de 1989</strong> en el Puerto de Acajutla, con apenas <strong class="text-white">3 mesas</strong> y el compromiso de servir el mar más fresco. Seis años después llegamos a la <strong class="text-white">Colonia Escalón</strong> y hoy compartimos esa misma receta familiar en <strong class="text-amber-400">7 sucursales</strong> de El Salvador: ciudad, playa y oriente.
+      </p>
+      <div class="mt-9 flex flex-col sm:flex-row flex-wrap gap-3">
+        <a href="#menu" class="inline-flex items-center justify-center gap-2 rounded-full bg-amber-500 hover:bg-amber-400 px-7 py-4 text-slate-950 font-bold shadow-xl shadow-amber-500/20 transition">
+          Explorar Menú Interactivo
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#ceviches" class="inline-flex items-center justify-center gap-2 rounded-full border border-sky-400/50 bg-sky-400/10 hover:bg-sky-400/20 px-7 py-4 text-sky-300 font-semibold transition">Armar mi Ceviche</a>
+        <a href="#reservas" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 px-7 py-4 text-white font-semibold transition">Reservar Mesa / Evento</a>
+      </div>
+    </div>
+    <div class="lg:col-span-5 grid sm:grid-cols-3 lg:grid-cols-1 gap-4 fade-up">
+      <div class="glass rounded-2xl p-6 flex items-center gap-5">
+        <div class="font-serif text-5xl font-bold gold-text leading-none">35+</div>
+        <div><p class="font-semibold text-white">Años de Tradición</p><p class="text-sm text-slate-400">Desde 1989</p></div>
+      </div>
+      <div class="glass rounded-2xl p-6 flex items-center gap-5">
+        <div class="font-serif text-5xl font-bold text-sky-400 leading-none">7</div>
+        <div><p class="font-semibold text-white">Sucursales</p><p class="text-sm text-slate-400">Ciudad, Playa y Oriente</p></div>
+      </div>
+      <div class="glass rounded-2xl p-6 flex items-center gap-5">
+        <div class="font-serif text-5xl font-bold gold-text leading-none">4.5<span class="text-3xl">★</span></div>
+        <div><p class="font-semibold text-white">Google Maps</p><p class="text-sm text-slate-400">+4,000 reseñas</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU DIGITAL ============ -->
+<section id="menu" class="relative py-20 sm:py-28 scroll-mt-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto fade-up">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">Carta Oficial</p>
+      <h2 class="mt-3 font-serif text-3xl sm:text-5xl font-bold text-white">Menú Digital Interactivo</h2>
+      <p class="mt-4 text-slate-400">Sin descargar PDF. Busca, filtra y arma tu pedido para llevar o domicilio; lo enviamos directo al WhatsApp de tu sucursal.</p>
+    </div>
+
+    <div class="mt-10 glass rounded-3xl p-4 sm:p-6 fade-up">
+      <div class="grid md:grid-cols-12 gap-4">
+        <label class="md:col-span-5 block">
+          <span class="block text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">Sucursal activa para tu pedido</span>
+          <select id="activeBranch" class="field"></select>
+        </label>
+        <label class="md:col-span-7 block">
+          <span class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Buscar platillo o ingrediente</span>
+          <div class="relative">
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5"/></svg>
+            <input id="search" type="search" class="field" style="padding-left:3rem" placeholder="Ej. camarón, cangrejo, langosta, desayuno…" autocomplete="off">
+          </div>
+        </label>
+      </div>
+      <p id="branchNote" class="mt-3 text-xs text-slate-400"></p>
+      <div id="catTabs" class="mt-5 flex gap-2 overflow-x-auto no-scrollbar pb-1" role="tablist"></div>
+    </div>
+
+    <div id="dishGrid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+    <div id="noResults" class="hidden mt-10 text-center glass rounded-2xl p-10">
+      <p class="font-serif text-2xl text-white">No encontramos ese platillo</p>
+      <p class="mt-2 text-slate-400">Prueba con otro ingrediente o selecciona “Todos”.</p>
+    </div>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-3 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5">
+      <span class="grid place-items-center w-10 h-10 shrink-0 rounded-full bg-amber-500 text-slate-950 font-bold">%</span>
+      <p class="text-sm text-amber-100"><strong class="text-amber-400">Nota oficial del Menú:</strong> “A todo el consumo se le agregará el 10% en concepto de propina”. Tu carrito calcula automáticamente Subtotal, Propina (10%) y Total Estimado. Precios en USD sujetos a confirmación por sucursal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BAR DE CEVICHES ============ -->
+<section id="ceviches" class="relative py-20 sm:py-28 scroll-mt-20 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent pointer-events-none"></div>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4 fade-up">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-sky-400">Exclusivo Bambú City Center &amp; Santa Elena</p>
+        <h2 class="mt-3 font-serif text-3xl sm:text-5xl font-bold text-white leading-tight">Bar de Ceviches <span class="italic text-sky-400">¡A tu Antojo!</span></h2>
+        <p class="mt-5 text-slate-400 leading-relaxed">Elige tu marisco, la preparación y el acompañamiento. El precio se calcula en vivo y tu ceviche se agrega al pedido enrutado a la sucursal con Bar de Ceviches.</p>
+        <div class="mt-8 glass rounded-3xl p-6 lg:sticky lg:top-28">
+          <p class="text-xs uppercase tracking-widest text-slate-400">Tu ceviche</p>
+          <p id="cevSummary" class="mt-2 font-serif text-xl text-white leading-snug"></p>
+          <div class="mt-5 flex items-end justify-between">
+            <span class="text-sm text-slate-400">Precio</span>
+            <span id="cevPrice" class="font-serif text-4xl font-bold text-amber-400">$0.00</span>
+          </div>
+          <label class="mt-5 block">
+            <span class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Sucursal con Bar de Ceviches</span>
+            <select id="cevBranch" class="field"></select>
+          </label>
+          <button id="addCeviche" type="button" class="mt-5 w-full rounded-full bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold py-4 transition shadow-lg shadow-sky-400/20">Agregar mi Ceviche al Pedido</button>
+        </div>
+      </div>
+      <div class="lg:col-span-8 space-y-8 fade-up">
+        <fieldset>
+          <legend class="flex items-center gap-3 mb-4"><span class="grid place-items-center w-8 h-8 rounded-full bg-sky-400 text-slate-950 font-bold text-sm">1</span><span class="font-serif text-2xl text-white">Base de Marisco</span></legend>
+          <div id="cevBase" class="grid sm:grid-cols-2 gap-3"></div>
+        </fieldset>
+        <fieldset>
+          <legend class="flex items-center gap-3 mb-4"><span class="grid place-items-center w-8 h-8 rounded-full bg-sky-400 text-slate-950 font-bold text-sm">2</span><span class="font-serif text-2xl text-white">Preparación / Salsa</span></legend>
+          <div id="cevSauce" class="grid sm:grid-cols-2 gap-3"></div>
+        </fieldset>
+        <fieldset>
+          <legend class="flex items-center gap-3 mb-4"><span class="grid place-items-center w-8 h-8 rounded-full bg-sky-400 text-slate-950 font-bold text-sm">3</span><span class="font-serif text-2xl text-white">Acompañamiento &amp; Extras</span></legend>
+          <div id="cevSide" class="grid sm:grid-cols-3 gap-3"></div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUCURSALES ============ -->
+<section id="sucursales" class="relative py-20 sm:py-28 scroll-mt-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 fade-up">
+      <div class="max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-sky-400">Directorio Oficial</p>
+        <h2 class="mt-3 font-serif text-3xl sm:text-5xl font-bold text-white">Nuestras 7 Sucursales</h2>
+        <p class="mt-4 text-slate-400">Llámanos, escríbenos por WhatsApp o llega directo con Google Maps o Waze.</p>
+      </div>
+      <div id="zoneTabs" class="flex gap-2 overflow-x-auto no-scrollbar" role="tablist"></div>
+    </div>
+    <div id="branchGrid" class="mt-10 grid md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+  </div>
+</section>
+
+<!-- ============ RESERVAS & EVENTOS ============ -->
+<section id="reservas" class="relative py-20 sm:py-28 scroll-mt-20">
+  <div class="absolute inset-0 bg-[radial-gradient(800px_400px_at_10%_50%,rgba(245,158,11,0.08),transparent_60%)] pointer-events-none"></div>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-5 fade-up">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">Reservas &amp; Eventos Acajutla</p>
+      <h2 class="mt-3 font-serif text-3xl sm:text-5xl font-bold text-white leading-tight">Celebra frente al sabor del mar</h2>
+      <p class="mt-5 text-slate-300 leading-relaxed">Desde una cena familiar hasta la fiesta de fin de año de tu empresa: reservamos tu mesa o preparamos tu evento completo con la atención que nos distingue desde 1989.</p>
+      <ul class="mt-8 space-y-4">
+        <li class="flex gap-4"><span class="grid place-items-center w-10 h-10 shrink-0 rounded-xl bg-amber-500/15 text-amber-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></span><div><p class="font-semibold text-white">Salones privados</p><p class="text-sm text-slate-400">Ideales para reuniones corporativas y celebraciones íntimas.</p></div></li>
+        <li class="flex gap-4"><span class="grid place-items-center w-10 h-10 shrink-0 rounded-xl bg-amber-500/15 text-amber-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zm12-2a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="font-semibold text-white">Música en vivo en fechas especiales</p><p class="text-sm text-slate-400">Ambiente festivo para cumpleaños, aniversarios y temporadas.</p></div></li>
+        <li class="flex gap-4"><span class="grid place-items-center w-10 h-10 shrink-0 rounded-xl bg-amber-500/15 text-amber-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-5-3.9M9 20H2v-2a4 4 0 015-3.9m10-4.1a3 3 0 11-6 0 3 3 0 016 0zM7 10a3 3 0 11-6 0 3 3 0 016 0zm14 0a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="font-semibold text-white">Grupos de 150 a 200 personas</p><p class="text-sm text-slate-400">Capacidad para reservaciones grandes y recepciones.</p></div></li>
+        <li class="flex gap-4"><span class="grid place-items-center w-10 h-10 shrink-0 rounded-xl bg-amber-500/15 text-amber-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h11v10H3zM14 10h4l3 3v4h-7M7 20a2 2 0 100-4 2 2 0 000 4zm11 0a2 2 0 100-4 2 2 0 000 4z"/></svg></span><div><p class="font-semibold text-white">Eventos Acajutla a domicilio</p><p class="text-sm text-slate-400">Servicio de banquete con nuestros mariscos donde tú lo necesites.</p></div></li>
+      </ul>
+    </div>
+    <div class="lg:col-span-7 fade-up">
+      <form id="resForm" class="glass rounded-3xl p-6 sm:p-8 grid sm:grid-cols-2 gap-5" novalidate>
+        <div class="sm:col-span-2">
+          <h3 class="font-serif text-2xl text-white">Solicitud de Reserva o Cotización</h3>
+          <p class="text-sm text-slate-400 mt-1">Se enviará al WhatsApp de la sucursal seleccionada. Campos con * son obligatorios.</p>
+        </div>
+        <label class="sm:col-span-2 block"><span class="block text-sm font-medium text-slate-300 mb-2">Sucursal a Reservar *</span><select id="resBranch" name="branch" class="field" required></select></label>
+        <label class="sm:col-span-2 block"><span class="block text-sm font-medium text-slate-300 mb-2">Tipo de Reserva / Evento *</span>
+          <select id="resType" name="type" class="field" required>
+            <option value="">Selecciona una opción…</option>
+            <option>Reserva de Mesa Familiar (Almuerzo / Cena)</option>
+            <option>Celebración de Cumpleaños o Aniversario</option>
+            <option>Evento Corporativo / Fin de Año (Salón Privado)</option>
+            <option>Recepción Grande (50 a 200 personas)</option>
+            <option>Eventos Acajutla: Servicio de Banquete a Domicilio</option>
+          </select>
+        </label>
+        <label class="block"><span class="block text-sm font-medium text-slate-300 mb-2">Nombre Completo *</span><input id="resName" name="name" type="text" class="field" placeholder="Tu nombre" autocomplete="name" required></label>
+        <label class="block"><span class="block text-sm font-medium text-slate-300 mb-2">Número de Personas *</span><input id="resPeople" name="people" type="number" min="1" max="500" class="field" placeholder="Ej. 6" required></label>
+        <label class="block"><span class="block text-sm font-medium text-slate-300 mb-2">Fecha *</span><input id="resDate" name="date" type="date" class="field" required></label>
+        <label class="block"><span class="block text-sm font-medium text-slate-300 mb-2">Hora *</span><input id="resTime" name="time" type="time" class="field" required></label>
+        <label class="sm:col-span-2 block"><span class="block text-sm font-medium text-slate-300 mb-2">Detalles Adicionales</span><textarea id="resDetails" name="details" rows="4" class="field resize-none" placeholder="Decoración, menú preferido, dirección del banquete, requerimientos especiales…"></textarea></label>
+        <p id="resError" class="sm:col-span-2 hidden text-sm text-rose-300 bg-rose-500/10 border border-rose-500/30 rounded-xl px-4 py-3"></p>
+        <button type="submit" class="sm:col-span-2 inline-flex items-center justify-center gap-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-4 text-base transition shadow-xl shadow-emerald-500/20">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0012 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 005.6 1.4h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.3zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.9 9.9 0 01-1.5-5.2C2.1 6.4 6.5 2 12 2c2.6 0 5.1 1 7 2.9a9.8 9.8 0 012.9 7c0 5.5-4.4 9.8-9.9 9.8zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
+          Enviar Solicitud por WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOTEL VILLAVELA ============ -->
+<section id="hotel" class="relative py-20 sm:py-28 scroll-mt-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="relative overflow-hidden rounded-[2rem] border border-sky-400/20 bg-gradient-to-br from-sky-950/60 via-slate-950 to-slate-950 p-6 sm:p-10 lg:p-14 fade-up">
+      <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-sky-400/10 blur-3xl pointer-events-none"></div>
+      <div class="relative grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-sky-400">Hospedaje • Puerto de Acajutla</p>
+          <h2 class="mt-3 font-serif text-3xl sm:text-5xl font-bold text-white leading-tight">Villavela <span class="italic text-sky-400">Hotel Boutique</span></h2>
+          <p class="mt-5 text-slate-300 leading-relaxed">Ubicado en la <strong class="text-white">Avenida Miramar, Acajutla</strong>, en la misma casa donde nació el Restaurante Acajutla hace más de 30 años, a pocos minutos de la Zona Industrial del Puerto de Acajutla. Descanso, piscina y el mejor marisco a pasos de tu habitación.</p>
+          <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
+            <div class="glass-soft rounded-xl px-4 py-3 text-slate-200">❄️ Aire acondicionado</div>
+            <div class="glass-soft rounded-xl px-4 py-3 text-slate-200">📺 TV</div>
+            <div class="glass-soft rounded-xl px-4 py-3 text-slate-200">🚿 Baño privado</div>
+            <div class="glass-soft rounded-xl px-4 py-3 text-slate-200">☕ Desayuno incluido</div>
+            <div class="glass-soft rounded-xl px-4 py-3 text-slate-200">🏊 Uso de piscina</div>
+            <div class="glass-soft rounded-xl px-4 py-3 text-slate-200">🅿️ Parqueo privado</div>
+          </div>
+          <p class="mt-4 text-sm text-amber-300">★ Descuentos especiales en el consumo de alimentos en Restaurante Acajutla.</p>
+        </div>
+        <div class="lg:col-span-6 grid gap-4 content-start">
+          <div class="glass rounded-2xl p-6 flex items-center justify-between gap-4">
+            <div><p class="font-serif text-2xl text-white">Habitación Sencilla</p><p class="text-sm text-slate-400">Hasta 2 personas</p></div>
+            <p class="font-serif text-3xl font-bold text-amber-400">$100.30</p>
+          </div>
+          <div class="glass rounded-2xl p-6 flex items-center justify-between gap-4">
+            <div><p class="font-serif text-2xl text-white">Habitación Doble</p><p class="text-sm text-slate-400">Hasta 4 personas</p></div>
+            <p class="font-serif text-3xl font-bold text-amber-400">$129.80</p>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3 mt-2">
+            <a href="tel:+50324526910" class="inline-flex items-center justify-center gap-2 rounded-full border border-sky-400/50 bg-sky-400/10 hover:bg-sky-400/20 text-sky-300 font-semibold py-4 transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.3a1 1 0 011 .7l1.5 4.5a1 1 0 01-.5 1.2l-2.3 1.1a11 11 0 005.5 5.5l1.1-2.3a1 1 0 011.2-.5l4.5 1.5a1 1 0 01.7 1V19a2 2 0 01-2 2h-1C9.7 21 3 14.3 3 6V5z"/></svg>
+              Llamar a Recepción
+            </a>
+            <a href="https://wa.me/50374788275?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20en%20Villavela%20Hotel%20Boutique." target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-4 transition">Consultar Estadía por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-white/10 bg-[#050d18]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-5">
+      <div class="flex items-center gap-3">
+        <span class="grid place-items-center w-11 h-11 rounded-full bg-gradient-to-br from-amber-300 via-amber-500 to-amber-700"><span class="font-serif text-2xl font-bold text-slate-950">A</span></span>
+        <span class="font-serif text-lg font-bold tracking-[0.14em] text-white">RESTAURANTE ACAJUTLA</span>
+      </div>
+      <p class="mt-4 text-sm text-slate-400 max-w-sm">Mariscos a lo Salvadoreño desde el 28 de diciembre de 1989. Del Puerto de Acajutla a todo El Salvador.</p>
+      <a href="mailto:restaurantesacajutlas@gmail.com" class="mt-4 inline-block text-sm text-amber-400 hover:text-amber-300">restaurantesacajutlas@gmail.com</a>
+    </div>
+    <div class="md:col-span-3">
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">Navegación</p>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        <li><a href="#menu" class="hover:text-white">Menú Digital</a></li>
+        <li><a href="#ceviches" class="hover:text-white">Bar de Ceviches</a></li>
+        <li><a href="#sucursales" class="hover:text-white">7 Sucursales</a></li>
+        <li><a href="#reservas" class="hover:text-white">Reservas &amp; Eventos</a></li>
+        <li><a href="#hotel" class="hover:text-white">Hotel Villavela</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-4">
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">Atención</p>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        <li>Casa Matriz: <a href="tel:+50324523709" class="hover:text-white">2452-3709</a></li>
+        <li>WhatsApp: <a href="https://wa.me/50374788275" target="_blank" rel="noopener" class="text-emerald-400 hover:text-emerald-300">7478-8275</a></li>
+        <li class="text-slate-400">A todo el consumo se le agregará el 10% en concepto de propina.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row gap-3 items-center justify-between text-xs text-slate-500">
+      <p>© <span id="year"></span> Restaurante Acajutla — Mariscos a lo Salvadoreño. Todos los derechos reservados.</p>
+      <p>Desarrollo web por <a href="mailto:escobarnet.sv@gmail.com" class="text-slate-400 hover:text-amber-400">EscobarNet El Salvador</a> · <a href="mailto:escobarnet.sv@gmail.com" class="hover:text-slate-300">escobarnet.sv@gmail.com</a> | <a href="https://wa.me/50377432409" target="_blank" rel="noopener" class="hover:text-emerald-400">WhatsApp +503 7743-2409</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a id="fabWa" href="https://wa.me/50374788275" target="_blank" rel="noopener" class="fixed bottom-5 left-5 z-30 grid place-items-center w-14 h-14 rounded-full bg-emerald-500 text-slate-950 shadow-2xl shadow-emerald-500/30 hover:scale-105 transition" aria-label="WhatsApp">
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0012 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 005.6 1.4h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.3zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.9 9.9 0 01-1.5-5.2C2.1 6.4 6.5 2 12 2c2.6 0 5.1 1 7 2.9a9.8 9.8 0 012.9 7c0 5.5-4.4 9.8-9.9 9.8zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<!-- ============ CART DRAWER ============ -->
+<div id="overlay" class="overlay fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"></div>
+<aside id="drawer" class="drawer fixed top-0 right-0 z-50 h-full w-full max-w-md flex flex-col bg-[#091525] border-l border-white/10 shadow-2xl" aria-label="Mi pedido" aria-hidden="true">
+  <div class="flex items-center justify-between px-5 py-4 border-b border-white/10">
+    <div>
+      <p class="font-serif text-2xl text-white">Mi Pedido</p>
+      <p id="drawerBranch" class="text-xs text-sky-400"></p>
+    </div>
+    <button id="closeDrawer" type="button" class="grid place-items-center w-10 h-10 rounded-full hover:bg-white/10 text-slate-300" aria-label="Cerrar pedido">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="flex-1 overflow-y-auto px-5 py-4">
+    <div id="cartEmpty" class="text-center py-16">
+      <div class="mx-auto w-16 h-16 grid place-items-center rounded-full bg-amber-500/10 text-3xl">🦐</div>
+      <p class="mt-4 font-serif text-xl text-white">Tu pedido está vacío</p>
+      <p class="mt-1 text-sm text-slate-400">Agrega platillos desde el menú o arma tu ceviche.</p>
+      <a href="#menu" class="close-link mt-6 inline-block rounded-full bg-amber-500 text-slate-950 font-bold px-6 py-3">Ver Menú</a>
+    </div>
+    <ul id="cartList" class="space-y-3"></ul>
+    <div id="orderForm" class="hidden mt-6 space-y-3">
+      <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Datos del pedido</p>
+      <div class="grid grid-cols-3 gap-2" role="radiogroup">
+        <label class="opt cursor-pointer"><input type="radio" name="otype" value="Domicilio" class="sr-only" checked><span class="opt-card block text-center text-xs font-semibold rounded-xl border border-white/10 py-2.5 text-slate-200">Domicilio</span></label>
+        <label class="opt cursor-pointer"><input type="radio" name="otype" value="Para llevar" class="sr-only"><span class="opt-card block text-center text-xs font-semibold rounded-xl border border-white/10 py-2.5 text-slate-200">Para llevar</span></label>
+        <label class="opt cursor-pointer"><input type="radio" name="otype" value="Pre-orden en mesa" class="sr-only"><span class="opt-card block text-center text-xs font-semibold rounded-xl border border-white/10 py-2.5 text-slate-200">En mesa</span></label>
+      </div>
+      <input id="oName" type="text" class="field" placeholder="Nombre *" autocomplete="name">
+      <input id="oAddr" type="text" class="field" placeholder="Dirección de entrega *" autocomplete="street-address">
+      <textarea id="oNotes" rows="2" class="field resize-none" placeholder="Notas (sin picante, hora de recogida…)"></textarea>
+    </div>
+  </div>
+  <div id="cartFooter" class="hidden border-t border-white/10 px-5 py-4 bg-[#07111e]">
+    <dl class="space-y-1.5 text-sm">
+      <div class="flex justify-between text-slate-300"><dt>Subtotal</dt><dd id="cSub">$0.00</dd></div>
+      <div class="flex justify-between text-slate-300"><dt>Propina (10%)</dt><dd id="cTip">$0.00</dd></div>
+      <div class="flex justify-between text-white font-bold text-lg pt-2 border-t border-white/10"><dt>Total Estimado</dt><dd id="cTotal" class="text-amber-400">$0.00</dd></div>
+    </dl>
+    <p class="mt-2 text-[11px] text-slate-500">A todo el consumo se le agregará el 10% en concepto de propina. Costo de envío se confirma por WhatsApp.</p>
+    <p id="orderError" class="hidden mt-2 text-xs text-rose-300"></p>
+    <button id="sendOrder" type="button" class="mt-3 w-full inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-4 transition">Enviar Pedido por WhatsApp</button>
+    <button id="clearCart" type="button" class="mt-2 w-full text-xs text-slate-500 hover:text-rose-300 py-1">Vaciar pedido</button>
+  </div>
+</aside>
+
+<div id="toasts" class="fixed bottom-24 sm:bottom-6 right-4 left-4 sm:left-auto z-[60] flex flex-col gap-2 items-stretch sm:items-end pointer-events-none" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const money = n => '$' + n.toFixed(2);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const CENTRAL_WA = '50374788275';
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+  };
+
+  /* ---------- DATA ---------- */
+  const BRANCHES = [
+    { id: 'acajutla', n: 1, name: 'Puerto de Acajutla', tag: 'Casa Matriz', zone: 'playa',
+      addr: 'Av. Miramar, Barrio Las Peñas / Km 63 ½ antigua calle a San Salvador, Quinta San Julián, Acajutla, Sonsonate',
+      phones: ['2452-3709', '2452-4375'], wa: '50374788275', waLabel: '7478-8275', email: 'acajutla@restauranteacajutla.com.sv',
+      hours: 'Lun–Dom: 8:00 AM – 9:00 PM', q: 'Restaurante Acajutla, Av. Miramar, Acajutla, Sonsonate' },
+    { id: 'escalon', n: 2, name: 'Colonia Escalón', zone: 'ciudad',
+      addr: 'Av. Masferrer Norte No. 8, Cumbres de La Escalón, San Salvador',
+      phones: ['2263-1722', '2263-8080'], email: 'escalon@restauranteacajutla.com.sv',
+      hours: 'Lun–Dom: 11:00 AM – 9:00 PM', q: 'Restaurante Acajutla Escalón, Av. Masferrer Norte, San Salvador' },
+    { id: 'bambu', n: 3, name: 'Bambú City Center', tag: 'Zona Rosa', zone: 'ciudad', ceviche: true,
+      addr: 'Col. San Benito, Av. Las Magnolias No. 804 Zona 12, C.C. Bambú City Center, Local 1, Nivel 3, San Salvador',
+      phones: ['2511-0998'], email: 'restaurantesacajutlas@gmail.com',
+      hours: 'Lun–Dom: 11:00 AM – 9:00 PM', q: 'Restaurante Acajutla Bambú City Center, San Salvador' },
+    { id: 'santaelena', n: 4, name: 'Santa Elena', tag: 'Antiguo Cuscatlán', zone: 'ciudad', ceviche: true,
+      addr: 'Epic Plaza, Av. Bella Vista, Finca Santa Elena, Antiguo Cuscatlán',
+      phones: ['2104-5500'], email: 'restaurantesacajutlas@gmail.com',
+      hours: 'Lun–Dom: 11:00 AM – 9:00 PM', q: 'Restaurante Acajutla Epic Plaza Santa Elena, Antiguo Cuscatlán' },
+    { id: 'costadelsol', n: 5, name: 'Costa del Sol', zone: 'playa',
+      addr: 'Blvd. Costa del Sol Km 73 ½, San Luis La Herradura, La Paz',
+      phones: ['2338-0014', '2338-0397'], wa: '50378411755', waLabel: '7841-1755',
+      hours: 'Lun–Dom: 8:00 AM – 8:00 PM', q: 'Restaurante Acajutla Costa del Sol, La Paz' },
+    { id: 'libertad', n: 6, name: 'Puerto de La Libertad', zone: 'playa',
+      addr: 'Plaza Gastronómica del Centro Turístico del Puerto de La Libertad, Local A-2',
+      phones: ['7989-9098'], wa: '50379899098', waLabel: '7989-9098',
+      hours: 'Lun–Dom: 9:00 AM – 8:30 PM', q: 'Restaurante Acajutla, Centro Turístico Puerto de La Libertad', ares: true },
+    { id: 'sanmiguel', n: 7, name: 'San Miguel', tag: 'Oriente', zone: 'playa',
+      addr: '13 Av. Sur No. 801 y Calle Las Brisas, San Miguel',
+      phones: ['2660-3902', '2661-1036'], email: 'restaurantesacajutlas@gmail.com',
+      hours: 'Lun–Dom: 11:00 AM – 9:00 PM', q: 'Restaurante Acajutla San Miguel, 13 Av. Sur' }
+  ];
+  const waOf = b => b.wa || CENTRAL_WA;
+  const byId = id => BRANCHES.find(b => b.id === id) || BRANCHES[0];
+  const mapsUrl = b => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(b.q);
+  const wazeUrl = b => 'https://waze.com/ul?q=' + encodeURIComponent(b.q) + '&navigate=yes';
+
+  const CATS = [
+    { id: 'all', label: 'Todos' },
+    { id: 'sopas', label: 'Sopones & Mariscadas' },
+    { id: 'pescados', label: 'Pescados & Camarones' },
+    { id: 'cocteles', label: 'Cocteles & Ceviches' },
+    { id: 'desayunos', label: 'Desayunos & Carnes' }
+  ];
+  const DISHES = [
+    { id: 'sopon', cat: 'sopas', icon: '🦀', badge: 'Insignia', name: 'Sopón Mareño / Sopón Acajutla', price: 18.50,
+      desc: 'Preparación abundante con mariscos frescos del día: cangrejo entero, camarones, almejas y pescado con el toque salvadoreño.' },
+    { id: 'mariscada', cat: 'sopas', icon: '🦞', badge: 'Favorito', name: 'Mariscada en Crema Costera', price: 19.50,
+      desc: 'Langosta, camarón, calamar y lonja de pescado en crema artesanal con tortillas recién hechas.' },
+    { id: 'pescado', cat: 'pescados', icon: '🐟', name: 'Pescado Frito Entero del Día', price: 15.50,
+      desc: 'Clásico infaltable de la costa acompañado de arroz, curtido salvadoreño, limón y tortillas.' },
+    { id: 'camarones', cat: 'pescados', icon: '🦐', name: 'Camarones al Ajillo o a la Plancha', price: 16.50,
+      desc: 'Camarones seleccionados al ajillo dorado o a la plancha con arroz, vegetales y tortillas.' },
+    { id: 'coctel', cat: 'cocteles', icon: '🍸', name: 'Coctel de Camarón en Salsa Rosada o Limón', price: 12.50,
+      desc: 'Camarones frescos en salsa rosada de la casa o en limón con cilantro, cebolla y galletas soda.' },
+    { id: 'ceviche', cat: 'cocteles', icon: '🍋', badge: 'De la Casa', name: 'Ceviche Mixto Puerto de Acajutla', price: 13.50,
+      desc: 'Pescado curvina, camarón y calamar marinados en limón criollo, hierbabuena y cilantro.' },
+    { id: 'desayuno', cat: 'desayunos', icon: '🍳', name: 'Desayuno Típico Frente al Mar', price: 7.50, note: '8:00 AM – 11:00 AM',
+      desc: 'Huevos al gusto, frijoles, plátano, queso, crema y café. Servido desde las 8:00 a.m.' },
+    { id: 'marytierra', cat: 'desayunos', icon: '🥩', badge: 'Premium', name: 'Mar y Tierra a la Parrilla (Lomo & Camarones)', price: 21.00,
+      desc: 'Corte de res a la parrilla con camarones al ajillo, chirimol, chorizo y arroz.' }
+  ];
+
+  const CEV = {
+    base: [
+      { id: 'camaron', label: 'Camarón Fresco', price: 12.50 },
+      { id: 'curvina', label: 'Pescado Curvina', price: 11.50 },
+      { id: 'conchas', label: 'Conchas / Curiles', price: 12.50 },
+      { id: 'mixto', label: 'Combinación Mixta', sub: 'Camarón + Pescado + Calamar', price: 14.50 }
+    ],
+    sauce: [
+      { id: 'trad', label: 'Tradicional', sub: 'Limón, Cilantro y Hierbabuena', price: 0 },
+      { id: 'rosada', label: 'Salsa Rosada Especial de la Casa', price: 0 },
+      { id: 'roja', label: 'Salsa Roja Coctelera', sub: 'Con Salsa Inglesa', price: 0 },
+      { id: 'verde', label: 'Verde Picante', sub: 'Con Chile Jalapeño', price: 0 }
+    ],
+    side: [
+      { id: 'galletas', label: 'Galletas Soda y Limón', price: 0 },
+      { id: 'tostadas', label: 'Tortillas Tostadas de la Casa', price: 0 },
+      { id: 'aguacate', label: 'Porción Extra de Aguacate Fresco', price: 2.00 }
+    ]
+  };
+
+  /* ---------- STATE ---------- */
+  let state = {
+    branch: store.get('aj_branch', 'acajutla'),
+    cart: store.get('aj_cart', []),
+    cat: 'all', q: '', zone: 'all'
+  };
+  if (!BRANCHES.some(b => b.id === state.branch)) state.branch = 'acajutla';
+  const save = () => { store.set('aj_cart', state.cart); store.set('aj_branch', state.branch); };
+
+  /* ---------- TOAST ---------- */
+  function toast(msg, tone = 'amber') {
+    const colors = { amber: 'border-amber-500/40 text-amber-100', sky: 'border-sky-400/40 text-sky-100', rose: 'border-rose-500/40 text-rose-100', emerald: 'border-emerald-500/40 text-emerald-100' };
+    const el = document.createElement('div');
+    el.className = `toast pointer-events-auto glass ${colors[tone]} rounded-2xl px-5 py-3.5 text-sm font-medium shadow-2xl flex items-center gap-3 sm:max-w-sm`;
+    el.innerHTML = `<span class="w-2 h-2 rounded-full shrink-0 ${tone === 'sky' ? 'bg-sky-400' : tone === 'rose' ? 'bg-rose-400' : tone === 'emerald' ? 'bg-emerald-400' : 'bg-amber-400'}"></span><span>${msg}</span>`;
+    $('#toasts').appendChild(el);
+    setTimeout(() => { el.classList.add('out'); el.addEventListener('animationend', () => el.remove(), { once: true }); }, 2800);
+  }
+
+  /* ---------- BRANCH SELECTS ---------- */
+  const branchOptions = (list, sel) => list.map(b => `<option value="${b.id}" ${b.id === sel ? 'selected' : ''}>${b.n}. ${esc(b.name)}${b.tag ? ' — ' + esc(b.tag) : ''}</option>`).join('');
+  function renderBranchSelects() {
+    $('#activeBranch').innerHTML = branchOptions(BRANCHES, state.branch);
+    $('#resBranch').innerHTML = '<option value="">Selecciona una sucursal…</option>' + branchOptions(BRANCHES, '');
+    const cevList = BRANCHES.filter(b => b.ceviche);
+    $('#cevBranch').innerHTML = branchOptions(cevList, cevList.some(b => b.id === state.branch) ? state.branch : 'bambu');
+    updateBranchNote();
+  }
+  function updateBranchNote() {
+    const b = byId(state.branch);
+    $('#branchNote').innerHTML = b.wa
+      ? `Tu pedido se enviará al WhatsApp de <span class="text-sky-300 font-semibold">${esc(b.name)}</span> (${b.waLabel}). Horario: ${b.hours}.`
+      : `<span class="text-sky-300 font-semibold">${esc(b.name)}</span> se atiende vía WhatsApp central (7478-8275), que coordina con la sucursal. Tel. directo: ${b.phones.join(' / ')}.`;
+    $('#drawerBranch').textContent = 'Sucursal: ' + b.name;
+    $('#fabWa').href = 'https://wa.me/' + waOf(b);
+  }
+  $('#activeBranch').addEventListener('change', e => {
+    state.branch = e.target.value; save(); updateBranchNote();
+    toast('Sucursal activa: ' + esc(byId(state.branch).name), 'sky');
+  });
+
+  /* ---------- MENU ---------- */
+  function renderTabs() {
+    $('#catTabs').innerHTML = CATS.map(c => {
+      const count = c.id === 'all' ? DISHES.length : DISHES.filter(d => d.cat === c.id).length;
+      return `<button type="button" role="tab" data-cat="${c.id}" aria-selected="${state.cat === c.id}" class="cat-tab shrink-0 rounded-full border border-white/15 px-4 py-2.5 text-sm font-semibold text-slate-300 hover:border-amber-500/60 transition ${state.cat === c.id ? 'tab-active' : ''}">${c.label} <span class="opacity-60">(${count})</span></button>`;
+    }).join('');
+  }
+  $('#catTabs').addEventListener('click', e => {
+    const t = e.target.closest('[data-cat]'); if (!t) return;
+    state.cat = t.dataset.cat; renderTabs(); renderDishes();
+  });
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  function renderDishes() {
+    const q = norm(state.q.trim());
+    const list = DISHES.filter(d => (state.cat === 'all' || d.cat === state.cat) && (!q || norm(d.name + ' ' + d.desc).includes(q)));
+    $('#noResults').classList.toggle('hidden', list.length > 0);
+    $('#dishGrid').innerHTML = list.map(d => `
+      <article class="group glass rounded-3xl overflow-hidden flex flex-col hover:-translate-y-1 hover:border-amber-500/40 transition duration-300">
+        <div class="dish-art relative h-36 grid place-items-center">
+          <span class="text-6xl drop-shadow-xl group-hover:scale-110 transition duration-500" aria-hidden="true">${d.icon}</span>
+          ${d.badge ? `<span class="absolute top-3 left-3 rounded-full bg-amber-500 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1">${d.badge}</span>` : ''}
+          ${d.note ? `<span class="absolute top-3 right-3 rounded-full bg-sky-400/90 text-slate-950 text-[10px] font-bold px-2.5 py-1">${d.note}</span>` : ''}
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-500">${CATS.find(c => c.id === d.cat).label}</p>
+          <h3 class="mt-1 font-serif text-xl text-white leading-snug">${esc(d.name)}</h3>
+          <p class="mt-2 text-sm text-slate-400 leading-relaxed flex-1">${esc(d.desc)}</p>
+          <div class="mt-5 flex items-center justify-between gap-3">
+            <span class="font-serif text-2xl font-bold text-amber-400">${money(d.price)}</span>
+            <button type="button" data-add="${d.id}" class="inline-flex items-center gap-1.5 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold px-4 py-2.5 transition active:scale-95">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>Agregar
+            </button>
+          </div>
+        </div>
+      </article>`).join('');
+  }
+  let searchT;
+  $('#search').addEventListener('input', e => { clearTimeout(searchT); searchT = setTimeout(() => { state.q = e.target.value; renderDishes(); }, 120); });
+  $('#dishGrid').addEventListener('click', e => {
+    const btn = e.target.closest('[data-add]'); if (!btn) return;
+    const d = DISHES.find(x => x.id === btn.dataset.add);
+    addToCart({ key: d.id, name: d.name, price: d.price });
+    toast(`<strong>${esc(d.name)}</strong> agregado a tu pedido`);
+  });
+
+  /* ---------- CEVICHE BUILDER ---------- */
+  const cevSel = { base: 'mixto', sauce: 'trad', side: 'galletas' };
+  function renderCevGroup(group, el) {
+    el.innerHTML = CEV[group].map(o => `
+      <label class="opt cursor-pointer block">
+        <input type="radio" name="cev-${group}" value="${o.id}" class="sr-only" ${cevSel[group] === o.id ? 'checked' : ''}>
+        <span class="opt-card flex items-start gap-3 h-full glass-soft rounded-2xl p-4 border border-white/10 hover:border-sky-400/50 transition">
+          <span class="opt-dot mt-1 w-4 h-4 shrink-0 rounded-full border-2 border-slate-500 transition"></span>
+          <span class="flex-1 min-w-0">
+            <span class="block font-semibold text-white text-sm sm:text-base">${esc(o.label)}</span>
+            ${o.sub ? `<span class="block text-xs text-slate-400 mt-0.5">${esc(o.sub)}</span>` : ''}
+          </span>
+          <span class="shrink-0 text-sm font-bold ${group === 'base' ? 'text-amber-400' : 'text-sky-300'}">${group === 'base' ? money(o.price) : (o.price ? '+' + money(o.price) : '+$0.00')}</span>
+        </span>
+      </label>`).join('');
+    el.addEventListener('change', e => { cevSel[group] = e.target.value; updateCev(); });
+  }
+  const cevPick = () => ({ base: CEV.base.find(o => o.id === cevSel.base), sauce: CEV.sauce.find(o => o.id === cevSel.sauce), side: CEV.side.find(o => o.id === cevSel.side) });
+  function updateCev() {
+    const p = cevPick();
+    const total = p.base.price + p.sauce.price + p.side.price;
+    $('#cevPrice').textContent = money(total);
+    $('#cevPrice').classList.remove('bump'); void $('#cevPrice').offsetWidth; $('#cevPrice').classList.add('bump');
+    $('#cevSummary').innerHTML = `Ceviche de <span class="text-sky-300">${esc(p.base.label)}</span>, ${esc(p.sauce.label.toLowerCase())}, con ${esc(p.side.label.toLowerCase())}.`;
+  }
+  $('#addCeviche').addEventListener('click', () => {
+    const p = cevPick();
+    const total = p.base.price + p.sauce.price + p.side.price;
+    const cb = $('#cevBranch').value;
+    if (state.branch !== cb) {
+      state.branch = cb; $('#activeBranch').value = cb; updateBranchNote();
+      toast('Pedido enrutado a ' + esc(byId(cb).name) + ' (Bar de Ceviches)', 'sky');
+    }
+    addToCart({ key: `cev-${cevSel.base}-${cevSel.sauce}-${cevSel.side}`, name: `Ceviche ¡A tu Antojo!: ${p.base.label} · ${p.sauce.label} · ${p.side.label}`, price: total });
+    toast('<strong>Tu ceviche personalizado</strong> fue agregado', 'sky');
+  });
+
+  /* ---------- SUCURSALES ---------- */
+  const ZONES = [
+    { id: 'all', label: 'Todas', f: () => true },
+    { id: 'ciudad', label: 'San Salvador & Santa Elena', f: b => b.zone === 'ciudad' },
+    { id: 'playa', label: 'Playas & Oriente', f: b => b.zone === 'playa' }
+  ];
+  function renderZoneTabs() {
+    $('#zoneTabs').innerHTML = ZONES.map(z => `<button type="button" role="tab" data-zone="${z.id}" aria-selected="${state.zone === z.id}" class="shrink-0 rounded-full border border-white/15 px-4 py-2.5 text-sm font-semibold text-slate-300 hover:border-sky-400/60 transition ${state.zone === z.id ? 'tab-sky-active' : ''}">${z.label} (${BRANCHES.filter(z.f).length})</button>`).join('');
+  }
+  $('#zoneTabs').addEventListener('click', e => {
+    const t = e.target.closest('[data-zone]'); if (!t) return;
+    state.zone = t.dataset.zone; renderZoneTabs(); renderBranches();
+  });
+  function renderBranches() {
+    const z = ZONES.find(x => x.id === state.zone);
+    $('#branchGrid').innerHTML = BRANCHES.filter(z.f).map(b => `
+      <article class="glass rounded-3xl p-6 flex flex-col hover:border-sky-400/40 transition">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="grid place-items-center w-10 h-10 rounded-full bg-sky-400/15 text-sky-300 font-serif font-bold">${b.n}</span>
+            <div>
+              <h3 class="font-serif text-xl text-white leading-tight">${esc(b.name)}</h3>
+              ${b.tag ? `<p class="text-xs text-sky-400 font-semibold">${esc(b.tag)}</p>` : ''}
+            </div>
+          </div>
+          ${b.ceviche ? '<span class="shrink-0 rounded-full border border-sky-400/40 bg-sky-400/10 text-sky-300 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1">Bar de Ceviches</span>' : ''}
+        </div>
+        <p class="mt-4 text-sm text-slate-300 leading-relaxed">${esc(b.addr)}</p>
+        <ul class="mt-4 space-y-1.5 text-sm text-slate-400 flex-1">
+          <li>🕐 ${b.hours}</li>
+          <li>📞 ${b.phones.map(p => `<a class="text-slate-200 hover:text-amber-400" href="tel:+503${p.replace(/-/g, '')}">${p}</a>`).join(' / ')}</li>
+          ${b.wa ? `<li>💬 WhatsApp: <span class="text-emerald-400">${b.waLabel}</span></li>` : ''}
+          ${b.email ? `<li class="break-all">✉️ <a class="hover:text-white" href="mailto:${b.email}">${b.email}</a></li>` : ''}
+        </ul>
+        <div class="mt-5 grid grid-cols-2 gap-2">
+          <a href="${mapsUrl(b)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-sky-400/40 text-sky-300 hover:bg-sky-400/10 text-sm font-semibold py-2.5 transition">${b.ares ? 'Mapa' : 'Google Maps'}</a>
+          <a href="${wazeUrl(b)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-sky-400/40 text-sky-300 hover:bg-sky-400/10 text-sm font-semibold py-2.5 transition">Waze</a>
+          <a href="tel:+503${b.phones[0].replace(/-/g, '')}" class="inline-flex items-center justify-center rounded-full border border-white/15 text-white hover:bg-white/5 text-sm font-semibold py-2.5 transition">Llamar</a>
+          <a href="https://wa.me/${waOf(b)}?text=${encodeURIComponent('Hola Restaurante Acajutla ' + b.name + ', quisiera información.')}" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-sm font-extrabold py-2.5 transition">WhatsApp</a>
+        </div>
+        <button type="button" data-pick="${b.id}" class="mt-2 text-xs text-amber-400 hover:text-amber-300 font-semibold py-1">Pedir de esta sucursal →</button>
+      </article>`).join('');
+  }
+  $('#branchGrid').addEventListener('click', e => {
+    const t = e.target.closest('[data-pick]'); if (!t) return;
+    state.branch = t.dataset.pick; save(); $('#activeBranch').value = state.branch; updateBranchNote();
+    toast('Sucursal activa: ' + esc(byId(state.branch).name), 'sky');
+    $('#menu').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* ---------- CART ---------- */
+  function addToCart(item) {
+    const ex = state.cart.find(i => i.key === item.key);
+    if (ex) ex.qty++; else state.cart.push({ ...item, qty: 1 });
+    save(); renderCart(true);
+  }
+  function renderCart(bump) {
+    const count = state.cart.reduce((a, i) => a + i.qty, 0);
+    const c = $('#cartCount'); c.textContent = count;
+    if (bump) { c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); }
+    const empty = state.cart.length === 0;
+    $('#cartEmpty').classList.toggle('hidden', !empty);
+    $('#orderForm').classList.toggle('hidden', empty);
+    $('#cartFooter').classList.toggle('hidden', empty);
+    $('#cartList').innerHTML = state.cart.map(i => `
+      <li class="glass-soft rounded-2xl p-4">
+        <div class="flex justify-between gap-3">
+          <p class="text-sm font-semibold text-white leading-snug">${esc(i.name)}</p>
+          <p class="text-sm font-bold text-amber-400 shrink-0">${money(i.price * i.qty)}</p>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <div class="inline-flex items-center rounded-full border border-white/15">
+            <button type="button" data-dec="${esc(i.key)}" class="w-9 h-9 grid place-items-center text-slate-300 hover:text-white" aria-label="Quitar uno">−</button>
+            <span class="w-8 text-center text-sm font-bold text-white">${i.qty}</span>
+            <button type="button" data-inc="${esc(i.key)}" class="w-9 h-9 grid place-items-center text-slate-300 hover:text-white" aria-label="Agregar uno">+</button>
+          </div>
+          <span class="text-xs text-slate-500">${money(i.price)} c/u</span>
+          <button type="button" data-del="${esc(i.key)}" class="text-xs text-slate-500 hover:text-rose-300">Eliminar</button>
+        </div>
+      </li>`).join('');
+    const sub = state.cart.reduce((a, i) => a + i.price * i.qty, 0);
+    const tip = Math.round(sub * 10) / 100;
+    $('#cSub').textContent = money(sub);
+    $('#cTip').textContent = money(tip);
+    $('#cTotal').textContent = money(sub + tip);
+  }
+  $('#cartList').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const k = b.dataset.inc || b.dataset.dec || b.dataset.del;
+    const it = state.cart.find(i => i.key === k); if (!it) return;
+    if (b.dataset.inc) it.qty++;
+    else if (b.dataset.dec) { it.qty--; if (it.qty < 1) state.cart = state.cart.filter(i => i !== it); }
+    else state.cart = state.cart.filter(i => i !== it);
+    save(); renderCart();
+  });
+  $('#clearCart').addEventListener('click', () => { state.cart = []; save(); renderCart(); toast('Pedido vaciado', 'rose'); });
+
+  const otype = () => ($('input[name="otype"]:checked') || {}).value || 'Domicilio';
+  $$('input[name="otype"]').forEach(r => r.addEventListener('change', () => {
+    const d = otype() === 'Domicilio';
+    $('#oAddr').classList.toggle('hidden', !d);
+  }));
+
+  $('#sendOrder').addEventListener('click', () => {
+    const err = $('#orderError');
+    const name = $('#oName').value.trim(), addr = $('#oAddr').value.trim(), notes = $('#oNotes').value.trim();
+    const t = otype();
+    if (!name || (t === 'Domicilio' && !addr)) {
+      err.textContent = t === 'Domicilio' ? 'Ingresa tu nombre y dirección de entrega.' : 'Ingresa tu nombre.';
+      err.classList.remove('hidden'); toast('Completa los datos del pedido', 'rose'); return;
+    }
+    err.classList.add('hidden');
+    const b = byId(state.branch);
+    const sub = state.cart.reduce((a, i) => a + i.price * i.qty, 0);
+    const tip = Math.round(sub * 10) / 100;
+    const lines = [
+      '*NUEVO PEDIDO — RESTAURANTE ACAJUTLA*',
+      `Sucursal: ${b.name}`,
+      `Tipo: ${t}`,
+      `Cliente: ${name}`,
+      t === 'Domicilio' ? `Dirección: ${addr}` : null,
+      '',
+      '*Detalle:*',
+      ...state.cart.map(i => `• ${i.qty} x ${i.name} — ${money(i.price * i.qty)}`),
+      '',
+      `Subtotal: ${money(sub)}`,
+      `Propina (10%): ${money(tip)}`,
+      `*Total Estimado: ${money(sub + tip)}*`,
+      notes ? `\nNotas: ${notes}` : null,
+      b.wa ? null : `\n(Pedido para sucursal ${b.name}, enviado vía WhatsApp central)`
+    ].filter(l => l !== null);
+    window.open(`https://wa.me/${waOf(b)}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
+    toast('Abriendo WhatsApp de ' + esc(b.name) + '…', 'emerald');
+  });
+
+  /* ---------- DRAWER ---------- */
+  let lastFocus;
+  function openDrawer() {
+    lastFocus = document.activeElement;
+    $('#drawer').classList.add('open'); $('#overlay').classList.add('open');
+    $('#drawer').setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+    setTimeout(() => $('#closeDrawer').focus(), 50);
+  }
+  function closeDrawer() {
+    $('#drawer').classList.remove('open'); $('#overlay').classList.remove('open');
+    $('#drawer').setAttribute('aria-hidden', 'true'); document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  $('#cartBtn').addEventListener('click', openDrawer);
+  $('#closeDrawer').addEventListener('click', closeDrawer);
+  $('#overlay').addEventListener('click', closeDrawer);
+  $$('.close-link').forEach(a => a.addEventListener('click', closeDrawer));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDrawer(); closeMobile(); } });
+
+  /* ---------- MOBILE NAV & HEADER ---------- */
+  const mnav = $('#mobileNav'), mt = $('#menuToggle');
+  function closeMobile() { mnav.classList.add('hidden'); mt.setAttribute('aria-expanded', 'false'); $('#icoBurger').classList.remove('hidden'); $('#icoClose').classList.add('hidden'); }
+  mt.addEventListener('click', () => {
+    const open = mnav.classList.toggle('hidden') === false;
+    mt.setAttribute('aria-expanded', String(open));
+    $('#icoBurger').classList.toggle('hidden', open); $('#icoClose').classList.toggle('hidden', !open);
+  });
+  $$('.m-link').forEach(a => a.addEventListener('click', closeMobile));
+  const header = $('#top');
+  const onScroll = () => {
+    const s = window.scrollY > 20;
+    header.classList.toggle('glass', s); header.classList.toggle('shadow-2xl', s);
+    header.style.borderWidth = s ? '0 0 1px 0' : '0';
+  };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Active nav link
+  const sections = ['inicio', 'menu', 'ceviches', 'sucursales', 'reservas', 'hotel'].map(id => document.getElementById(id));
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) $$('.nav-link').forEach(a => {
+        const on = a.getAttribute('href') === '#' + en.target.id;
+        a.classList.toggle('text-amber-400', on); a.classList.toggle('text-slate-300', !on);
+      });
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => spy.observe(s));
+
+  // Reveal
+  const rev = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); rev.unobserve(en.target); } }), { threshold: 0.08 });
+  $$('.fade-up').forEach(el => rev.observe(el));
+
+  /* ---------- RESERVAS ---------- */
+  const today = new Date(); const pad = n => String(n).padStart(2, '0');
+  $('#resDate').min = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
+  $('#resForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = { branch: $('#resBranch').value, type: $('#resType').value, name: $('#resName').value.trim(), people: $('#resPeople').value, date: $('#resDate').value, time: $('#resTime').value, details: $('#resDetails').value.trim() };
+    const errEl = $('#resError');
+    const missing = [];
+    if (!f.branch) missing.push('sucursal'); if (!f.type) missing.push('tipo de reserva');
+    if (!f.name) missing.push('nombre'); if (!f.people || +f.people < 1) missing.push('número de personas');
+    if (!f.date) missing.push('fecha'); if (!f.time) missing.push('hora');
+    $$('#resForm .field').forEach(el => el.style.borderColor = '');
+    if (missing.length) {
+      errEl.textContent = 'Por favor completa: ' + missing.join(', ') + '.'; errEl.classList.remove('hidden');
+      ['resBranch', 'resType', 'resName', 'resPeople', 'resDate', 'resTime'].forEach(id => { const el = $('#' + id); if (!el.value || (id === 'resPeople' && +el.value < 1)) el.style.borderColor = '#fb7185'; });
+      toast('Faltan datos en tu reserva', 'rose'); return;
+    }
+    errEl.classList.add('hidden');
+    const b = byId(f.branch);
+    const [y, m, d] = f.date.split('-');
+    const msg = [
+      '*SOLICITUD DE RESERVA / EVENTO — RESTAURANTE ACAJUTLA*',
+      `Sucursal: ${b.name}`,
+      `Tipo: ${f.type}`,
+      `Nombre: ${f.name}`,
+      `Personas: ${f.people}`,
+      `Fecha: ${d}/${m}/${y}`,
+      `Hora: ${f.time}`,
+      f.details ? `Detalles: ${f.details}` : null,
+      b.wa ? null : `(Solicitud para sucursal ${b.name}, enviada vía WhatsApp central)`
+    ].filter(Boolean).join('\n');
+    window.open(`https://wa.me/${waOf(b)}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+    toast('Abriendo WhatsApp de ' + esc(b.name) + '…', 'emerald');
+  });
+
+  /* ---------- INIT ---------- */
+  $('#year').textContent = new Date().getFullYear();
+  renderBranchSelects();
+  renderTabs(); renderDishes();
+  renderCevGroup('base', $('#cevBase')); renderCevGroup('sauce', $('#cevSauce')); renderCevGroup('side', $('#cevSide')); updateCev();
+  renderZoneTabs(); renderBranches();
+  renderCart();
+})();
+</script>
+</body>
+</html>
