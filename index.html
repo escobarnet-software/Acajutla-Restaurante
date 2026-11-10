@@ -8,14 +8,14 @@
 <meta name="theme-color" content="#0a54a6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <script>
 window.tailwind = window.tailwind || {};
 tailwind.config = {
   theme: {
     extend: {
-      fontFamily: { serif: ['"Playfair Display"', 'Georgia', 'serif'], sans: ['Inter', 'system-ui', 'sans-serif'] },
+      fontFamily: { serif: ['"Cormorant Garamond"', 'Georgia', 'serif'], sans: ['Lato', 'system-ui', 'sans-serif'] },
       colors: {
         navy: { DEFAULT: '#0a54a6', dark: '#073c78', deep: '#052a55' },
         mar: { DEFAULT: '#209bdf', strong: '#018ed5', light: '#e6f4fc' },
@@ -30,11 +30,15 @@ tailwind.config = {
 <style>
   :root { --navy: #0a54a6; --navy-dark: #073c78; --mar: #209bdf; --sol: #fdc163; --sol-deep: #ffb349; --papel: #fdfdfb; --tinta: #1f2d3d; }
   html, body { background: var(--papel); color: var(--tinta); }
-  body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body { font-family: 'Lato', system-ui, sans-serif; font-weight: 400; line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   .madera { background-color: #fdfdfb; background-image: repeating-linear-gradient(90deg, transparent 0 118px, rgba(10, 84, 166, .045) 118px 120px), linear-gradient(180deg, #ffffff, #f7f8f8); }
   .olas { background-color: var(--mar); background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='90' viewBox='0 0 240 90'><g fill='none' stroke='white' stroke-opacity='.22' stroke-width='2' stroke-linecap='round'><path d='M10 50 C50 20 90 20 120 45 S190 70 230 40'/><path d='M30 62 C65 38 98 38 124 58 S185 78 215 56'/></g></svg>"); background-size: 300px auto; }
   .olas-navy { background-color: var(--navy); background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='90' viewBox='0 0 240 90'><g fill='none' stroke='white' stroke-opacity='.08' stroke-width='2' stroke-linecap='round'><path d='M10 50 C50 20 90 20 120 45 S190 70 230 40'/><path d='M30 62 C65 38 98 38 124 58 S185 78 215 56'/></g></svg>"); background-size: 300px auto; }
-  .subtitulo { font-family: 'Playfair Display', Georgia, serif; font-style: italic; letter-spacing: .28em; }
+  .subtitulo { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: .3em; }
+  .font-serif { font-variant-numeric: lining-nums; letter-spacing: .01em; }
+  h1, h2 { line-height: 1.05 !important; }
+  strong, b { font-weight: 700; }
+  p, li { font-weight: 400; }
   .tab-active { background: var(--navy) !important; color: #fff !important; border-color: var(--navy) !important; }
   .tab-sol-active { background: var(--sol) !important; color: var(--navy-dark) !important; border-color: var(--sol) !important; }
   .opt input:checked + .opt-card { border-color: var(--sol); background: rgba(253, 193, 99, .16); box-shadow: 0 0 0 1px var(--sol) inset; }
@@ -83,7 +87,7 @@ tailwind.config = {
           </svg>
         </span>
         <span class="min-w-0">
-          <span id="logoText" class="block font-serif text-[15px] sm:text-lg font-bold tracking-[0.16em] text-white truncate transition-colors">RESTAURANTE ACAJUTLA</span>
+          <span id="logoText" class="block font-serif text-[15px] sm:text-lg font-medium tracking-[0.16em] text-white truncate transition-colors">RESTAURANTE ACAJUTLA</span>
           <span id="logoSub" class="block text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-sol transition-colors">Desde 1989 • 7 Sucursales</span>
         </span>
       </a>
@@ -96,10 +100,10 @@ tailwind.config = {
         <a href="#hotel" class="nav-link px-3 py-2 rounded-lg hover:bg-black/5">Hotel Villavela</a>
       </nav>
       <div class="flex items-center gap-2">
-        <button id="cartBtn" type="button" class="relative inline-flex items-center gap-2 rounded-full bg-sol hover:bg-sol-deep text-navy-dark font-bold text-sm px-4 py-2.5 shadow-md transition" aria-label="Abrir mi pedido">
+        <button id="cartBtn" type="button" class="relative inline-flex items-center gap-2 rounded-full bg-sol hover:bg-sol-deep text-navy-dark font-semibold text-sm px-4 py-2.5 shadow-md transition" aria-label="Abrir mi pedido">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
           <span class="hidden sm:inline">Mi Pedido</span>
-          <span id="cartCount" class="absolute -top-1.5 -right-1.5 min-w-[22px] h-[22px] px-1 grid place-items-center rounded-full bg-navy text-white text-[11px] font-extrabold ring-2 ring-white">0</span>
+          <span id="cartCount" class="absolute -top-1.5 -right-1.5 min-w-[22px] h-[22px] px-1 grid place-items-center rounded-full bg-navy text-white text-[11px] font-semibold ring-2 ring-white">0</span>
         </button>
         <button id="menuToggle" type="button" class="lg:hidden grid place-items-center w-11 h-11 rounded-full bg-white/15 text-white transition-colors" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
           <svg id="icoBurger" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -130,7 +134,7 @@ tailwind.config = {
       <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em]">
         <span class="w-1.5 h-1.5 rounded-full bg-sol"></span> Mariscos a lo Salvadoreño
       </span>
-      <h1 class="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.05]">
+      <h1 class="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-medium leading-[1.05]">
         El Auténtico Sabor de los Mariscos
       </h1>
       <p class="subtitulo mt-3 text-xl sm:text-3xl text-sol">a lo salvadoreño</p>
@@ -138,7 +142,7 @@ tailwind.config = {
         Todo comenzó el <strong class="text-white">28 de diciembre de 1989</strong> en el Puerto de Acajutla, con apenas <strong class="text-white">3 mesas</strong> y el compromiso de servir el mar más fresco. Seis años después llegamos a la <strong class="text-white">Colonia Escalón</strong> y hoy compartimos esa misma receta familiar en <strong class="text-sol">7 sucursales</strong> de El Salvador: ciudad, playa y oriente.
       </p>
       <div class="mt-9 flex flex-col sm:flex-row flex-wrap gap-3">
-        <a href="#menu" class="inline-flex items-center justify-center gap-2 rounded-full bg-sol hover:bg-sol-deep px-7 py-4 text-navy-dark font-bold shadow-lg transition">
+        <a href="#menu" class="inline-flex items-center justify-center gap-2 rounded-full bg-sol hover:bg-sol-deep px-7 py-4 text-navy-dark font-semibold shadow-lg transition">
           Explorar Menú Interactivo
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -148,15 +152,15 @@ tailwind.config = {
     </div>
     <div class="lg:col-span-5 grid sm:grid-cols-3 lg:grid-cols-1 gap-4 fade-up">
       <div class="bg-white rounded-2xl p-6 flex items-center gap-5 shadow-xl shadow-navy/20">
-        <div class="font-serif text-5xl font-bold text-navy leading-none">35+</div>
+        <div class="font-serif text-5xl font-medium text-navy leading-none">35+</div>
         <div><p class="font-semibold text-tinta">Años de Tradición</p><p class="text-sm text-slate-500">Desde 1989</p></div>
       </div>
       <div class="bg-white rounded-2xl p-6 flex items-center gap-5 shadow-xl shadow-navy/20">
-        <div class="font-serif text-5xl font-bold text-mar leading-none">7</div>
+        <div class="font-serif text-5xl font-medium text-mar leading-none">7</div>
         <div><p class="font-semibold text-tinta">Sucursales</p><p class="text-sm text-slate-500">Ciudad, Playa y Oriente</p></div>
       </div>
       <div class="bg-white rounded-2xl p-6 flex items-center gap-5 shadow-xl shadow-navy/20">
-        <div class="font-serif text-5xl font-bold text-navy leading-none">4.5<span class="text-3xl text-sol-deep">★</span></div>
+        <div class="font-serif text-5xl font-medium text-navy leading-none">4.5<span class="text-3xl text-sol-deep">★</span></div>
         <div><p class="font-semibold text-tinta">Google Maps</p><p class="text-sm text-slate-500">+4,000 reseñas</p></div>
       </div>
     </div>
@@ -168,7 +172,7 @@ tailwind.config = {
 <section id="menu" class="madera relative py-20 sm:py-28 scroll-mt-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto fade-up">
-      <h2 class="font-serif text-4xl sm:text-6xl font-semibold text-navy">Auténtico</h2>
+      <h2 class="font-serif text-4xl sm:text-6xl font-medium text-navy">Auténtico</h2>
       <p class="subtitulo mt-1 text-xl sm:text-3xl text-mar">menú salvadoreño</p>
       <p class="mt-5 text-slate-600">Sin descargar PDF. Busca, filtra y arma tu pedido para llevar o domicilio; lo enviamos directo al WhatsApp de tu sucursal.</p>
     </div>
@@ -198,7 +202,7 @@ tailwind.config = {
     </div>
 
     <div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-3 rounded-2xl bg-sol-light ring-1 ring-sol p-5">
-      <span class="grid place-items-center w-10 h-10 shrink-0 rounded-full bg-sol text-navy-dark font-bold">%</span>
+      <span class="grid place-items-center w-10 h-10 shrink-0 rounded-full bg-sol text-navy-dark font-semibold">%</span>
       <p class="text-sm text-tinta"><strong class="text-navy">Nota oficial del Menú:</strong> “A todo el consumo se le agregará el 10% en concepto de propina”. Tu carrito calcula automáticamente Subtotal, Propina (10%) y Total Estimado. Precios en USD sujetos a confirmación por sucursal.</p>
     </div>
   </div>
@@ -210,34 +214,34 @@ tailwind.config = {
     <div class="grid lg:grid-cols-12 gap-10">
       <div class="lg:col-span-4 fade-up">
         <p class="text-xs font-semibold uppercase tracking-[0.25em] text-sol">Exclusivo Bambú City Center &amp; Santa Elena</p>
-        <h2 class="mt-3 font-serif text-4xl sm:text-5xl font-semibold leading-tight">Bar de Ceviches</h2>
+        <h2 class="mt-3 font-serif text-4xl sm:text-5xl font-medium leading-tight">Bar de Ceviches</h2>
         <p class="subtitulo mt-1 text-xl sm:text-2xl text-sol">¡a tu antojo!</p>
         <p class="mt-5 text-white/80 leading-relaxed">Elige tu marisco, la preparación y el acompañamiento. El precio se calcula en vivo y tu ceviche se agrega al pedido enrutado a la sucursal con Bar de Ceviches.</p>
         <div class="mt-8 bg-white text-tinta rounded-3xl p-6 shadow-2xl lg:sticky lg:top-28">
           <p class="text-xs uppercase tracking-widest text-slate-500">Tu ceviche</p>
-          <p id="cevSummary" class="mt-2 font-serif text-xl text-navy leading-snug"></p>
+          <p id="cevSummary" class="mt-2 font-serif text-2xl text-navy leading-snug"></p>
           <div class="mt-5 flex items-end justify-between">
             <span class="text-sm text-slate-500">Precio</span>
-            <span id="cevPrice" class="font-serif text-4xl font-bold text-navy">$0.00</span>
+            <span id="cevPrice" class="font-serif text-4xl font-medium text-navy">$0.00</span>
           </div>
           <label class="mt-5 block">
             <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Sucursal con Bar de Ceviches</span>
             <select id="cevBranch" class="field"></select>
           </label>
-          <button id="addCeviche" type="button" class="mt-5 w-full rounded-full bg-sol hover:bg-sol-deep text-navy-dark font-bold py-4 transition shadow-md">Agregar mi Ceviche al Pedido</button>
+          <button id="addCeviche" type="button" class="mt-5 w-full rounded-full bg-sol hover:bg-sol-deep text-navy-dark font-semibold py-4 transition shadow-md">Agregar mi Ceviche al Pedido</button>
         </div>
       </div>
       <div class="lg:col-span-8 space-y-8 fade-up">
         <fieldset>
-          <legend class="flex items-center gap-3 mb-4"><span class="grid place-items-center w-8 h-8 rounded-full bg-sol text-navy-dark font-bold text-sm">1</span><span class="font-serif text-2xl">Base de Marisco</span></legend>
+          <legend class="flex items-center gap-3 mb-4"><span class="grid place-items-center w-8 h-8 rounded-full bg-sol text-navy-dark font-medium text-sm">1</span><span class="font-serif text-2xl">Base de Marisco</span></legend>
           <div id="cevBase" class="grid sm:grid-cols-2 gap-3"></div>
         </fieldset>
         <fieldset>
-          <legend class="flex items-center gap-3 mb-4"><span class="grid place-items-center w-8 h-8 rounded-full bg-sol text-navy-dark font-bold text-sm">2</span><span class="font-serif text-2xl">Preparación / Salsa</span></legend>
+          <legend class="flex items-center gap-3 mb-4"><span class="grid place-items-center w-8 h-8 rounded-full bg-sol text-navy-dark font-medium text-sm">2</span><span class="font-serif text-2xl">Preparación / Salsa</span></legend>
           <div id="cevSauce" class="grid sm:grid-cols-2 gap-3"></div>
         </fieldset>
         <fieldset>
-          <legend class="flex items-center gap-3 mb-4"><span class="grid place-items-center w-8 h-8 rounded-full bg-sol text-navy-dark font-bold text-sm">3</span><span class="font-serif text-2xl">Acompañamiento &amp; Extras</span></legend>
+          <legend class="flex items-center gap-3 mb-4"><span class="grid place-items-center w-8 h-8 rounded-full bg-sol text-navy-dark font-medium text-sm">3</span><span class="font-serif text-2xl">Acompañamiento &amp; Extras</span></legend>
           <div id="cevSide" class="grid sm:grid-cols-3 gap-3"></div>
         </fieldset>
       </div>
@@ -250,7 +254,7 @@ tailwind.config = {
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 fade-up">
       <div class="max-w-2xl">
-        <h2 class="font-serif text-4xl sm:text-5xl font-semibold text-navy">Nuestras 7 Sucursales</h2>
+        <h2 class="font-serif text-4xl sm:text-5xl font-medium text-navy">Nuestras 7 Sucursales</h2>
         <p class="subtitulo mt-1 text-lg sm:text-2xl text-mar">ciudad, playa y oriente</p>
         <p class="mt-4 text-slate-600">Llámanos, escríbenos por WhatsApp o llega directo con Google Maps o Waze.</p>
       </div>
@@ -264,7 +268,7 @@ tailwind.config = {
 <section id="reservas" class="olas relative py-20 sm:py-28 scroll-mt-20 text-white">
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10">
     <div class="lg:col-span-5 fade-up">
-      <h2 class="font-serif text-4xl sm:text-6xl font-semibold leading-tight">Reservas</h2>
+      <h2 class="font-serif text-4xl sm:text-6xl font-medium leading-tight">Reservas</h2>
       <p class="subtitulo mt-1 text-xl sm:text-2xl text-sol">&amp; eventos acajutla</p>
       <p class="mt-5 text-white/90 leading-relaxed">Desde una cena familiar hasta la fiesta de fin de año de tu empresa: reservamos tu mesa o preparamos tu evento completo con la atención que nos distingue desde 1989.</p>
       <ul class="mt-8 space-y-4">
@@ -277,11 +281,11 @@ tailwind.config = {
     <div class="lg:col-span-7 fade-up">
       <form id="resForm" class="bg-white text-tinta rounded-3xl p-6 sm:p-8 grid sm:grid-cols-2 gap-5 shadow-2xl shadow-navy/30" novalidate>
         <div class="sm:col-span-2">
-          <h3 class="font-serif text-2xl text-navy">Solicitud de Reserva o Cotización</h3>
+          <h3 class="font-serif text-3xl text-navy">Solicitud de Reserva o Cotización</h3>
           <p class="text-sm text-slate-500 mt-1">Se enviará al WhatsApp de la sucursal seleccionada. Campos con * son obligatorios.</p>
         </div>
-        <label class="sm:col-span-2 block"><span class="block text-sm font-medium text-slate-700 mb-2">Sucursal a Reservar *</span><select id="resBranch" name="branch" class="field" required></select></label>
-        <label class="sm:col-span-2 block"><span class="block text-sm font-medium text-slate-700 mb-2">Tipo de Reserva / Evento *</span>
+        <label class="sm:col-span-2 block"><span class="block text-sm text-slate-600 mb-2">Sucursal a Reservar *</span><select id="resBranch" name="branch" class="field" required></select></label>
+        <label class="sm:col-span-2 block"><span class="block text-sm text-slate-600 mb-2">Tipo de Reserva / Evento *</span>
           <select id="resType" name="type" class="field" required>
             <option value="">Selecciona una opción…</option>
             <option>Reserva de Mesa Familiar (Almuerzo / Cena)</option>
@@ -291,13 +295,13 @@ tailwind.config = {
             <option>Eventos Acajutla: Servicio de Banquete a Domicilio</option>
           </select>
         </label>
-        <label class="block"><span class="block text-sm font-medium text-slate-700 mb-2">Nombre Completo *</span><input id="resName" name="name" type="text" class="field" placeholder="Tu nombre" autocomplete="name" required></label>
-        <label class="block"><span class="block text-sm font-medium text-slate-700 mb-2">Número de Personas *</span><input id="resPeople" name="people" type="number" min="1" max="500" class="field" placeholder="Ej. 6" required></label>
-        <label class="block"><span class="block text-sm font-medium text-slate-700 mb-2">Fecha *</span><input id="resDate" name="date" type="date" class="field" required></label>
-        <label class="block"><span class="block text-sm font-medium text-slate-700 mb-2">Hora *</span><input id="resTime" name="time" type="time" class="field" required></label>
-        <label class="sm:col-span-2 block"><span class="block text-sm font-medium text-slate-700 mb-2">Detalles Adicionales</span><textarea id="resDetails" name="details" rows="4" class="field resize-none" placeholder="Decoración, menú preferido, dirección del banquete, requerimientos especiales…"></textarea></label>
+        <label class="block"><span class="block text-sm text-slate-600 mb-2">Nombre Completo *</span><input id="resName" name="name" type="text" class="field" placeholder="Tu nombre" autocomplete="name" required></label>
+        <label class="block"><span class="block text-sm text-slate-600 mb-2">Número de Personas *</span><input id="resPeople" name="people" type="number" min="1" max="500" class="field" placeholder="Ej. 6" required></label>
+        <label class="block"><span class="block text-sm text-slate-600 mb-2">Fecha *</span><input id="resDate" name="date" type="date" class="field" required></label>
+        <label class="block"><span class="block text-sm text-slate-600 mb-2">Hora *</span><input id="resTime" name="time" type="time" class="field" required></label>
+        <label class="sm:col-span-2 block"><span class="block text-sm text-slate-600 mb-2">Detalles Adicionales</span><textarea id="resDetails" name="details" rows="4" class="field resize-none" placeholder="Decoración, menú preferido, dirección del banquete, requerimientos especiales…"></textarea></label>
         <p id="resError" class="sm:col-span-2 hidden text-sm text-rose-700 bg-rose-50 border border-rose-200 rounded-xl px-4 py-3"></p>
-        <button type="submit" class="btn-wa sm:col-span-2 inline-flex items-center justify-center gap-3 rounded-full font-extrabold py-4 text-base transition shadow-lg">
+        <button type="submit" class="btn-wa sm:col-span-2 inline-flex items-center justify-center gap-3 rounded-full font-semibold py-4 text-base transition shadow-lg">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0012 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 005.6 1.4h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.3zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.9 9.9 0 01-1.5-5.2C2.1 6.4 6.5 2 12 2c2.6 0 5.1 1 7 2.9a9.8 9.8 0 012.9 7c0 5.5-4.4 9.8-9.9 9.8zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
           Enviar Solicitud por WhatsApp
         </button>
@@ -311,7 +315,7 @@ tailwind.config = {
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
     <div class="lg:col-span-6 fade-up">
       <p class="text-xs font-semibold uppercase tracking-[0.25em] text-mar">Hospedaje • Puerto de Acajutla</p>
-      <h2 class="mt-3 font-serif text-4xl sm:text-5xl font-semibold text-navy leading-tight">Villavela</h2>
+      <h2 class="mt-3 font-serif text-4xl sm:text-5xl font-medium text-navy leading-tight">Villavela</h2>
       <p class="subtitulo mt-1 text-xl sm:text-2xl text-mar">hotel boutique</p>
       <p class="mt-5 text-slate-600 leading-relaxed">Ubicado en la <strong class="text-navy">Avenida Miramar, Acajutla</strong>, en la misma casa donde nació el Restaurante Acajutla hace más de 30 años, a pocos minutos de la Zona Industrial del Puerto de Acajutla. Descanso, piscina y el mejor marisco a pasos de tu habitación.</p>
       <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
@@ -329,18 +333,18 @@ tailwind.config = {
         <div class="grid gap-4">
           <div class="bg-white text-tinta rounded-2xl p-6 flex items-center justify-between gap-4">
             <div><p class="font-serif text-2xl text-navy">Habitación Sencilla</p><p class="text-sm text-slate-500">Hasta 2 personas</p></div>
-            <p class="font-serif text-3xl font-bold text-navy">$100.30</p>
+            <p class="font-serif text-3xl font-medium text-navy">$100.30</p>
           </div>
           <div class="bg-white text-tinta rounded-2xl p-6 flex items-center justify-between gap-4">
             <div><p class="font-serif text-2xl text-navy">Habitación Doble</p><p class="text-sm text-slate-500">Hasta 4 personas</p></div>
-            <p class="font-serif text-3xl font-bold text-navy">$129.80</p>
+            <p class="font-serif text-3xl font-medium text-navy">$129.80</p>
           </div>
           <div class="grid sm:grid-cols-2 gap-3 mt-2">
-            <a href="tel:+50324526910" class="inline-flex items-center justify-center gap-2 rounded-full bg-sol hover:bg-sol-deep text-navy-dark font-bold py-4 transition">
+            <a href="tel:+50324526910" class="inline-flex items-center justify-center gap-2 rounded-full bg-sol hover:bg-sol-deep text-navy-dark font-semibold py-4 transition">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.3a1 1 0 011 .7l1.5 4.5a1 1 0 01-.5 1.2l-2.3 1.1a11 11 0 005.5 5.5l1.1-2.3a1 1 0 011.2-.5l4.5 1.5a1 1 0 01.7 1V19a2 2 0 01-2 2h-1C9.7 21 3 14.3 3 6V5z"/></svg>
               Llamar a Recepción
             </a>
-            <a href="https://wa.me/50374788275?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20en%20Villavela%20Hotel%20Boutique." target="_blank" rel="noopener" class="btn-wa inline-flex items-center justify-center gap-2 rounded-full font-extrabold py-4 transition">Consultar Estadía por WhatsApp</a>
+            <a href="https://wa.me/50374788275?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20en%20Villavela%20Hotel%20Boutique." target="_blank" rel="noopener" class="btn-wa inline-flex items-center justify-center gap-2 rounded-full font-semibold py-4 transition">Consultar Estadía por WhatsApp</a>
           </div>
         </div>
       </div>
@@ -353,7 +357,7 @@ tailwind.config = {
 <footer class="olas-navy text-white">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid md:grid-cols-12 gap-10">
     <div class="md:col-span-5">
-      <p class="font-serif text-2xl font-bold tracking-[0.16em]">RESTAURANTE ACAJUTLA</p>
+      <p class="font-serif text-2xl font-medium tracking-[0.16em]">RESTAURANTE ACAJUTLA</p>
       <p class="subtitulo text-sol text-sm mt-1">mariscos a lo salvadoreño</p>
       <p class="mt-4 text-sm text-white/75 max-w-sm">Desde el 28 de diciembre de 1989. Del Puerto de Acajutla a todo El Salvador.</p>
       <a href="mailto:restaurantesacajutlas@gmail.com" class="mt-4 inline-block text-sm text-sol hover:underline">restaurantesacajutlas@gmail.com</a>
@@ -405,9 +409,9 @@ tailwind.config = {
   <div class="flex-1 overflow-y-auto px-5 py-4">
     <div id="cartEmpty" class="text-center py-16">
       <div class="mx-auto w-16 h-16 grid place-items-center rounded-full bg-sol-light text-3xl">🦐</div>
-      <p class="mt-4 font-serif text-xl text-navy">Tu pedido está vacío</p>
+      <p class="mt-4 font-serif text-2xl text-navy">Tu pedido está vacío</p>
       <p class="mt-1 text-sm text-slate-500">Agrega platillos desde el menú o arma tu ceviche.</p>
-      <a href="#menu" class="close-link mt-6 inline-block rounded-full bg-sol text-navy-dark font-bold px-6 py-3">Ver Menú</a>
+      <a href="#menu" class="close-link mt-6 inline-block rounded-full bg-sol text-navy-dark font-semibold px-6 py-3">Ver Menú</a>
     </div>
     <ul id="cartList" class="space-y-3"></ul>
     <div id="orderForm" class="hidden mt-6 space-y-3">
@@ -426,11 +430,11 @@ tailwind.config = {
     <dl class="space-y-1.5 text-sm">
       <div class="flex justify-between text-slate-600"><dt>Subtotal</dt><dd id="cSub">$0.00</dd></div>
       <div class="flex justify-between text-slate-600"><dt>Propina (10%)</dt><dd id="cTip">$0.00</dd></div>
-      <div class="flex justify-between text-navy font-bold text-lg pt-2 border-t border-slate-200"><dt>Total Estimado</dt><dd id="cTotal">$0.00</dd></div>
+      <div class="flex justify-between text-navy font-semibold text-lg pt-2 border-t border-slate-200"><dt>Total Estimado</dt><dd id="cTotal">$0.00</dd></div>
     </dl>
     <p class="mt-2 text-[11px] text-slate-500">A todo el consumo se le agregará el 10% en concepto de propina. Costo de envío se confirma por WhatsApp.</p>
     <p id="orderError" class="hidden mt-2 text-xs text-rose-700"></p>
-    <button id="sendOrder" type="button" class="btn-wa mt-3 w-full inline-flex items-center justify-center gap-2 rounded-full font-extrabold py-4 transition">Enviar Pedido por WhatsApp</button>
+    <button id="sendOrder" type="button" class="btn-wa mt-3 w-full inline-flex items-center justify-center gap-2 rounded-full font-semibold py-4 transition">Enviar Pedido por WhatsApp</button>
     <button id="clearCart" type="button" class="mt-2 w-full text-xs text-slate-400 hover:text-rose-600 py-1">Vaciar pedido</button>
   </div>
 </aside>
@@ -590,16 +594,16 @@ tailwind.config = {
       <article class="group bg-white rounded-3xl overflow-hidden flex flex-col shadow-md shadow-navy/5 ring-1 ring-black/5 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/10 transition duration-300">
         <div class="dish-art relative h-36 grid place-items-center">
           <span class="text-6xl drop-shadow-md group-hover:scale-110 transition duration-500" aria-hidden="true">${d.icon}</span>
-          ${d.badge ? `<span class="absolute top-3 left-3 rounded-full bg-sol text-navy-dark text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1">${d.badge}</span>` : ''}
-          ${d.note ? `<span class="absolute top-3 right-3 rounded-full bg-mar text-white text-[10px] font-bold px-2.5 py-1">${d.note}</span>` : ''}
+          ${d.badge ? `<span class="absolute top-3 left-3 rounded-full bg-sol text-navy-dark text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1">${d.badge}</span>` : ''}
+          ${d.note ? `<span class="absolute top-3 right-3 rounded-full bg-mar text-white text-[10px] font-semibold px-2.5 py-1">${d.note}</span>` : ''}
         </div>
         <div class="p-5 flex flex-col flex-1">
           <p class="text-[10px] font-semibold uppercase tracking-widest text-mar">${CATS.find(c => c.id === d.cat).label}</p>
-          <h3 class="mt-1 font-serif text-xl text-navy leading-snug">${esc(d.name)}</h3>
+          <h3 class="mt-1 font-serif text-2xl text-navy leading-snug">${esc(d.name)}</h3>
           <p class="mt-2 text-sm text-slate-600 leading-relaxed flex-1">${esc(d.desc)}</p>
           <div class="mt-5 flex items-center justify-between gap-3">
-            <span class="font-serif text-2xl font-bold text-navy">${money(d.price)}</span>
-            <button type="button" data-add="${d.id}" class="inline-flex items-center gap-1.5 rounded-full bg-sol hover:bg-sol-deep text-navy-dark text-sm font-bold px-4 py-2.5 transition active:scale-95">
+            <span class="font-serif text-2xl font-medium text-navy">${money(d.price)}</span>
+            <button type="button" data-add="${d.id}" class="inline-flex items-center gap-1.5 rounded-full bg-sol hover:bg-sol-deep text-navy-dark text-sm font-semibold px-4 py-2.5 transition active:scale-95">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>Agregar
             </button>
           </div>
@@ -627,7 +631,7 @@ tailwind.config = {
             <span class="block font-semibold text-white text-sm sm:text-base">${esc(o.label)}</span>
             ${o.sub ? `<span class="block text-xs text-white/70 mt-0.5">${esc(o.sub)}</span>` : ''}
           </span>
-          <span class="shrink-0 text-sm font-bold text-sol">${group === 'base' ? money(o.price) : '+' + money(o.price)}</span>
+          <span class="shrink-0 text-sm font-semibold text-sol">${group === 'base' ? money(o.price) : '+' + money(o.price)}</span>
         </span>
       </label>`).join('');
     el.addEventListener('change', e => { cevSel[group] = e.target.value; updateCev(); });
@@ -671,13 +675,13 @@ tailwind.config = {
       <article class="bg-white rounded-3xl p-6 flex flex-col shadow-md shadow-navy/5 ring-1 ring-black/5 hover:shadow-xl hover:shadow-navy/10 transition border-t-4 ${b.ceviche ? 'border-sol' : 'border-mar'}">
         <div class="flex items-start justify-between gap-3">
           <div class="flex items-center gap-3">
-            <span class="grid place-items-center w-10 h-10 rounded-full bg-mar-light text-navy font-serif font-bold">${b.n}</span>
+            <span class="grid place-items-center w-10 h-10 rounded-full bg-mar-light text-navy font-serif font-medium">${b.n}</span>
             <div>
-              <h3 class="font-serif text-xl text-navy leading-tight">${esc(b.name)}</h3>
+              <h3 class="font-serif text-2xl text-navy leading-tight">${esc(b.name)}</h3>
               ${b.tag ? `<p class="text-xs text-mar font-semibold">${esc(b.tag)}</p>` : ''}
             </div>
           </div>
-          ${b.ceviche ? '<span class="shrink-0 rounded-full bg-sol-light ring-1 ring-sol text-navy-dark text-[10px] font-bold uppercase tracking-wider px-2.5 py-1">Bar de Ceviches</span>' : ''}
+          ${b.ceviche ? '<span class="shrink-0 rounded-full bg-sol-light ring-1 ring-sol text-navy-dark text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1">Bar de Ceviches</span>' : ''}
         </div>
         <p class="mt-4 text-sm text-slate-700 leading-relaxed">${esc(b.addr)}</p>
         <ul class="mt-4 space-y-1.5 text-sm text-slate-500 flex-1">
@@ -690,7 +694,7 @@ tailwind.config = {
           <a href="${mapsUrl(b)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-mar text-navy hover:bg-mar-light text-sm font-semibold py-2.5 transition">${b.ares ? 'Mapa' : 'Google Maps'}</a>
           <a href="${wazeUrl(b)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-mar text-navy hover:bg-mar-light text-sm font-semibold py-2.5 transition">Waze</a>
           <a href="tel:+503${b.phones[0].replace(/-/g, '')}" class="inline-flex items-center justify-center rounded-full bg-navy hover:bg-navy-dark text-white text-sm font-semibold py-2.5 transition">Llamar</a>
-          <a href="https://wa.me/${waOf(b)}?text=${encodeURIComponent('Hola Restaurante Acajutla ' + b.name + ', quisiera información.')}" target="_blank" rel="noopener" class="btn-wa inline-flex items-center justify-center rounded-full text-sm font-extrabold py-2.5 transition">WhatsApp</a>
+          <a href="https://wa.me/${waOf(b)}?text=${encodeURIComponent('Hola Restaurante Acajutla ' + b.name + ', quisiera información.')}" target="_blank" rel="noopener" class="btn-wa inline-flex items-center justify-center rounded-full text-sm font-semibold py-2.5 transition">WhatsApp</a>
         </div>
         <button type="button" data-pick="${b.id}" class="mt-2 text-xs text-navy hover:text-mar font-semibold py-1">Pedir de esta sucursal →</button>
       </article>`).join('');
@@ -721,12 +725,12 @@ tailwind.config = {
       <li class="bg-white rounded-2xl p-4 ring-1 ring-black/5 shadow-sm">
         <div class="flex justify-between gap-3">
           <p class="text-sm font-semibold text-tinta leading-snug">${esc(i.name)}</p>
-          <p class="text-sm font-bold text-navy shrink-0">${money(i.price * i.qty)}</p>
+          <p class="text-sm font-semibold text-navy shrink-0">${money(i.price * i.qty)}</p>
         </div>
         <div class="mt-3 flex items-center justify-between">
           <div class="inline-flex items-center rounded-full border border-slate-200">
             <button type="button" data-dec="${esc(i.key)}" class="w-9 h-9 grid place-items-center text-slate-500 hover:text-navy" aria-label="Quitar uno">−</button>
-            <span class="w-8 text-center text-sm font-bold text-tinta">${i.qty}</span>
+            <span class="w-8 text-center text-sm font-semibold text-tinta">${i.qty}</span>
             <button type="button" data-inc="${esc(i.key)}" class="w-9 h-9 grid place-items-center text-slate-500 hover:text-navy" aria-label="Agregar uno">+</button>
           </div>
           <span class="text-xs text-slate-400">${money(i.price)} c/u</span>
@@ -828,7 +832,7 @@ tailwind.config = {
     entries.forEach(en => {
       if (en.isIntersecting) $$('.nav-link').forEach(a => {
         const on = a.getAttribute('href') === '#' + en.target.id;
-        a.classList.toggle('font-bold', on); a.classList.toggle('underline', on);
+        a.classList.toggle('font-semibold', on); a.classList.toggle('underline', on);
         a.classList.toggle('decoration-sol', on); a.classList.toggle('decoration-2', on); a.classList.toggle('underline-offset-8', on);
       });
     });
