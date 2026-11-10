@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Códigos QR de Mesa — Restaurante Acajutla</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="img/logo-color.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root { --navy: #0a54a6; --mar: #209bdf; --sol: #fdc163; --tinta: #1f2d3d; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Lato', system-ui, sans-serif; color: var(--tinta); background: #f3f6f9; }
+  .panel { max-width: 960px; margin: 24px auto; background: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 6px 24px rgba(10, 84, 166, .08); }
+  h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; color: var(--navy); font-size: 2.2rem; margin: 0; }
+  .hint { color: #64748b; font-size: .9rem; margin: 6px 0 18px; }
+  .grid-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+  label span { display: block; font-size: .8rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  input, select { width: 100%; padding: .7rem .9rem; border: 1px solid #d5dde6; border-radius: 12px; font: inherit; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  button { font: inherit; font-weight: 700; border: 0; border-radius: 999px; padding: .8rem 1.4rem; cursor: pointer; }
+  .b1 { background: var(--sol); color: #073c78; } .b2 { background: var(--navy); color: #fff; }
+  .cards { max-width: 960px; margin: 0 auto 40px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; padding: 0 16px; }
+  .card { background: #fff; border-radius: 18px; border: 2px solid var(--mar); padding: 18px 16px 16px; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+  .card img.logo { height: 44px; }
+  .card .t { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; color: var(--mar); letter-spacing: .2em; font-size: .95rem; margin: 4px 0 10px; }
+  .card .qr { display: inline-block; padding: 8px; background: #fff; border-radius: 10px; }
+  .card .qr img, .card .qr canvas { display: block; width: 150px !important; height: 150px !important; }
+  .card .mesa { font-variant-numeric: lining-nums; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.2rem; color: var(--navy); line-height: 1; margin-top: 10px; }
+  .card .suc { font-size: .8rem; color: #64748b; margin-top: 4px; }
+  .card .cta { margin-top: 10px; background: var(--sol); color: #073c78; border-radius: 999px; font-size: .78rem; font-weight: 700; padding: .45rem .8rem; display: inline-block; }
+  .err { color: #b91c1c; font-size: .9rem; margin-top: 10px; }
+  @media print {
+    body { background: #fff; } .panel { display: none; }
+    .cards { grid-template-columns: repeat(3, 1fr); gap: 10mm; padding: 0; max-width: none; }
+    @page { margin: 12mm; }
+  }
+</style>
+</head>
+<body>
+<section class="panel">
+  <h1>Códigos QR para las mesas</h1>
+  <p class="hint">Genera las tarjetas de cada sucursal e imprímelas. Cada QR abre el menú digital con la sucursal y el número de mesa ya puestos.</p>
+  <div class="grid-form">
+    <label><span>Sucursal</span><select id="branch"></select></label>
+    <label><span>Desde mesa</span><input id="from" type="number" min="1" value="1"></label>
+    <label><span>Hasta mesa</span><input id="to" type="number" min="1" value="12"></label>
+    <label style="grid-column: 1 / -1"><span>Dirección del menú (cuando el sitio esté publicado)</span><input id="base" type="url"></label>
+  </div>
+  <div class="actions">
+    <button class="b1" id="gen" type="button">Generar tarjetas</button>
+    <button class="b2" id="print" type="button">Imprimir</button>
+  </div>
+  <p id="err" class="err" hidden></p>
+</section>
+<section id="cards" class="cards" aria-label="Tarjetas de mesa"></section>
+
+<script src="data.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  $('#branch').innerHTML = BRANCHES.map(b => `<option value="${b.id}">${b.n}. ${b.name}</option>`).join('');
+  $('#base').value = new URL('menu.html', location.href).href.split('?')[0];
+  function gen() {
+    const err = $('#err'); err.hidden = true;
+    if (typeof QRCode === 'undefined') { err.textContent = 'No se pudo cargar el generador de QR. Revisa la conexión a internet.'; err.hidden = false; return; }
+    const b = BRANCHES.find(x => x.id === $('#branch').value);
+    let from = Math.max(1, parseInt($('#from').value, 10) || 1), to = Math.max(from, parseInt($('#to').value, 10) || from);
+    if (to - from > 99) { to = from + 99; $('#to').value = to; }
+    const base = $('#base').value.trim();
+    const wrap = $('#cards'); wrap.innerHTML = '';
+    for (let m = from; m <= to; m++) {
+      const url = `${base}?s=${b.id}&mesa=${m}`;
+      const card = document.createElement('article'); card.className = 'card';
+      card.innerHTML = `<img class="logo" src="img/logo-color.png" alt="Acajutla"><div class="t">menú digital</div><div class="qr"></div><div class="mesa">Mesa ${m}</div><div class="suc">${b.name}</div><div class="cta">Escanea con tu cámara</div>`;
+      wrap.appendChild(card);
+      new QRCode(card.querySelector('.qr'), { text: url, width: 300, height: 300, colorDark: '#0a54a6', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+      card.title = url;
+    }
+  }
+  $('#gen').addEventListener('click', gen);
+  $('#print').addEventListener('click', () => window.print());
+  gen();
+})();
+</script>
+</body>
+</html>

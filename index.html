@@ -85,7 +85,7 @@ tailwind.config = {
       </a>
       <nav id="deskNav" class="hidden lg:flex items-center gap-1 text-sm font-medium text-white" aria-label="Principal">
         <a href="#inicio" class="nav-link px-3 py-2 rounded-lg hover:bg-black/5">Inicio</a>
-        <a href="#menu" class="nav-link px-3 py-2 rounded-lg hover:bg-black/5">Menú</a>
+        <a href="#menu" class="nav-link px-3 py-2 rounded-lg hover:bg-black/5">Menú Digital</a>
         <a href="#ceviches" class="nav-link px-3 py-2 rounded-lg hover:bg-black/5">Bar de Ceviches</a>
         <a href="#historia" class="nav-link px-3 py-2 rounded-lg hover:bg-black/5">Historia</a>
         <a href="#sucursales" class="nav-link px-3 py-2 rounded-lg hover:bg-black/5">Sucursales</a>
@@ -93,11 +93,10 @@ tailwind.config = {
         <a href="#hotel" class="nav-link px-3 py-2 rounded-lg hover:bg-black/5">Hotel Villavela</a>
       </nav>
       <div class="flex items-center gap-2">
-        <button id="cartBtn" type="button" class="relative inline-flex items-center gap-2 rounded-full bg-sol hover:bg-sol-deep text-navy-dark font-semibold text-sm px-4 py-2.5 shadow-md transition" aria-label="Abrir mi pedido">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-          <span class="hidden sm:inline">Mi Pedido</span>
-          <span id="cartCount" class="absolute -top-1.5 -right-1.5 min-w-[22px] h-[22px] px-1 grid place-items-center rounded-full bg-navy text-white text-[11px] font-semibold ring-2 ring-white">0</span>
-        </button>
+        <a href="menu.html" class="inline-flex items-center gap-2 rounded-full bg-sol hover:bg-sol-deep text-navy-dark font-semibold text-sm px-4 py-2.5 shadow-md transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16M4 12h16M4 19h10"/></svg>
+          <span>Ver Menú</span>
+        </a>
         <button id="menuToggle" type="button" class="lg:hidden grid place-items-center w-11 h-11 rounded-full bg-white/15 text-white transition-colors" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
           <svg id="icoBurger" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
           <svg id="icoClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
@@ -107,7 +106,7 @@ tailwind.config = {
     <nav id="mobileNav" class="lg:hidden hidden pb-4" aria-label="Móvil">
       <div class="bg-white rounded-2xl shadow-xl ring-1 ring-black/5 p-2 grid gap-1 text-base font-medium text-navy">
         <a href="#inicio" class="m-link px-4 py-3 rounded-xl hover:bg-mar-light">Inicio</a>
-        <a href="#menu" class="m-link px-4 py-3 rounded-xl hover:bg-mar-light">Menú</a>
+        <a href="menu.html" class="m-link px-4 py-3 rounded-xl hover:bg-mar-light">Abrir Menú Digital</a>
         <a href="#ceviches" class="m-link px-4 py-3 rounded-xl hover:bg-mar-light">Bar de Ceviches</a>
         <a href="#historia" class="m-link px-4 py-3 rounded-xl hover:bg-mar-light">Nuestra Historia</a>
         <a href="#sucursales" class="m-link px-4 py-3 rounded-xl hover:bg-mar-light">7 Sucursales</a>
@@ -133,11 +132,11 @@ tailwind.config = {
         Nacimos en la ciudad portuaria de Acajutla con apenas <strong class="text-white">3 mesas</strong>. Seis años después llegamos a la <strong class="text-white">Colonia Escalón</strong> y hoy servimos el mar más fresco en <strong class="text-sol">7 sucursales</strong> de El Salvador.
       </p>
       <div class="mt-9 flex flex-col sm:flex-row flex-wrap gap-3">
-        <a href="#menu" class="inline-flex items-center justify-center gap-2 rounded-full bg-sol hover:bg-sol-deep px-7 py-4 text-navy-dark font-semibold shadow-lg transition">
-          Ver Menú y Pedir
+        <a href="menu.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-sol hover:bg-sol-deep px-7 py-4 text-navy-dark font-semibold shadow-lg transition">
+          Ver Menú
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="#ceviches" class="inline-flex items-center justify-center rounded-full bg-white hover:bg-mar-light px-7 py-4 text-navy font-semibold transition">Armar mi Ceviche</a>
+        <a href="#sucursales" class="inline-flex items-center justify-center rounded-full bg-white hover:bg-mar-light px-7 py-4 text-navy font-semibold transition">Cómo Llegar</a>
         <a href="#reservas" class="inline-flex items-center justify-center rounded-full border-2 border-white/70 hover:bg-white/10 px-7 py-4 text-white font-semibold transition">Reservar Mesa / Evento</a>
       </div>
       <dl class="mt-10 grid grid-cols-3 gap-3 max-w-lg">
@@ -185,96 +184,44 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ============ MENU DIGITAL ============ -->
-<section id="menu" class="madera relative pb-20 sm:pb-28 scroll-mt-20">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto fade-up">
-      <h2 class="font-serif text-5xl sm:text-6xl font-medium text-navy">Auténtico</h2>
-      <p class="subtitulo mt-1 text-xl sm:text-3xl text-mar">menú salvadoreño</p>
-      <p class="mt-5 text-slate-600">La carta completa, sin descargar PDF. Elige tu sucursal, agrega platillos y envía tu pedido por WhatsApp.</p>
-    </div>
-
-    <div class="mt-10 bg-white rounded-3xl p-4 sm:p-6 shadow-lg shadow-navy/5 ring-1 ring-black/5">
-      <div class="grid md:grid-cols-12 gap-4">
-        <label class="md:col-span-5 block">
-          <span class="block text-xs font-semibold uppercase tracking-wider text-navy mb-2">Sucursal para tu pedido</span>
-          <select id="activeBranch" class="field"></select>
-        </label>
-        <label class="md:col-span-7 block">
-          <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Buscar en todo el menú</span>
-          <div class="relative">
-            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5"/></svg>
-            <input id="search" type="search" class="field" style="padding-left:3rem" placeholder="Ej. langosta, ceviche, ajillo, tamarindo…" autocomplete="off">
-          </div>
-        </label>
+<!-- ============ MENÚ DIGITAL QR ============ -->
+<section id="menu" class="madera relative py-20 sm:py-28 scroll-mt-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 fade-up">
+      <h2 class="font-serif text-5xl sm:text-6xl font-medium text-navy">Menú Digital</h2>
+      <p class="subtitulo mt-1 text-xl sm:text-3xl text-mar">en tu mesa</p>
+      <p class="mt-5 text-slate-600 leading-relaxed max-w-xl">Toda nuestra carta en tu celular, con fotos y precios. Escanea el código QR de tu mesa, arma tu orden y muéstrasela a tu mesero.</p>
+      <ol class="mt-8 grid sm:grid-cols-3 gap-4">
+        <li class="bg-white rounded-2xl p-5 ring-1 ring-black/5 shadow-sm"><span class="grid place-items-center w-10 h-10 rounded-full bg-sol text-navy-dark font-serif text-xl">1</span><p class="mt-3 font-serif text-2xl text-navy leading-tight">Escanea el QR</p><p class="text-sm text-slate-500">Está en tu mesa. Abre el menú de tu sucursal, sin descargar nada.</p></li>
+        <li class="bg-white rounded-2xl p-5 ring-1 ring-black/5 shadow-sm"><span class="grid place-items-center w-10 h-10 rounded-full bg-sol text-navy-dark font-serif text-xl">2</span><p class="mt-3 font-serif text-2xl text-navy leading-tight">Elige tus platillos</p><p class="text-sm text-slate-500">Fotos, tamaños y precios. El total ya incluye el 10% de propina.</p></li>
+        <li class="bg-white rounded-2xl p-5 ring-1 ring-black/5 shadow-sm"><span class="grid place-items-center w-10 h-10 rounded-full bg-sol text-navy-dark font-serif text-xl">3</span><p class="mt-3 font-serif text-2xl text-navy leading-tight">Muestra tu orden</p><p class="text-sm text-slate-500">Tu mesero la ve en pantalla grande con tu número de mesa.</p></li>
+      </ol>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="menu.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-sol hover:bg-sol-deep px-7 py-4 text-navy-dark font-semibold shadow-md transition">Abrir el Menú</a>
+        <a href="#ceviches" class="inline-flex items-center justify-center rounded-full border border-mar text-navy hover:bg-mar-light px-7 py-4 transition">Bar de Ceviches</a>
       </div>
-      <p id="branchNote" class="mt-3 text-xs text-slate-500"></p>
     </div>
-
-    <div id="catBar" class="sticky top-[68px] sm:top-[76px] z-20 -mx-4 px-4 sm:mx-0 sm:px-0 py-3 bg-papel/95 backdrop-blur">
-      <div id="catTabs" class="flex gap-2 overflow-x-auto no-scrollbar" role="tablist"></div>
-    </div>
-
-    <div id="menuList" class="mt-4 space-y-12"></div>
-    <div id="noResults" class="hidden mt-10 text-center bg-white rounded-2xl p-10 ring-1 ring-black/5">
-      <p class="font-serif text-3xl text-navy">No encontramos ese platillo</p>
-      <p class="mt-2 text-slate-500">Prueba con otro ingrediente o revisa la ortografía.</p>
-    </div>
-
-    <div class="mt-12 grid md:grid-cols-2 gap-4">
-      <div class="flex items-start gap-3 rounded-2xl bg-sol-light ring-1 ring-sol p-5">
-        <span class="grid place-items-center w-10 h-10 shrink-0 rounded-full bg-sol text-navy-dark font-semibold">%</span>
-        <p class="text-sm">A todo el consumo se le agregará el <strong class="text-navy">10% en concepto de propina</strong>. Tu pedido muestra Subtotal, Propina (10%) y Total Estimado.</p>
+    <div class="lg:col-span-5 fade-up hidden md:block">
+      <div class="mx-auto w-[300px] h-[620px] rounded-[2.75rem] bg-navy-deep p-3 shadow-2xl shadow-navy/30 ring-1 ring-black/10">
+        <iframe src="menu.html?s=bambu&amp;mesa=7&amp;demo=1" title="Vista previa del menú digital" class="w-full h-full rounded-[2.1rem] bg-white" loading="lazy"></iframe>
       </div>
-      <div class="flex items-start gap-3 rounded-2xl bg-mar-light ring-1 ring-mar/40 p-5">
-        <span class="grid place-items-center w-10 h-10 shrink-0 rounded-full bg-mar text-white font-semibold">i</span>
-        <p class="text-sm text-slate-700">Si usted es alérgico a algún alimento, háganoslo saber. El consumo de mariscos o pescados crudos o parcialmente crudos puede aumentar el riesgo de enfermedades transmitidas por alimentos.</p>
-      </div>
+      <p class="mt-4 text-center text-xs text-slate-500">Vista previa en vivo: así se ve en el celular</p>
     </div>
   </div>
 </section>
 
-<!-- ============ BAR DE CEVICHES ============ -->
-<section id="ceviches" class="olas-navy relative py-20 sm:py-28 scroll-mt-20 overflow-hidden text-white">
-  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-12 gap-10 items-start">
-      <div class="lg:col-span-5 fade-up">
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-sol">Bambú City Center &amp; Santa Elena</p>
-        <h2 class="mt-3 font-serif text-5xl sm:text-6xl font-medium">Bar de Ceviches</h2>
-        <p class="subtitulo mt-1 text-xl sm:text-2xl text-sol">¡a tu antojo!</p>
-        <p class="mt-5 text-white/80 leading-relaxed">Arma tu ceviche como te gusta: elige el marisco, el tamaño, la preparación y los extras. El precio se calcula al instante.</p>
-        <img src="img/sabores-del-mar.webp" alt="Chivaso doble, Ceviche Rey y Cóctel Santa Elena" class="mt-8 w-full aspect-[4/3] object-cover rounded-3xl foto-marco" loading="lazy" width="700" height="525">
-      </div>
-      <div class="lg:col-span-7 fade-up space-y-7">
-        <fieldset>
-          <legend class="flex items-center gap-3 mb-3"><span class="grid place-items-center w-8 h-8 rounded-full bg-sol text-navy-dark font-semibold text-sm">1</span><span class="font-serif text-2xl">Marisco</span></legend>
-          <div id="cevBase" class="grid sm:grid-cols-3 gap-3"></div>
-        </fieldset>
-        <fieldset>
-          <legend class="flex items-center gap-3 mb-3"><span class="grid place-items-center w-8 h-8 rounded-full bg-sol text-navy-dark font-semibold text-sm">2</span><span class="font-serif text-2xl">Tamaño</span></legend>
-          <div id="cevSize" class="grid grid-cols-2 gap-3"></div>
-        </fieldset>
-        <fieldset>
-          <legend class="flex items-center gap-3 mb-3"><span class="grid place-items-center w-8 h-8 rounded-full bg-sol text-navy-dark font-semibold text-sm">3</span><span class="font-serif text-2xl">Preparación</span></legend>
-          <div id="cevSauce" class="grid sm:grid-cols-3 gap-3"></div>
-        </fieldset>
-        <fieldset>
-          <legend class="flex items-center gap-3 mb-3"><span class="grid place-items-center w-8 h-8 rounded-full bg-sol text-navy-dark font-semibold text-sm">4</span><span class="font-serif text-2xl">Extras <span class="text-base text-white/60 font-sans">(opcionales)</span></span></legend>
-          <div id="cevExtra" class="grid sm:grid-cols-2 gap-3"></div>
-        </fieldset>
-        <div class="bg-white text-tinta rounded-3xl p-6 shadow-2xl">
-          <div class="flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
-            <div class="min-w-0">
-              <p class="text-xs uppercase tracking-widest text-slate-500">Tu ceviche</p>
-              <p id="cevSummary" class="mt-1 font-serif text-xl text-navy leading-snug"></p>
-            </div>
-            <span id="cevPrice" class="font-serif text-5xl font-medium text-navy shrink-0">$0.00</span>
-          </div>
-          <div class="mt-5 grid sm:grid-cols-2 gap-3">
-            <select id="cevBranch" class="field" aria-label="Sucursal con Bar de Ceviches"></select>
-            <button id="addCeviche" type="button" class="rounded-full bg-sol hover:bg-sol-deep text-navy-dark font-semibold py-3.5 transition shadow-md">Agregar al Pedido</button>
-          </div>
-        </div>
+<!-- ============ BAR DE CEVICHES (teaser) ============ -->
+<section id="ceviches" class="olas-navy relative py-16 sm:py-20 scroll-mt-20 overflow-hidden text-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
+    <img src="img/sabores-del-mar.webp" alt="Chivaso doble, Ceviche Rey y Cóctel Santa Elena" class="w-full aspect-[4/3] object-cover rounded-3xl foto-marco fade-up" loading="lazy">
+    <div class="fade-up">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-sol">Bambú City Center &amp; Santa Elena</p>
+      <h2 class="mt-3 font-serif text-5xl sm:text-6xl font-medium">Bar de Ceviches</h2>
+      <p class="subtitulo mt-1 text-xl sm:text-2xl text-sol">¡a tu antojo!</p>
+      <p class="mt-5 text-white/85 leading-relaxed">Arma tu ceviche como te gusta: pescado, camarón o mixto, en tamaño normal o grande, con tu preparación favorita y extras como aguacate o maíz dulce. Disponible en el menú digital de estas dos sucursales.</p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="menu.html?s=bambu#cat-cocteles" class="rounded-full bg-sol hover:bg-sol-deep text-navy-dark font-semibold px-6 py-3.5 transition">Bambú City Center</a>
+        <a href="menu.html?s=santaelena#cat-cocteles" class="rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/40 px-6 py-3.5 transition">Santa Elena</a>
       </div>
     </div>
   </div>
@@ -313,6 +260,13 @@ tailwind.config = {
         <p class="mt-4 text-slate-600">Llámanos, escríbenos por WhatsApp o llega directo con Google Maps o Waze.</p>
       </div>
       <div id="zoneTabs" class="flex gap-2 overflow-x-auto no-scrollbar" role="tablist"></div>
+    </div>
+    <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl bg-mar-light p-4">
+      <button id="nearBtn" type="button" class="inline-flex items-center justify-center gap-2 rounded-full bg-navy hover:bg-navy-dark text-white font-semibold px-5 py-3 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        Encontrar la más cercana
+      </button>
+      <p id="nearNote" class="text-sm text-slate-600">Usa tu ubicación para ordenar las sucursales por distancia. También verás cuáles están abiertas ahora.</p>
     </div>
     <div id="branchGrid" class="mt-10 grid md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
   </div>
@@ -413,7 +367,7 @@ tailwind.config = {
     <div class="md:col-span-3">
       <p class="text-xs font-semibold uppercase tracking-widest text-white/60">Navegación</p>
       <ul class="mt-4 space-y-2 text-sm text-white/85">
-        <li><a href="#menu" class="hover:text-sol">Menú</a></li>
+        <li><a href="menu.html" class="hover:text-sol">Menú Digital</a></li>
         <li><a href="#ceviches" class="hover:text-sol">Bar de Ceviches</a></li>
         <li><a href="#historia" class="hover:text-sol">Nuestra Historia</a></li>
         <li><a href="#sucursales" class="hover:text-sol">Sucursales</a></li>
@@ -442,614 +396,9 @@ tailwind.config = {
   <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0012 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 005.6 1.4h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.3zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.9 9.9 0 01-1.5-5.2C2.1 6.4 6.5 2 12 2c2.6 0 5.1 1 7 2.9a9.8 9.8 0 012.9 7c0 5.5-4.4 9.8-9.9 9.8zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
 </a>
 
-<!-- ============ CART DRAWER ============ -->
-<div id="overlay" class="overlay fixed inset-0 z-50 bg-navy-deep/50 backdrop-blur-sm"></div>
-<aside id="drawer" class="drawer fixed top-0 right-0 z-50 h-full w-full max-w-md flex flex-col bg-papel shadow-2xl" aria-label="Mi pedido" aria-hidden="true">
-  <div class="olas-navy flex items-center justify-between px-5 py-4 text-white">
-    <div>
-      <p class="font-serif text-3xl">Mi Pedido</p>
-      <p id="drawerBranch" class="text-xs text-sol"></p>
-    </div>
-    <button id="closeDrawer" type="button" class="grid place-items-center w-10 h-10 rounded-full hover:bg-white/10" aria-label="Cerrar pedido">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-  </div>
-  <div class="flex-1 overflow-y-auto px-5 py-4">
-    <div id="cartEmpty" class="text-center py-16">
-      <div class="mx-auto w-16 h-16 grid place-items-center rounded-full bg-sol-light text-3xl">🦐</div>
-      <p class="mt-4 font-serif text-2xl text-navy">Tu pedido está vacío</p>
-      <p class="mt-1 text-sm text-slate-500">Agrega platillos desde el menú o arma tu ceviche.</p>
-      <a href="#menu" class="close-link mt-6 inline-block rounded-full bg-sol text-navy-dark font-semibold px-6 py-3">Ver Menú</a>
-    </div>
-    <ul id="cartList" class="space-y-3"></ul>
-    <div id="orderForm" class="hidden mt-6 space-y-3">
-      <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Datos del pedido</p>
-      <div class="grid grid-cols-3 gap-2" role="radiogroup">
-        <label class="opt-light cursor-pointer"><input type="radio" name="otype" value="Domicilio" class="sr-only" checked><span class="opt-card block text-center text-xs font-semibold rounded-xl border border-slate-200 bg-white py-2.5 text-slate-600">Domicilio</span></label>
-        <label class="opt-light cursor-pointer"><input type="radio" name="otype" value="Para llevar" class="sr-only"><span class="opt-card block text-center text-xs font-semibold rounded-xl border border-slate-200 bg-white py-2.5 text-slate-600">Para llevar</span></label>
-        <label class="opt-light cursor-pointer"><input type="radio" name="otype" value="Pre-orden en mesa" class="sr-only"><span class="opt-card block text-center text-xs font-semibold rounded-xl border border-slate-200 bg-white py-2.5 text-slate-600">En mesa</span></label>
-      </div>
-      <input id="oName" type="text" class="field" placeholder="Nombre *" autocomplete="name">
-      <input id="oAddr" type="text" class="field" placeholder="Dirección de entrega *" autocomplete="street-address">
-      <textarea id="oNotes" rows="2" class="field resize-none" placeholder="Notas (guarniciones, sin picante, hora de recogida…)"></textarea>
-    </div>
-  </div>
-  <div id="cartFooter" class="hidden border-t border-slate-200 px-5 py-4 bg-white">
-    <dl class="space-y-1.5 text-sm">
-      <div class="flex justify-between text-slate-600"><dt>Subtotal</dt><dd id="cSub">$0.00</dd></div>
-      <div class="flex justify-between text-slate-600"><dt>Propina (10%)</dt><dd id="cTip">$0.00</dd></div>
-      <div class="flex justify-between text-navy font-semibold text-lg pt-2 border-t border-slate-200"><dt>Total Estimado</dt><dd id="cTotal">$0.00</dd></div>
-    </dl>
-    <p class="mt-2 text-[11px] text-slate-500">A todo el consumo se le agregará el 10% en concepto de propina. Costo de envío se confirma por WhatsApp.</p>
-    <p id="orderError" class="hidden mt-2 text-xs text-rose-700"></p>
-    <button id="sendOrder" type="button" class="btn-wa mt-3 w-full inline-flex items-center justify-center gap-2 rounded-full font-semibold py-4 transition">Enviar Pedido por WhatsApp</button>
-    <button id="clearCart" type="button" class="mt-2 w-full text-xs text-slate-400 hover:text-rose-600 py-1">Vaciar pedido</button>
-  </div>
-</aside>
-
 <div id="toasts" class="fixed top-20 right-4 left-4 sm:left-auto z-[60] flex flex-col gap-2 items-stretch sm:items-end pointer-events-none" aria-live="polite"></div>
 
-<script>
-(() => {
-  'use strict';
-  const $ = (s, r = document) => r.querySelector(s);
-  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-  const money = n => '$' + n.toFixed(2);
-  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const CENTRAL_WA = '50374788275';
-  const store = {
-    get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
-    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
-  };
-
-  /* ---------- SUCURSALES ---------- */
-  const BRANCHES = [
-    { id: 'acajutla', n: 1, name: 'Puerto de Acajutla', tag: 'Casa Matriz', zone: 'playa',
-      addr: 'Av. Miramar, Barrio Las Peñas / Km 63 ½ antigua calle a San Salvador, Quinta San Julián, Acajutla, Sonsonate',
-      phones: ['2452-3709', '2452-4375'], wa: '50374788275', waLabel: '7478-8275', email: 'acajutla@restauranteacajutla.com.sv',
-      hours: 'Lun–Dom: 8:00 AM – 9:00 PM', q: 'Restaurante Acajutla, Av. Miramar, Acajutla, Sonsonate' },
-    { id: 'escalon', n: 2, name: 'Colonia Escalón', zone: 'ciudad',
-      addr: 'Av. Masferrer Norte No. 8, Cumbres de La Escalón, San Salvador',
-      phones: ['2263-1722', '2263-8080'], email: 'escalon@restauranteacajutla.com.sv',
-      hours: 'Lun–Dom: 11:00 AM – 9:00 PM', q: 'Restaurante Acajutla Escalón, Av. Masferrer Norte, San Salvador' },
-    { id: 'bambu', n: 3, name: 'Bambú City Center', tag: 'Zona Rosa', zone: 'ciudad', ceviche: true,
-      addr: 'Col. San Benito, Av. Las Magnolias No. 804 Zona 12, C.C. Bambú City Center, Local 1, Nivel 3, San Salvador',
-      phones: ['2511-0998'], email: 'restaurantesacajutlas@gmail.com',
-      hours: 'Lun–Dom: 11:00 AM – 9:00 PM', q: 'Restaurante Acajutla Bambú City Center, San Salvador' },
-    { id: 'santaelena', n: 4, name: 'Santa Elena', tag: 'Antiguo Cuscatlán', zone: 'ciudad', ceviche: true,
-      addr: 'Epic Plaza, Av. Bella Vista, Finca Santa Elena, Antiguo Cuscatlán',
-      phones: ['2104-5500'], email: 'restaurantesacajutlas@gmail.com',
-      hours: 'Lun–Dom: 11:00 AM – 9:00 PM', q: 'Restaurante Acajutla Epic Plaza Santa Elena, Antiguo Cuscatlán' },
-    { id: 'costadelsol', n: 5, name: 'Costa del Sol', zone: 'playa',
-      addr: 'Blvd. Costa del Sol Km 73 ½, San Luis La Herradura, La Paz',
-      phones: ['2338-0014', '2338-0397'], wa: '50378411755', waLabel: '7841-1755',
-      hours: 'Lun–Dom: 8:00 AM – 8:00 PM', q: 'Restaurante Acajutla Costa del Sol, La Paz' },
-    { id: 'libertad', n: 6, name: 'Puerto de La Libertad', zone: 'playa',
-      addr: 'Plaza Gastronómica del Centro Turístico del Puerto de La Libertad, Local A-2',
-      phones: ['7989-9098'], wa: '50379899098', waLabel: '7989-9098',
-      hours: 'Lun–Dom: 9:00 AM – 8:30 PM', q: 'Restaurante Acajutla, Centro Turístico Puerto de La Libertad' },
-    { id: 'sanmiguel', n: 7, name: 'San Miguel', tag: 'Oriente', zone: 'playa',
-      addr: '13 Av. Sur No. 801 y Calle Las Brisas, San Miguel',
-      phones: ['2660-3902', '2661-1036'], email: 'restaurantesacajutlas@gmail.com',
-      hours: 'Lun–Dom: 11:00 AM – 9:00 PM', q: 'Restaurante Acajutla San Miguel, 13 Av. Sur' }
-  ];
-  const waOf = b => b.wa || CENTRAL_WA;
-  const byId = id => BRANCHES.find(b => b.id === id) || BRANCHES[0];
-  const mapsUrl = b => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(b.q);
-  const wazeUrl = b => 'https://waze.com/ul?q=' + encodeURIComponent(b.q) + '&navigate=yes';
-
-  /* ---------- MENÚ OFICIAL (carta impresa) ---------- */
-  const CATS = [
-    { id: 'entradas', label: 'Entradas', sub: 'una gama de platos para boquear', color: '#209bdf' },
-    { id: 'sopas', label: 'Sopas y Cremas', sub: 'la tradicional mariscada', color: '#ee5f24' },
-    { id: 'cocteles', label: 'Cocteles y Ceviches', sub: 'frescos del día', color: '#018ed5' },
-    { id: 'pescados', label: 'Pescados y Arroces', sub: 'clásicos de la costa', color: '#c47f12' },
-    { id: 'langosta', label: 'Langosta y Camarones', sub: 'lo mejor del mar', color: '#0a54a6', note: '*Cangrejo: surimi.' },
-    { id: 'especiales', label: 'Especiales y Pastas', sub: 'creaciones de la casa', color: '#209bdf' },
-    { id: 'carnes', label: 'Carnes y Pollo', sub: 'mar y tierra', color: '#0f3e78', note: 'Todos nuestros platos vienen acompañados de 2 guarniciones a elegir: vegetales, papas fritas, arroz, ensalada fresca y 2 panes con ajo o 2 tortillas con enredo.' },
-    { id: 'tacos', label: 'Tacos y Ensaladas', sub: 'frescos y ligeros', color: '#0a54a6', note: 'Puedes pedir tus tacos a la plancha. Aderezos: salsa rosada, chipotle, cilantro y de temporada.' },
-    { id: 'infantiles', label: 'Platos Infantiles', sub: 'para los pequeños', color: '#c47f12' },
-    { id: 'postres', label: 'Postres, Café y Extras', sub: 'para un dulce final', color: '#0a54a6' },
-    { id: 'bebidas', label: 'Bebidas', sub: 'con y sin alcohol', color: '#018ed5', note: 'Vinos y licores por botella, doble o sencillo: consulta la carta en sucursal.' }
-  ];
-  const P = price => [['', price]];
-  const MENU = [
-    { id: 'carpaccio', cat: 'entradas', name: 'Carpaccio', tag: 'Por temporada', desc: 'Servido con alcaparras y cebolla en jugo de limón.', img: 'carpaccio', opts: [['Dorado', 8.99], ['Salmón', 11.99]] },
-    { id: 'tostadas-platano', cat: 'entradas', name: 'Tostadas de Plátano', desc: 'Con salsa chipotle o cebolla picante de la casa.', opts: P(3.99) },
-    { id: 'trio-camarones', cat: 'entradas', name: 'Trío de Camarones', desc: 'Para compartir: nuestros cocteles en salsa rosada y en aguacate, y nuestro ceviche de camarón.', img: 'trio-camarones', opts: P(11.50) },
-    { id: 'entrada-salvadorena', cat: 'entradas', name: 'Entrada Salvadoreña', desc: 'Enredos, aguacate, frijoles, chorizo y queso fresco.', img: 'entrada-salvadorena', opts: P(7.50) },
-    { id: 'plato-bocas', cat: 'entradas', name: 'Plato de Bocas Acajutla', desc: 'Camarones, calamares y pescado empanizado con pollo, carne y chorizo a la plancha. Con frijoles, aguacate, queso fresco, enredos y tu salsa preferida.', img: 'plato-bocas', opts: [['½ plato', 18.95], ['Completo', 25.95]] },
-    { id: 'montaditos', cat: 'entradas', name: 'Montaditos Acajutla Típico', desc: 'Enredos montados con frijoles, chorizo, aguacate, cebolla morada y crema.', opts: P(3.99) },
-    { id: 'nachos-camaron', cat: 'entradas', name: 'Nachos de Camarón', desc: 'Ceviche de camarón en cama de lechuga y nachos crujientes, con salsa cilantro y chipotle.', img: 'nachos-camaron', opts: P(11.95) },
-    { id: 'nachos-atun', cat: 'entradas', name: 'Nachos con Atún', desc: '¡La tradición de la casa!', opts: P(4.00) },
-    { id: 'tostadas', cat: 'entradas', name: 'Tostadas', desc: 'De ceviche de pescado o de camarón, o de coctel de camarón (al chipotle, cilantro o salsa rosada).', img: 'tostadas', opts: P(5.99) },
-    { id: 'pescadetas', cat: 'entradas', name: 'Plato de Pescadetas', tag: 'Por temporada', desc: 'Pescadetas fritas del lago de Ilopango. ¡Excelentes para acompañar!', opts: P(6.99) },
-    { id: 'conchas-rellenas', cat: 'entradas', name: 'Conchas Rellenas', desc: 'Receta de Yaya Blanquita: carne de cerdo, arroz y conchas frescas.', opts: P(8.75) },
-    { id: 'camaroncillos', cat: 'entradas', name: 'Camaroncillos Empanizados', desc: 'Con salsa tártara o chipotle, papas fritas, aguacate y enredos.', img: 'camaroncillos', opts: P(12.95) },
-
-    { id: 'sopon-acajutla', cat: 'sopas', name: 'Sopón Acajutla', desc: 'La tradicional mariscada salvadoreña. Mejillones por temporada.', img: 'sopon-acajutla', chef: true, opts: [['Pequeño', 15.50], ['Grande', 20.50]] },
-    { id: 'sopon-mareno', cat: 'sopas', name: 'Sopón Mareño', tag: 'Premiado', desc: 'Ganador del 1er lugar en el III Festival Gastronómico.', opts: [['Pequeño', 15.95], ['Grande', 20.95]] },
-    { id: 'sopa-mariscos', cat: 'sopas', name: 'Sopa de Mariscos', desc: 'La tradicional mariscada salvadoreña al natural, sin crema.', opts: [['Pequeña', 14.95], ['Grande', 19.95]] },
-    { id: 'sopa-pescado', cat: 'sopas', name: 'Sopa de Pescado', desc: 'Exquisito fondo de pescado al natural, sin crema.', opts: [['Grande', 18.95]] },
-    { id: 'sopa-camarones', cat: 'sopas', name: 'Sopa de Camarones', desc: 'Camarones al natural, con o sin huevo.', opts: [['Pequeña', 13.50], ['Grande', 17.50]] },
-    { id: 'crema-camarones', cat: 'sopas', name: 'Crema de Camarones', desc: 'Camarones en una crema ligeramente espesa.', opts: [['Pequeña', 13.95], ['Grande', 18.95]] },
-    { id: 'crema-langosta', cat: 'sopas', name: 'Crema de Langosta', desc: 'Langosta en una crema ligeramente espesa.', opts: [['Pequeña', 18.95], ['Grande', 26.50]] },
-
-    { id: 'minuto-2002', cat: 'cocteles', name: 'Cóctel Minuto 2002', desc: 'Mariscos al natural con aceite de oliva: caracol beliceño, calamar, camarón, conchas, pescado, aceitunas, cebolla salteada y aguacate.', opts: [['Normal', 13.50], ['Grande', 17.95]] },
-    { id: 'coctel-santa-elena', cat: 'cocteles', name: 'Cóctel Santa Elena', desc: 'El más solicitado del Bar de Ceviches: pescado, camarón, calamar, caracol beliceño, cebolla salteada y maíz dulce en salsa de cilantro.', img: 'sabores-del-mar', opts: [['Normal', 13.25], ['Grande', 17.25]] },
-    { id: 'chivaso', cat: 'cocteles', name: 'El Chivaso', desc: 'Coctel de camarón en salsa rosada cubierto con lechuga y camaroncillos empanizados.', opts: [['Sencillo', 11.50], ['Doble', 17.95]] },
-    { id: 'coctel-acajutla', cat: 'cocteles', name: 'Cóctel Acajutla', desc: 'Caracol beliceño, calamar, camarón, pescado y conchas con un toque de salsa roja.', opts: [['Normal', 12.95], ['Grande', 17.25]] },
-    { id: 'coctel-camaron', cat: 'cocteles', name: 'Cóctel de Camarón', desc: 'En salsa roja o rosada.', opts: [['Normal', 11.95], ['Grande', 15.50]] },
-    { id: 'coctel-conchas', cat: 'cocteles', name: 'Cóctel de Conchas', desc: 'Conchas negras frescas.', opts: [['Sencillo', 7.95], ['Doble', 13.95]] },
-    { id: 'caracol', cat: 'cocteles', name: 'Cóctel o Ceviche de Caracol Beliceño', desc: 'Caracol beliceño en coctel o ceviche.', opts: [['Normal', 13.50]] },
-    { id: 'disparejo', cat: 'cocteles', name: 'El Disparejo', desc: 'Camarón con concha, aguacate, aceitunas y aceite de oliva.', opts: [['Sencillo', 10.95], ['Doble', 16.50]] },
-    { id: 'ceviche-picante', cat: 'cocteles', name: 'Ceviche Extra Picante', desc: 'Pescado y camarón, chile jalapeño, cebolla picante de la casa, aguacate y un toque de salsa roja.', opts: [['Normal', 11.95], ['Grande', 15.50]] },
-    { id: 'ceviche-crunchy', cat: 'cocteles', name: 'Ceviche Crunchy', desc: 'Ceviche de pescado con camarones empanizados.', opts: [['Normal', 12.50]] },
-    { id: 'ceviche-rey', cat: 'cocteles', name: 'Ceviche Rey', desc: 'Camarón, pescado, aguacate, maíz dulce, cebolla morada, cebolla blanca y aceite de oliva.', opts: [['Normal', 12.50], ['Grande', 16.50]] },
-    { id: 'ceviche-verde', cat: 'cocteles', name: 'Ceviche Verde Olivo', desc: 'Pescado en una infusión de aguacate, aceite de oliva extra virgen y aceitunas verdes.', opts: [['Normal', 11.95]] },
-    { id: 'ceviche-pescado', cat: 'cocteles', name: 'Ceviche de Pescado', desc: 'El clásico, marinado en limón.', opts: [['Normal', 11.95], ['Grande', 15.50]] },
-    { id: 'ceviche-camaron', cat: 'cocteles', name: 'Ceviche de Camarón', desc: 'Camarones frescos marinados en limón.', opts: [['Normal', 11.95], ['Grande', 15.50]] },
-    { id: 'ceviche-mixto', cat: 'cocteles', name: 'Ceviche de Pescado y Camarón', desc: 'Lo mejor de los dos.', opts: [['Normal', 11.95], ['Grande', 15.50]] },
-    { id: 'docena-conchas', cat: 'cocteles', name: 'Docena de Conchas', desc: 'Conchas negras frescas.', opts: P(7.50) },
-    { id: 'docena-ostras', cat: 'cocteles', name: 'Docena de Ostras', desc: 'Precio según el tamaño del día.', opts: [] },
-
-    { id: 'pescado-deshuesado', cat: 'pescados', name: 'Pescado Deshuesado Relleno con Camarones y Calamares', desc: 'Relleno generoso de mariscos.', opts: P(20.95) },
-    { id: 'pescado-gratinado', cat: 'pescados', name: 'Pescado Relleno de Camarones y Calamar Gratinado', desc: 'Gratinado al horno.', opts: P(21.95) },
-    { id: 'pescado-frito', cat: 'pescados', name: 'Pescado Frito', desc: 'El clásico infaltable de la costa.', opts: [['Mediano', 17.75], ['Grande', 18.95]] },
-    { id: 'filete-mango', cat: 'pescados', name: 'Filete de Pescado en Salsa de Mango y Alcaparras', tag: 'Por temporada', desc: 'Ganador del 1er lugar en Festival Gastronómico.', opts: P(14.95) },
-    { id: 'filete-ajillo', cat: 'pescados', name: 'Filete de Pescado al Ajillo', desc: 'Filete marinado al ajo.', opts: P(14.95) },
-    { id: 'filete-empanizado', cat: 'pescados', name: 'Filete de Pescado Empanizado', desc: 'Con nuestra receta especial.', opts: P(15.50) },
-    { id: 'filete-camarones', cat: 'pescados', name: 'Filete de Pescado con Camarones', desc: 'Filete acompañado de camarones.', opts: P(16.50) },
-    { id: 'arroz-marinera', cat: 'pescados', name: 'Arroz a la Marinera', desc: 'Una sinfonía de mariscos, jaiba, calamares, camarones y pescado con un exquisito toque de nuestra cocina.', opts: P(15.95) },
-    { id: 'arroz-camarones', cat: 'pescados', name: 'Arroz con Camarones', desc: 'Camarones salteados en su punto y arroz de primera calidad, ideal para compartir.', opts: P(12.95) },
-
-    { id: 'langosta-queso', cat: 'langosta', name: 'Langosta Rellena de Camarones y Cangrejo* con Queso', desc: 'Gratinada con queso.', opts: [['½ lb', 18.95], ['1 lb', 29.50]] },
-    { id: 'langosta-ajillo', cat: 'langosta', name: 'Langosta Rellena de Camarones y Cangrejo* al Ajillo', desc: 'Al ajillo dorado.', opts: [['½ lb', 18.50], ['1 lb', 28.75]] },
-    { id: 'langosta-tocineta', cat: 'langosta', name: 'Langosta Rellena a la Tocineta en Salsa de Espárragos', desc: 'Rellena de camarones y cangrejo*, con tocineta.', opts: [['½ lb', 19.50], ['1 lb', 29.95]] },
-    { id: 'langosta-gusto', cat: 'langosta', name: 'Langosta al Gusto', desc: 'A la plancha, al ajillo o al vapor.', opts: [['1 lb', 26.95]] },
-    { id: 'camarones-plancha', cat: 'langosta', name: 'Camarones a la Plancha', desc: 'El puro sabor del camarón con ajo a la plancha.', opts: P(19.25) },
-    { id: 'camarones-empanizados', cat: 'langosta', name: 'Camarones Empanizados', desc: 'Crujientes, con salsa tártara.', opts: P(19.25) },
-    { id: 'camarones-ajillo', cat: 'langosta', name: 'Camarones al Ajillo', desc: 'Para los amantes del ajo… ¡este es su plato!', opts: P(19.25) },
-    { id: 'camarones-gratin', cat: 'langosta', name: 'Camarones al Gratín', desc: 'Una deliciosa combinación de queso y camarones.', opts: P(19.25) },
-    { id: 'camarones-tamarindo', cat: 'langosta', name: 'Camarones con Salsa de Tamarindo', desc: 'Dulce y salado, receta de la casa.', opts: P(19.25) },
-
-    { id: 'salmon-tamarindo', cat: 'especiales', name: 'Salmón en Salsa de Tamarindo', tag: 'Según temporada', desc: 'Salmón a la plancha bañado en salsa de tamarindo.', img: 'salmon-tamarindo', chef: true, opts: P(17.95) },
-    { id: 'cazuela', cat: 'especiales', name: 'Cazuela Acajutla al Gratín', desc: 'Mezcla de mariscos en salsa de la casa al gratín.', opts: P(16.95) },
-    { id: 'plato-super', cat: 'especiales', name: 'Plato Súper Acajutla', desc: 'Para los gustos exigentes: camarones y carne marinada a la plancha.', img: 'plato-super', chef: true, opts: P(24.95) },
-    { id: 'club-sandwich', cat: 'especiales', name: 'Club Sándwich', desc: 'Pollo, huevo, jamón y queso. Con papas fritas.', opts: P(7.95) },
-    { id: 'olla-alhuaste', cat: 'especiales', name: 'Olla de Camarones al Alhuaste', desc: 'Camarones hervidos cubiertos con nuestra deliciosa salsa de alhuaste.', opts: [['½ libra', 8.95], ['1 libra', 15.95]] },
-    { id: 'espagueti-marinera', cat: 'especiales', name: 'Espagueti a la Marinera', desc: 'Pescado, camarón, jaiba y calamar con salsa blanca o salteados con ajo, aceite de oliva y cilantro fresco.', img: 'espagueti-marinera', chef: true, opts: P(14.95) },
-    { id: 'espagueti-camarones', cat: 'especiales', name: 'Espagueti con Camarones', desc: 'En nuestra salsa blanca o roja.', opts: P(12.95) },
-    { id: 'espagueti-pescado', cat: 'especiales', name: 'Espagueti con Pescado', desc: 'Filete a la plancha con tu salsa preferida, roja o blanca.', opts: P(13.95) },
-    { id: 'mac-langosta', cat: 'especiales', name: 'Mac ’n’ Cheese Langosta y Camarones', desc: 'La tradicional langosta rellena con una nueva receta de mac ’n’ cheese y camarones.', img: 'mac-langosta', chef: true, opts: P(18.95) },
-    { id: 'mac-camarones', cat: 'especiales', name: 'Mac ’n’ Cheese de Camarones', desc: 'Cazuela de mac ’n’ cheese con camarones.', opts: P(13.50) },
-
-    { id: 'pollo-gratinado', cat: 'carnes', name: 'Pollo con Camarones Gratinado', desc: 'Pechuga rellena de camarones salteados con un toque de tocino al gratín.', img: 'pollo-gratinado', opts: P(14.95) },
-    { id: 'mar-tierra', cat: 'carnes', name: 'Plato Mar y Tierra', desc: 'Tu elección de carne y camarón, o carne y langosta.', opts: P(19.95) },
-    { id: 'lomito-camaron', cat: 'carnes', name: 'Lomito al Salteado de Camarón', desc: 'Lomito con camarones salteados y vegetales en salsa de mariscos.', img: 'lomito-camaron', opts: P(16.25) },
-    { id: 'pollo-empanizado', cat: 'carnes', name: 'Pollo Empanizado', desc: '7 oz de pechuga empanizada con salsa tártara.', opts: P(9.95) },
-    { id: 'pollo-bbq', cat: 'carnes', name: 'Pollo a la Barbacoa', desc: 'Pechuga deshuesada a la BBQ.', opts: P(9.95) },
-    { id: 'churrasco', cat: 'carnes', name: 'Churrasco Acajutla', desc: '6 oz de lomito importado a la plancha, chorizo, frijoles, aguacate y queso fresco.', opts: P(14.50) },
-    { id: 'carne-plancha', cat: 'carnes', name: 'Carne a la Plancha', desc: '6 oz de lomito importado.', opts: P(12.50) },
-    { id: 'plato-acajutla', cat: 'carnes', name: 'Plato Acajutla', desc: 'Camarones y langosta a la plancha.', opts: P(21.95) },
-
-    { id: 'ensalada-aguacate', cat: 'tacos', name: 'Ensalada de Aguacate con Camarones', desc: 'Nuestra tradicional combinación de camarones, tomate y cebolla en salsa de aguacate.', img: 'ensalada-aguacate', opts: P(12.75) },
-    { id: 'ensalada-primavera', cat: 'tacos', name: 'Ensalada Primavera de Pollo', desc: 'Lechuga, cebolla, aceitunas negras, crutones y aguacate con el aderezo de tu elección.', opts: P(9.95) },
-    { id: 'ensalada-crujiente', cat: 'tacos', name: 'Ensalada Crujiente de Camarón', desc: 'Ensalada fresca con camarones empanizados o a la plancha y el aderezo de tu elección.', opts: P(12.95) },
-    { id: 'ensalada-mixta', cat: 'tacos', name: 'Ensalada Mixta con Camarones, Aguacate y Chipotle', desc: 'Camarones, tomate y cebolla en salsa de aguacate y chipotle.', opts: P(12.25) },
-    { id: 'concha-tacos', cat: 'tacos', name: 'Concha Tacos', desc: 'La receta de Yaya Blanquita de las “Conchas Rellenas”, ahora en tacos.', opts: P(7.95) },
-    { id: 'shrimp-tacos', cat: 'tacos', name: 'Shrimp Tacos', desc: 'Camarones empanizados sobre lechuga, aguacate y salsa tártara o chipotle.', img: 'shrimp-tacos', chef: true, opts: P(9.25) },
-    { id: 'fish-tacos', cat: 'tacos', name: 'Fish Tacos', desc: 'Pescado empanizado sobre lechuga, aguacate y salsa tártara.', opts: P(8.95) },
-
-    { id: 'dedos-pollo', cat: 'infantiles', name: 'Dedos de Pollo', desc: 'Con papas fritas.', opts: P(5.99) },
-    { id: 'maritiritas', cat: 'infantiles', name: 'Maritiritas', desc: 'Tiritas de filete de pescado empanizado con papas fritas.', opts: P(5.99) },
-    { id: 'espagueti-nino', cat: 'infantiles', name: 'Espagueti', desc: 'Bañado en salsa de la casa y queso rallado.', opts: P(4.99) },
-    { id: 'sandwichito', cat: 'infantiles', name: 'Sandwichito', desc: 'Jamón y queso con papas fritas.', opts: P(4.99) },
-    { id: 'derretido', cat: 'infantiles', name: 'Derretido', desc: 'Sándwich con extra queso y papas fritas.', opts: P(4.99) },
-    { id: 'camaroncitos', cat: 'infantiles', name: 'Camaroncitos Empanizados', desc: 'Con papas fritas y enredo.', opts: [['Pequeño', 5.99], ['Grande', 8.99]] },
-
-    { id: 'cheesecake', cat: 'postres', name: 'Cheesecake con Caramelo', desc: 'Postre de la casa.', opts: P(3.95) },
-    { id: 'pies', cat: 'postres', name: 'Pie', desc: 'De manzana, higo o piña.', opts: [['Manzana', 3.50], ['Higo', 3.50], ['Piña', 3.50]] },
-    { id: 'capuccino', cat: 'postres', name: 'Capuccino', desc: 'Espresso y leche, caliente o frío.', opts: [['Caliente', 2.95], ['Frío', 2.50]] },
-    { id: 'espresso', cat: 'postres', name: 'Espresso', desc: 'Sencillo, doble o a las rocas.', opts: [['Sencillo', 1.95], ['Doble', 2.50], ['A las rocas', 1.95]] },
-    { id: 'americano', cat: 'postres', name: 'Café Americano', desc: 'Recién preparado.', opts: P(1.95) },
-    { id: 'pan-ajo', cat: 'postres', name: 'Pan con Ajo', desc: 'Extra · orden de 2.', opts: P(0.95) },
-    { id: 'vegetales', cat: 'postres', name: 'Vegetales al Vapor', desc: 'Extra.', opts: P(2.99) },
-    { id: 'papas', cat: 'postres', name: 'Papas Fritas', desc: 'Extra.', opts: P(3.99) },
-    { id: 'tortilla-enredo', cat: 'postres', name: 'Tortilla con Enredo', desc: 'Extra · orden de 2.', opts: P(1.75) },
-
-    { id: 'refresco-ensalada', cat: 'bebidas', name: 'Refresco de Ensalada', desc: 'El clásico salvadoreño con frutas picadas.', img: 'refresco-ensalada', opts: P(3.95) },
-    { id: 'limonada', cat: 'bebidas', name: 'Limonada', desc: 'Natural o con soda.', opts: [['Natural', 2.75], ['Con soda', 2.75]] },
-    { id: 'jugo-naranja', cat: 'bebidas', name: 'Jugo de Naranja', desc: 'Sin alcohol.', opts: P(2.25) },
-    { id: 'coco', cat: 'bebidas', name: 'Coco Natural', desc: 'Sin alcohol.', opts: P(2.75) },
-    { id: 'frozen', cat: 'bebidas', name: 'Frozen', desc: 'Sin alcohol.', opts: P(4.25) },
-    { id: 'pina-colada-sin', cat: 'bebidas', name: 'Piña Colada sin Licor', desc: 'Sin alcohol.', opts: P(3.95) },
-    { id: 'sodas', cat: 'bebidas', name: 'Sodas', desc: 'Pepsi (normal o black), Grapette, Mirinda (naranja, uva).', opts: P(2.25) },
-    { id: 'salutaris', cat: 'bebidas', name: 'Salutaris', desc: 'Simple, limón, toronja, mandarina o naranja.', opts: P(2.25) },
-    { id: 'te-helado', cat: 'bebidas', name: 'Té Helado', desc: 'Sin alcohol.', opts: P(2.50) },
-    { id: 'agua', cat: 'bebidas', name: 'Agua en Botella', desc: 'Sin alcohol.', opts: P(1.95) },
-    { id: 'sangria', cat: 'bebidas', name: 'Sangría Acajutla', desc: 'Coctel de la casa.', img: 'sangria', opts: [['Copa', 6.95], ['Pichel', 11.95]] },
-    { id: 'cocteles-licor', cat: 'bebidas', name: 'Cocteles', desc: 'Cuba Libre, Toronja de Mar, Spicy Piña, Margarita, Piña Colada, Tonga, Planter Punch, Bloody Mary, Conga o Daiquiri de temporada.', opts: P(4.95) },
-    { id: 'smirnoff-ice', cat: 'bebidas', name: 'Smirnoff Ice', desc: 'Con alcohol.', opts: P(3.50) },
-    { id: 'cerveza-nacional', cat: 'bebidas', name: 'Cerveza Nacional', desc: 'Suprema, Golden o Pilsener. Michelada o chelada +$1.00.', opts: P(2.75) },
-    { id: 'cerveza-internacional', cat: 'bebidas', name: 'Cerveza Internacional', desc: 'XX, Heineken, Heineken 0.0, Amstel Ultra, Modelo Especial o Corona; Stella Artois.', opts: [['Estándar', 3.75], ['Stella Artois', 3.95]] }
-  ];
-
-  /* ---------- STATE ---------- */
-  let state = { branch: store.get('aj_branch', 'acajutla'), cart: store.get('aj_cart2', []), cat: 'entradas', q: '', zone: 'all' };
-  if (!BRANCHES.some(b => b.id === state.branch)) state.branch = 'acajutla';
-  const save = () => { store.set('aj_cart2', state.cart); store.set('aj_branch', state.branch); };
-
-  /* ---------- TOAST ---------- */
-  function toast(msg, tone = 'sol') {
-    const bar = { sol: '#ffb349', mar: '#209bdf', rose: '#e11d48', wa: '#25d366' }[tone];
-    const el = document.createElement('div');
-    el.className = 'toast pointer-events-auto bg-white text-tinta rounded-2xl pl-4 pr-5 py-3 text-sm shadow-2xl ring-1 ring-black/5 sm:max-w-sm';
-    el.style.borderLeft = `5px solid ${bar}`;
-    el.innerHTML = msg;
-    $('#toasts').appendChild(el);
-    setTimeout(() => { el.classList.add('out'); el.addEventListener('animationend', () => el.remove(), { once: true }); }, 2600);
-  }
-
-  /* ---------- BRANCH SELECTS ---------- */
-  const branchOptions = (list, sel) => list.map(b => `<option value="${b.id}" ${b.id === sel ? 'selected' : ''}>${b.n}. ${esc(b.name)}${b.tag ? ' — ' + esc(b.tag) : ''}</option>`).join('');
-  function renderBranchSelects() {
-    $('#activeBranch').innerHTML = branchOptions(BRANCHES, state.branch);
-    $('#resBranch').innerHTML = '<option value="">Selecciona una sucursal…</option>' + branchOptions(BRANCHES, '');
-    const cevList = BRANCHES.filter(b => b.ceviche);
-    $('#cevBranch').innerHTML = branchOptions(cevList, cevList.some(b => b.id === state.branch) ? state.branch : 'bambu');
-    updateBranchNote();
-  }
-  function updateBranchNote() {
-    const b = byId(state.branch);
-    $('#branchNote').innerHTML = b.wa
-      ? `Tu pedido se enviará al WhatsApp de <span class="text-navy font-semibold">${esc(b.name)}</span> (${b.waLabel}). Horario: ${b.hours}.`
-      : `<span class="text-navy font-semibold">${esc(b.name)}</span> se atiende vía WhatsApp central (7478-8275), que coordina con la sucursal. Tel. directo: ${b.phones.join(' / ')}.`;
-    $('#drawerBranch').textContent = 'Sucursal: ' + b.name;
-    $('#fabWa').href = 'https://wa.me/' + waOf(b);
-  }
-  $('#activeBranch').addEventListener('change', e => {
-    state.branch = e.target.value; save(); updateBranchNote();
-    toast('Sucursal activa: <strong class="text-navy">' + esc(byId(state.branch).name) + '</strong>', 'mar');
-  });
-
-  /* ---------- RECOMENDACIÓN DEL CHEF ---------- */
-  function renderChef() {
-    const list = MENU.filter(d => d.chef || ['plato-bocas', 'trio-camarones', 'lomito-camaron', 'pollo-gratinado'].includes(d.id));
-    $('#chefRow').innerHTML = list.map(d => {
-      const from = Math.min(...d.opts.map(o => o[1]));
-      return `<article class="shrink-0 w-[78%] sm:w-[19rem] flex flex-col bg-white rounded-3xl overflow-hidden shadow-md shadow-navy/10 ring-1 ring-black/5 group">
-        <div class="relative overflow-hidden"><img src="img/${d.img}.webp" alt="${esc(d.name)}" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition duration-500" loading="lazy">
-          ${d.chef ? '<span class="absolute top-3 left-3 rounded-full bg-white/95 text-naranja text-[10px] font-semibold uppercase tracking-widest px-3 py-1">Recomendación del chef</span>' : ''}</div>
-        <div class="p-5 flex flex-col flex-1">
-          <h3 class="font-serif text-2xl text-navy leading-tight">${esc(d.name)}</h3>
-          <p class="mt-1 text-sm text-slate-500 line-clamp-2">${esc(d.desc)}</p>
-          <div class="mt-auto pt-4 flex items-center justify-between">
-            <span class="text-sm text-slate-500">${d.opts.length > 1 ? 'desde ' : ''}<span class="font-serif text-2xl text-navy">${money(from)}</span></span>
-            <button type="button" data-goto="${d.id}" class="rounded-full bg-sol hover:bg-sol-deep text-navy-dark text-sm font-semibold px-4 py-2 transition">${d.opts.length > 1 ? 'Elegir' : 'Agregar'}</button>
-          </div>
-        </div></article>`;
-    }).join('');
-  }
-  $('#chefRow').addEventListener('click', e => {
-    const b = e.target.closest('[data-goto]'); if (!b) return;
-    const d = MENU.find(x => x.id === b.dataset.goto);
-    if (d.opts.length === 1) { addItem(d, 0); return; }
-    state.q = ''; $('#search').value = ''; state.cat = d.cat; renderTabs(); renderMenu();
-    setTimeout(() => { const el = document.getElementById('dish-' + d.id); if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.classList.add('ring-2', 'ring-sol'); setTimeout(() => el.classList.remove('ring-2', 'ring-sol'), 1800); } }, 50);
-  });
-  $$('.chef-nav').forEach(b => b.addEventListener('click', () => $('#chefRow').scrollBy({ left: +b.dataset.scroll * 320, behavior: 'smooth' })));
-
-  /* ---------- MENÚ ---------- */
-  function renderTabs() {
-    const tabs = [...CATS, { id: 'all', label: 'Todo el menú' }];
-    $('#catTabs').innerHTML = tabs.map(c => { const on = state.cat === c.id && !state.q; return `<button type="button" role="tab" data-cat="${c.id}" aria-selected="${on}" class="shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 hover:border-navy hover:text-navy transition ${on ? 'tab-active' : ''}">${c.label}</button>`; }).join('');
-  }
-  $('#catTabs').addEventListener('click', e => {
-    const t = e.target.closest('[data-cat]'); if (!t) return;
-    state.cat = t.dataset.cat; state.q = ''; $('#search').value = '';
-    renderTabs(); renderMenu();
-    const top = $('#menuList').getBoundingClientRect().top + window.scrollY - 150;
-    if (window.scrollY > top) window.scrollTo({ top, behavior: 'smooth' });
-    const nt = $(`#catTabs [data-cat="${state.cat}"]`); if (nt) nt.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-  });
-  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-  function dishHTML(d) {
-    const priceBtns = d.opts.length === 0
-      ? `<a href="https://wa.me/${waOf(byId(state.branch))}?text=${encodeURIComponent('Hola, ¿cuál es el precio de la ' + d.name + ' hoy?')}" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-mar text-navy text-sm px-4 py-1.5 hover:bg-mar-light">Consultar precio</a>`
-      : d.opts.map((o, i) => `<button type="button" data-add="${d.id}" data-opt="${i}" class="inline-flex items-center gap-2 rounded-full bg-sol-light hover:bg-sol ring-1 ring-sol/70 text-navy-dark text-sm pl-3.5 pr-1.5 py-1 transition active:scale-95" aria-label="Agregar ${esc(d.name)} ${esc(o[0])}">${o[0] ? `<span class="text-slate-600">${esc(o[0])}</span>` : ''}<span class="font-semibold">${money(o[1])}</span><span class="grid place-items-center w-6 h-6 rounded-full bg-white text-navy font-semibold">+</span></button>`).join('');
-    return `<article id="dish-${d.id}" class="flex gap-4 bg-white rounded-2xl p-4 ring-1 ring-black/5 shadow-sm hover:shadow-md transition">
-      ${d.img ? `<img src="img/${d.img}.webp" alt="${esc(d.name)}" class="w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl object-cover" loading="lazy">` : ''}
-      <div class="min-w-0 flex-1">
-        <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <h4 class="font-serif text-[1.35rem] leading-tight text-navy">${esc(d.name)}</h4>
-          ${d.chef ? '<span class="rounded-full bg-naranja-light text-naranja text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5">Chef</span>' : ''}
-          ${d.tag ? `<span class="rounded-full bg-mar-light text-navy text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5">${esc(d.tag)}</span>` : ''}
-        </div>
-        <p class="mt-1 text-sm text-slate-500 leading-relaxed">${esc(d.desc)}</p>
-        <div class="mt-3 flex flex-wrap gap-2">${priceBtns}</div>
-      </div>
-    </article>`;
-  }
-  function renderMenu() {
-    const q = norm(state.q.trim());
-    const items = MENU.filter(d => q ? norm(d.name + ' ' + d.desc + ' ' + (d.tag || '')).includes(q) : (state.cat === 'all' || d.cat === state.cat));
-    $('#noResults').classList.toggle('hidden', items.length > 0);
-    const cats = CATS.filter(c => items.some(d => d.cat === c.id));
-    $('#menuList').innerHTML = cats.map(c => `
-      <div>
-        <div class="flex items-center gap-4 mb-5">
-          <span class="h-12 w-1.5 rounded-full" style="background:${c.color}"></span>
-          <div><h3 class="font-serif text-4xl font-medium leading-none" style="color:${c.color}">${c.label}</h3><p class="subtitulo text-sm text-slate-500 mt-1">${c.sub}</p></div>
-        </div>
-        <div class="grid lg:grid-cols-2 gap-4">${items.filter(d => d.cat === c.id).map(dishHTML).join('')}</div>
-        ${c.note ? `<p class="mt-4 text-sm text-slate-500 italic">${esc(c.note)}</p>` : ''}
-      </div>`).join('');
-  }
-  let searchT;
-  $('#search').addEventListener('input', e => { clearTimeout(searchT); searchT = setTimeout(() => { state.q = e.target.value; renderTabs(); renderMenu(); }, 120); });
-  function addItem(d, i) {
-    const [label, price] = d.opts[i];
-    addToCart({ key: d.id + '|' + i, name: d.name + (label ? ` (${label})` : ''), price });
-    toast(`<strong class="text-navy">${esc(d.name)}</strong>${label ? ' · ' + esc(label) : ''} agregado`);
-  }
-  $('#menuList').addEventListener('click', e => {
-    const btn = e.target.closest('[data-add]'); if (!btn) return;
-    addItem(MENU.find(x => x.id === btn.dataset.add), +btn.dataset.opt);
-  });
-
-  /* ---------- BAR DE CEVICHES (precios de la carta) ---------- */
-  const CEV = {
-    base: { type: 'radio', items: [{ id: 'pescado', label: 'Pescado' }, { id: 'camaron', label: 'Camarón' }, { id: 'mixto', label: 'Pescado y Camarón' }] },
-    size: { type: 'radio', items: [{ id: 'normal', label: 'Normal', price: 11.95 }, { id: 'grande', label: 'Grande', price: 15.50 }] },
-    sauce: { type: 'radio', items: [
-      { id: 'limon', label: 'Tradicional en limón' }, { id: 'rosada', label: 'Salsa rosada' }, { id: 'roja', label: 'Salsa roja' },
-      { id: 'cilantro', label: 'Salsa cilantro' }, { id: 'chipotle', label: 'Chipotle' }, { id: 'picante', label: 'Extra picante' }
-    ] },
-    extra: { type: 'checkbox', items: [
-      { id: 'aguacate', label: 'Agrega aguacate', price: 1.50 },
-      { id: 'maiz', label: 'Agrega maíz dulce', price: 0.50 },
-      { id: 'preparado', label: 'Pídelo preparado', sub: 'Aceite de oliva, aceitunas y aguacate', price: 1.99 },
-      { id: 'rey', label: 'Pídelo rey', sub: 'Aceite de oliva, maíz dulce y aguacate', price: 1.99 }
-    ] }
-  };
-  const cevSel = { base: 'mixto', size: 'normal', sauce: 'limon', extra: new Set() };
-  function renderCevGroup(group, el) {
-    const g = CEV[group];
-    el.innerHTML = g.items.map(o => {
-      const checked = g.type === 'radio' ? cevSel[group] === o.id : cevSel.extra.has(o.id);
-      return `<label class="opt cursor-pointer block">
-        <input type="${g.type}" name="cev-${group}" value="${o.id}" class="sr-only" ${checked ? 'checked' : ''}>
-        <span class="opt-card flex items-start gap-3 h-full rounded-2xl p-4 border border-white/20 bg-white/5 hover:border-sol/70 transition">
-          <span class="opt-dot mt-1 w-4 h-4 shrink-0 rounded-full border-2 border-white/50 transition"></span>
-          <span class="flex-1 min-w-0"><span class="block text-white">${esc(o.label)}</span>${o.sub ? `<span class="block text-xs text-white/65 mt-0.5">${esc(o.sub)}</span>` : ''}</span>
-          ${o.price != null ? `<span class="shrink-0 text-sm font-semibold text-sol">${group === 'extra' ? '+' : ''}${money(o.price)}</span>` : ''}
-        </span></label>`;
-    }).join('');
-    el.addEventListener('change', e => {
-      if (g.type === 'radio') cevSel[group] = e.target.value;
-      else if (e.target.checked) cevSel.extra.add(e.target.value); else cevSel.extra.delete(e.target.value);
-      updateCev();
-    });
-  }
-  const pick = (g, id) => CEV[g].items.find(o => o.id === id);
-  function cevCalc() {
-    const base = pick('base', cevSel.base), size = pick('size', cevSel.size), sauce = pick('sauce', cevSel.sauce);
-    const extras = CEV.extra.items.filter(o => cevSel.extra.has(o.id));
-    return { base, size, sauce, extras, total: size.price + extras.reduce((a, o) => a + o.price, 0) };
-  }
-  function updateCev() {
-    const c = cevCalc(), el = $('#cevPrice');
-    el.textContent = money(c.total);
-    el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');
-    $('#cevSummary').innerHTML = `Ceviche de <span class="text-mar">${esc(c.base.label.toLowerCase())}</span> ${esc(c.size.label.toLowerCase())}, ${esc(c.sauce.label.toLowerCase())}${c.extras.length ? ', ' + c.extras.map(o => esc(o.label.toLowerCase())).join(', ') : ''}.`;
-  }
-  $('#addCeviche').addEventListener('click', () => {
-    const c = cevCalc(), cb = $('#cevBranch').value;
-    if (state.branch !== cb) {
-      state.branch = cb; $('#activeBranch').value = cb; updateBranchNote(); save();
-      toast('Pedido enrutado a <strong class="text-navy">' + esc(byId(cb).name) + '</strong> (Bar de Ceviches)', 'mar');
-    }
-    const ex = [...cevSel.extra].sort();
-    addToCart({ key: `cev|${cevSel.base}|${cevSel.size}|${cevSel.sauce}|${ex.join(',')}`, name: `Ceviche a tu antojo: ${c.base.label} ${c.size.label} · ${c.sauce.label}${c.extras.length ? ' · ' + c.extras.map(o => o.label.replace(/^Agrega |^Pídelo /, '')).join(', ') : ''}`, price: c.total });
-    toast('<strong class="text-navy">Tu ceviche</strong> fue agregado al pedido', 'mar');
-  });
-
-  /* ---------- SUCURSALES ---------- */
-  const ZONES = [
-    { id: 'all', label: 'Todas', f: () => true },
-    { id: 'ciudad', label: 'San Salvador & Santa Elena', f: b => b.zone === 'ciudad' },
-    { id: 'playa', label: 'Playas & Oriente', f: b => b.zone === 'playa' }
-  ];
-  function renderZoneTabs() {
-    $('#zoneTabs').innerHTML = ZONES.map(z => `<button type="button" role="tab" data-zone="${z.id}" aria-selected="${state.zone === z.id}" class="shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-600 hover:border-navy hover:text-navy transition ${state.zone === z.id ? 'tab-active' : ''}">${z.label} (${BRANCHES.filter(z.f).length})</button>`).join('');
-  }
-  $('#zoneTabs').addEventListener('click', e => {
-    const t = e.target.closest('[data-zone]'); if (!t) return;
-    state.zone = t.dataset.zone; renderZoneTabs(); renderBranches();
-  });
-  function renderBranches() {
-    const z = ZONES.find(x => x.id === state.zone);
-    $('#branchGrid').innerHTML = BRANCHES.filter(z.f).map(b => `
-      <article class="bg-papel rounded-3xl p-6 flex flex-col ring-1 ring-black/5 hover:shadow-xl hover:shadow-navy/10 transition border-t-4 ${b.ceviche ? 'border-sol' : 'border-mar'}">
-        <div class="flex items-start justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <span class="grid place-items-center w-10 h-10 rounded-full bg-mar-light text-navy font-serif text-xl">${b.n}</span>
-            <div><h3 class="font-serif text-2xl text-navy leading-tight">${esc(b.name)}</h3>${b.tag ? `<p class="text-xs text-mar font-semibold">${esc(b.tag)}</p>` : ''}</div>
-          </div>
-          ${b.ceviche ? '<span class="shrink-0 rounded-full bg-sol-light ring-1 ring-sol text-navy-dark text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1">Bar de Ceviches</span>' : ''}
-        </div>
-        <p class="mt-4 text-sm text-slate-700 leading-relaxed">${esc(b.addr)}</p>
-        <ul class="mt-4 space-y-1.5 text-sm text-slate-500 flex-1">
-          <li>🕐 ${b.hours}</li>
-          <li>📞 ${b.phones.map(p => `<a class="text-tinta hover:text-navy" href="tel:+503${p.replace(/-/g, '')}">${p}</a>`).join(' / ')}</li>
-          ${b.wa ? `<li>💬 WhatsApp: <span class="text-[#128c4a] font-semibold">${b.waLabel}</span></li>` : ''}
-          ${b.email ? `<li class="break-all">✉️ <a class="hover:text-navy" href="mailto:${b.email}">${b.email}</a></li>` : ''}
-        </ul>
-        <div class="mt-5 grid grid-cols-2 gap-2">
-          <a href="${mapsUrl(b)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-mar text-navy hover:bg-mar-light text-sm py-2.5 transition">Google Maps</a>
-          <a href="${wazeUrl(b)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-mar text-navy hover:bg-mar-light text-sm py-2.5 transition">Waze</a>
-          <a href="tel:+503${b.phones[0].replace(/-/g, '')}" class="inline-flex items-center justify-center rounded-full bg-navy hover:bg-navy-dark text-white text-sm py-2.5 transition">Llamar</a>
-          <a href="https://wa.me/${waOf(b)}?text=${encodeURIComponent('Hola Restaurante Acajutla ' + b.name + ', quisiera información.')}" target="_blank" rel="noopener" class="btn-wa inline-flex items-center justify-center rounded-full text-sm font-semibold py-2.5 transition">WhatsApp</a>
-        </div>
-        <button type="button" data-pick="${b.id}" class="mt-2 text-xs text-navy hover:text-mar font-semibold py-1">Pedir de esta sucursal →</button>
-      </article>`).join('');
-  }
-  $('#branchGrid').addEventListener('click', e => {
-    const t = e.target.closest('[data-pick]'); if (!t) return;
-    state.branch = t.dataset.pick; save(); $('#activeBranch').value = state.branch; updateBranchNote();
-    toast('Sucursal activa: <strong class="text-navy">' + esc(byId(state.branch).name) + '</strong>', 'mar');
-    $('#menu').scrollIntoView({ behavior: 'smooth' });
-  });
-
-  /* ---------- CARRITO ---------- */
-  function addToCart(item) {
-    const ex = state.cart.find(i => i.key === item.key);
-    if (ex) ex.qty++; else state.cart.push({ ...item, qty: 1 });
-    save(); renderCart(true);
-  }
-  const totals = () => { const sub = state.cart.reduce((a, i) => a + i.price * i.qty, 0); const tip = Math.round(sub * 10) / 100; return { sub, tip, total: sub + tip }; };
-  function renderCart(bump) {
-    const count = state.cart.reduce((a, i) => a + i.qty, 0);
-    const c = $('#cartCount'); c.textContent = count;
-    if (bump) { c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); }
-    const empty = state.cart.length === 0;
-    $('#cartEmpty').classList.toggle('hidden', !empty);
-    $('#orderForm').classList.toggle('hidden', empty);
-    $('#cartFooter').classList.toggle('hidden', empty);
-    $('#cartList').innerHTML = state.cart.map(i => `
-      <li class="bg-white rounded-2xl p-4 ring-1 ring-black/5 shadow-sm">
-        <div class="flex justify-between gap-3">
-          <p class="text-sm text-tinta leading-snug">${esc(i.name)}</p>
-          <p class="text-sm font-semibold text-navy shrink-0">${money(i.price * i.qty)}</p>
-        </div>
-        <div class="mt-3 flex items-center justify-between">
-          <div class="inline-flex items-center rounded-full border border-slate-200">
-            <button type="button" data-dec="${esc(i.key)}" class="w-9 h-9 grid place-items-center text-slate-500 hover:text-navy" aria-label="Quitar uno">−</button>
-            <span class="w-8 text-center text-sm font-semibold">${i.qty}</span>
-            <button type="button" data-inc="${esc(i.key)}" class="w-9 h-9 grid place-items-center text-slate-500 hover:text-navy" aria-label="Agregar uno">+</button>
-          </div>
-          <span class="text-xs text-slate-400">${money(i.price)} c/u</span>
-          <button type="button" data-del="${esc(i.key)}" class="text-xs text-slate-400 hover:text-rose-600">Eliminar</button>
-        </div>
-      </li>`).join('');
-    const t = totals();
-    $('#cSub').textContent = money(t.sub); $('#cTip').textContent = money(t.tip); $('#cTotal').textContent = money(t.total);
-  }
-  $('#cartList').addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) return;
-    const k = b.dataset.inc || b.dataset.dec || b.dataset.del;
-    const it = state.cart.find(i => i.key === k); if (!it) return;
-    if (b.dataset.inc) it.qty++;
-    else if (b.dataset.dec) { it.qty--; if (it.qty < 1) state.cart = state.cart.filter(i => i !== it); }
-    else state.cart = state.cart.filter(i => i !== it);
-    save(); renderCart();
-  });
-  $('#clearCart').addEventListener('click', () => { state.cart = []; save(); renderCart(); toast('Pedido vaciado', 'rose'); });
-  const otype = () => ($('input[name="otype"]:checked') || {}).value || 'Domicilio';
-  $$('input[name="otype"]').forEach(r => r.addEventListener('change', () => $('#oAddr').classList.toggle('hidden', otype() !== 'Domicilio')));
-
-  $('#sendOrder').addEventListener('click', () => {
-    const err = $('#orderError');
-    const name = $('#oName').value.trim(), addr = $('#oAddr').value.trim(), notes = $('#oNotes').value.trim();
-    const t = otype();
-    if (!name || (t === 'Domicilio' && !addr)) {
-      err.textContent = t === 'Domicilio' ? 'Ingresa tu nombre y dirección de entrega.' : 'Ingresa tu nombre.';
-      err.classList.remove('hidden'); toast('Completa los datos del pedido', 'rose'); return;
-    }
-    err.classList.add('hidden');
-    const b = byId(state.branch), tt = totals();
-    const lines = [
-      '*NUEVO PEDIDO — RESTAURANTE ACAJUTLA*', `Sucursal: ${b.name}`, `Tipo: ${t}`, `Cliente: ${name}`,
-      t === 'Domicilio' ? `Dirección: ${addr}` : null, '', '*Detalle:*',
-      ...state.cart.map(i => `• ${i.qty} x ${i.name} — ${money(i.price * i.qty)}`), '',
-      `Subtotal: ${money(tt.sub)}`, `Propina (10%): ${money(tt.tip)}`, `*Total Estimado: ${money(tt.total)}*`,
-      notes ? `\nNotas: ${notes}` : null,
-      b.wa ? null : `\n(Pedido para sucursal ${b.name}, enviado vía WhatsApp central)`
-    ].filter(l => l !== null);
-    window.open(`https://wa.me/${waOf(b)}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
-    toast('Abriendo WhatsApp de <strong>' + esc(b.name) + '</strong>…', 'wa');
-  });
-
-  /* ---------- DRAWER ---------- */
-  let lastFocus;
-  function openDrawer() {
-    lastFocus = document.activeElement;
-    $('#drawer').classList.add('open'); $('#overlay').classList.add('open');
-    $('#drawer').setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
-    setTimeout(() => $('#closeDrawer').focus(), 50);
-  }
-  function closeDrawer() {
-    if (!$('#drawer').classList.contains('open')) return;
-    $('#drawer').classList.remove('open'); $('#overlay').classList.remove('open');
-    $('#drawer').setAttribute('aria-hidden', 'true'); document.body.style.overflow = '';
-    if (lastFocus) lastFocus.focus();
-  }
-  $('#cartBtn').addEventListener('click', openDrawer);
-  $('#closeDrawer').addEventListener('click', closeDrawer);
-  $('#overlay').addEventListener('click', closeDrawer);
-  $$('.close-link').forEach(a => a.addEventListener('click', closeDrawer));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDrawer(); closeMobile(); } });
-
-  /* ---------- HEADER ---------- */
-  const mnav = $('#mobileNav'), mt = $('#menuToggle');
-  function closeMobile() { mnav.classList.add('hidden'); mt.setAttribute('aria-expanded', 'false'); $('#icoBurger').classList.remove('hidden'); $('#icoClose').classList.add('hidden'); }
-  mt.addEventListener('click', () => {
-    const open = mnav.classList.toggle('hidden') === false;
-    mt.setAttribute('aria-expanded', String(open));
-    $('#icoBurger').classList.toggle('hidden', open); $('#icoClose').classList.toggle('hidden', !open);
-  });
-  $$('.m-link').forEach(a => a.addEventListener('click', closeMobile));
-  const header = $('#top');
-  const onScroll = () => {
-    const s = window.scrollY > 20;
-    header.classList.toggle('bg-white', s); header.classList.toggle('shadow-lg', s);
-    $('#logoBlanco').classList.toggle('hidden', s); $('#logoColor').classList.toggle('hidden', !s);
-    $('#deskNav').classList.toggle('text-navy', s); $('#deskNav').classList.toggle('text-white', !s);
-    mt.classList.toggle('text-navy', s); mt.classList.toggle('text-white', !s);
-    mt.classList.toggle('bg-mar-light', s); mt.classList.toggle('bg-white/15', !s);
-  };
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  const spy = new IntersectionObserver(entries => entries.forEach(en => {
-    if (en.isIntersecting) $$('.nav-link').forEach(a => {
-      const on = a.getAttribute('href') === '#' + en.target.id;
-      ['font-semibold', 'underline', 'decoration-sol', 'decoration-2', 'underline-offset-8'].forEach(c => a.classList.toggle(c, on));
-    });
-  }), { rootMargin: '-45% 0px -50% 0px' });
-  ['inicio', 'menu', 'ceviches', 'historia', 'sucursales', 'reservas', 'hotel'].forEach(id => spy.observe(document.getElementById(id)));
-  const rev = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); rev.unobserve(en.target); } }), { threshold: 0.08 });
-  $$('.fade-up').forEach(el => rev.observe(el));
-
-  /* ---------- RESERVAS ---------- */
-  const today = new Date(), pad = n => String(n).padStart(2, '0');
-  $('#resDate').min = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
-  $('#resForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const f = { branch: $('#resBranch').value, type: $('#resType').value, name: $('#resName').value.trim(), people: $('#resPeople').value, date: $('#resDate').value, time: $('#resTime').value, details: $('#resDetails').value.trim() };
-    const errEl = $('#resError'), missing = [];
-    if (!f.branch) missing.push('sucursal'); if (!f.type) missing.push('tipo de reserva');
-    if (!f.name) missing.push('nombre'); if (!f.people || +f.people < 1) missing.push('número de personas');
-    if (!f.date) missing.push('fecha'); if (!f.time) missing.push('hora');
-    $$('#resForm .field').forEach(el => el.style.borderColor = '');
-    if (missing.length) {
-      errEl.textContent = 'Por favor completa: ' + missing.join(', ') + '.'; errEl.classList.remove('hidden');
-      ['resBranch', 'resType', 'resName', 'resPeople', 'resDate', 'resTime'].forEach(id => { const el = $('#' + id); if (!el.value || (id === 'resPeople' && +el.value < 1)) el.style.borderColor = '#e11d48'; });
-      toast('Faltan datos en tu reserva', 'rose'); return;
-    }
-    errEl.classList.add('hidden');
-    const b = byId(f.branch), [y, m, d] = f.date.split('-');
-    const msg = ['*SOLICITUD DE RESERVA / EVENTO — RESTAURANTE ACAJUTLA*', `Sucursal: ${b.name}`, `Tipo: ${f.type}`, `Nombre: ${f.name}`, `Personas: ${f.people}`, `Fecha: ${d}/${m}/${y}`, `Hora: ${f.time}`,
-      f.details ? `Detalles: ${f.details}` : null, b.wa ? null : `(Solicitud para sucursal ${b.name}, enviada vía WhatsApp central)`].filter(Boolean).join('\n');
-    window.open(`https://wa.me/${waOf(b)}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
-    toast('Abriendo WhatsApp de <strong>' + esc(b.name) + '</strong>…', 'wa');
-  });
-
-  /* ---------- INIT ---------- */
-  $('#year').textContent = new Date().getFullYear();
-  renderBranchSelects(); renderChef(); renderTabs(); renderMenu();
-  ['base', 'size', 'sauce', 'extra'].forEach(g => renderCevGroup(g, $('#cev' + g[0].toUpperCase() + g.slice(1)))); updateCev();
-  renderZoneTabs(); renderBranches(); renderCart();
-})();
-</script>
+<script src="data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

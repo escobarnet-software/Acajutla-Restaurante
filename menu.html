@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Menú — Restaurante Acajutla</title>
+<meta name="description" content="Menú digital de Restaurante Acajutla: escanea el QR de tu mesa, elige tus platillos y muéstrale tu orden al mesero.">
+<meta name="theme-color" content="#0a54a6">
+<link rel="icon" href="img/logo-color.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+window.tailwind = window.tailwind || {};
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { serif: ['"Cormorant Garamond"', 'Georgia', 'serif'], sans: ['Lato', 'system-ui', 'sans-serif'] },
+      colors: {
+        navy: { DEFAULT: '#0a54a6', dark: '#073c78', deep: '#0f3e78' },
+        mar: { DEFAULT: '#209bdf', strong: '#018ed5', light: '#e6f4fc' },
+        sol: { DEFAULT: '#fdc163', deep: '#ffb349', light: '#fff4df' },
+        naranja: { DEFAULT: '#ee5f24', light: '#fdebe3' },
+        papel: '#fdfdfb',
+        tinta: '#1f2d3d'
+      }
+    }
+  }
+}
+</script>
+<style>
+  :root { --navy: #0a54a6; --navy-dark: #073c78; --mar: #209bdf; --sol: #fdc163; --sol-deep: #ffb349; --papel: #fdfdfb; --tinta: #1f2d3d; }
+  html, body { background: var(--papel); color: var(--tinta); }
+  body { font-family: 'Lato', system-ui, sans-serif; line-height: 1.6; letter-spacing: .01em; -webkit-font-smoothing: antialiased; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+  .font-serif { font-variant-numeric: lining-nums; }
+  .subtitulo { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; letter-spacing: .25em; }
+  .olas { background-color: var(--mar); background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='90' viewBox='0 0 240 90'><g fill='none' stroke='white' stroke-opacity='.22' stroke-width='2' stroke-linecap='round'><path d='M10 50 C50 20 90 20 120 45 S190 70 230 40'/><path d='M30 62 C65 38 98 38 124 58 S185 78 215 56'/></g></svg>"); background-size: 260px auto; }
+  .olas-navy { background-color: var(--navy); background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='90' viewBox='0 0 240 90'><g fill='none' stroke='white' stroke-opacity='.08' stroke-width='2' stroke-linecap='round'><path d='M10 50 C50 20 90 20 120 45 S190 70 230 40'/><path d='M30 62 C65 38 98 38 124 58 S185 78 215 56'/></g></svg>"); background-size: 260px auto; }
+  .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { scrollbar-width: none; }
+  .chip-on { background: var(--navy) !important; color: #fff !important; border-color: var(--navy) !important; }
+  .sheet { transform: translateY(100%); transition: transform .32s cubic-bezier(.22, 1, .36, 1); }
+  .sheet.open { transform: translateY(0); }
+  .overlay { opacity: 0; pointer-events: none; transition: opacity .25s; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .bar { transform: translateY(140%); transition: transform .3s ease; }
+  .bar.show { transform: translateY(0); }
+  .opt input:checked + .opt-card { border-color: var(--navy); background: #e6f0fa; box-shadow: 0 0 0 1px var(--navy) inset; }
+  .opt input:checked + .opt-card .opt-dot { background: var(--navy); border-color: var(--navy); }
+  .opt input[type=checkbox] + .opt-card .opt-dot { border-radius: .3rem; }
+  .bump { animation: bump .4s ease; }
+  @keyframes bump { 0%{transform:scale(1)} 40%{transform:scale(1.12)} 100%{transform:scale(1)} }
+  .toast { animation: toastIn .3s ease forwards; } .toast.out { animation: toastOut .25s ease forwards; }
+  @keyframes toastIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+  @keyframes toastOut { to { opacity: 0; transform: translateY(-6px); } }
+  .field { width: 100%; background: #fff; border: 1px solid #d5dde6; border-radius: .75rem; padding: .7rem 1rem; color: var(--tinta); font-size: 1rem; }
+  .field:focus { outline: none; border-color: var(--mar); box-shadow: 0 0 0 3px rgba(32, 155, 223, .2); }
+  .btn-wa { background: #25d366; color: #06301a; }
+  .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<header class="sticky top-0 z-30 bg-white/95 backdrop-blur shadow-sm">
+  <div class="mx-auto max-w-3xl px-4 py-2 flex items-center gap-3">
+    <a href="index.html" aria-label="Inicio"><img src="img/logo-color.png" alt="Acajutla" class="h-10 w-auto"></a>
+    <div class="flex-1"></div>
+    <button id="branchChip" type="button" class="inline-flex items-center gap-1.5 rounded-full bg-mar-light text-navy text-sm px-3 py-1.5 max-w-[11rem]">
+      <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      <span id="branchChipText" class="truncate">Sucursal</span>
+    </button>
+    <button id="mesaChip" type="button" class="whitespace-nowrap rounded-full bg-sol text-navy-dark text-sm font-semibold px-3 py-1.5">Mesa <span id="mesaChipText">—</span></button>
+  </div>
+  <div class="mx-auto max-w-3xl px-4 pb-2">
+    <div class="relative">
+      <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5"/></svg>
+      <input id="search" type="search" class="field !py-2.5" style="padding-left:2.75rem" placeholder="Buscar: langosta, ceviche, ajillo…" autocomplete="off" aria-label="Buscar en el menú">
+    </div>
+    <nav id="chips" class="mt-2 flex gap-2 overflow-x-auto no-scrollbar" aria-label="Secciones del menú"></nav>
+  </div>
+</header>
+
+<main class="mx-auto max-w-3xl px-4 pb-32">
+  <!-- Bienvenida -->
+  <section class="olas mt-4 rounded-3xl p-5 text-white relative overflow-hidden">
+    <p class="subtitulo text-sm text-sol">bienvenidos a</p>
+    <h1 id="welcome" class="font-serif text-3xl leading-tight">Restaurante Acajutla</h1>
+    <p class="mt-1 text-sm text-white/85">Elige tus platillos, arma tu orden y muéstrasela a tu mesero. Sin descargar nada.</p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="rounded-full bg-white/20 px-3 py-1">Toca una foto para verla en grande</span>
+      <span class="rounded-full bg-white/20 px-3 py-1">Propina 10% incluida en el total</span>
+    </div>
+  </section>
+
+  <!-- Recomendación del chef -->
+  <section id="chefWrap" class="mt-6">
+    <div class="flex items-baseline gap-2"><h2 class="font-serif text-2xl text-navy">Recomendación</h2><span class="subtitulo text-naranja">del chef</span></div>
+    <div id="chefRow" class="mt-3 -mx-4 px-4 flex gap-3 overflow-x-auto no-scrollbar pb-2"></div>
+  </section>
+
+  <div id="menuList" class="mt-4"></div>
+  <div id="noResults" class="hidden mt-10 text-center bg-white rounded-2xl p-8 ring-1 ring-black/5">
+    <p class="font-serif text-2xl text-navy">No encontramos ese platillo</p>
+    <p class="mt-1 text-sm text-slate-500">Prueba con otra palabra.</p>
+  </div>
+
+  <section class="mt-10 space-y-3 text-sm">
+    <p class="rounded-2xl bg-sol-light ring-1 ring-sol p-4">A todo el consumo se le agregará el <strong class="text-navy">10% en concepto de propina</strong>.</p>
+    <p class="rounded-2xl bg-mar-light p-4 text-slate-600">Si usted es alérgico a algún alimento, háganoslo saber. El consumo de mariscos o pescados crudos o parcialmente crudos puede aumentar el riesgo de enfermedades transmitidas por alimentos.</p>
+    <p class="text-center text-xs text-slate-400 pt-4">Precios en USD. <a href="index.html" class="underline">restauranteacajutla.com</a></p>
+  </section>
+</main>
+
+<!-- ===== BARRA "MI ORDEN" ===== -->
+<div id="orderBar" class="bar fixed bottom-0 inset-x-0 z-30 pb-safe px-4 pt-2 pointer-events-none">
+  <button id="orderBarBtn" type="button" class="pointer-events-auto mx-auto max-w-3xl w-full flex items-center justify-between gap-3 rounded-2xl bg-navy text-white px-5 py-4 shadow-2xl shadow-navy/40">
+    <span class="flex items-center gap-3"><span id="barCount" class="grid place-items-center min-w-[28px] h-7 rounded-full bg-sol text-navy-dark text-sm font-semibold px-2">0</span><span class="font-semibold">Ver mi orden</span></span>
+    <span id="barTotal" class="font-serif text-2xl">$0.00</span>
+  </button>
+</div>
+
+<!-- ===== BOTTOM SHEET ===== -->
+<div id="overlay" class="overlay fixed inset-0 z-40 bg-navy-deep/50"></div>
+<section id="sheet" class="sheet fixed bottom-0 inset-x-0 z-50 mx-auto max-w-3xl max-h-[92vh] flex flex-col bg-papel rounded-t-3xl shadow-2xl" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="flex justify-center pt-2.5"><span class="w-10 h-1.5 rounded-full bg-slate-300"></span></div>
+  <button id="sheetClose" type="button" class="absolute right-3 top-3 grid place-items-center w-9 h-9 rounded-full bg-white shadow ring-1 ring-black/5 text-slate-500 z-10" aria-label="Cerrar">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div id="sheetBody" class="overflow-y-auto px-5 pt-3 pb-safe"></div>
+</section>
+
+<!-- ===== VISTA PARA EL MESERO ===== -->
+<section id="waiter" class="hidden fixed inset-0 z-[60] bg-white overflow-y-auto" aria-label="Orden para el mesero">
+  <div class="mx-auto max-w-xl px-5 py-6">
+    <div class="flex items-center justify-between">
+      <img src="img/logo-color.png" alt="Acajutla" class="h-10">
+      <button id="waiterBack" type="button" class="rounded-full bg-slate-100 px-4 py-2 text-sm">← Volver</button>
+    </div>
+    <div id="waiterBody" class="mt-6"></div>
+  </div>
+</section>
+
+<div id="toasts" class="fixed top-28 inset-x-4 z-[70] flex flex-col items-center gap-2 pointer-events-none" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const money = n => '$' + n.toFixed(2);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+  };
+  const params = new URLSearchParams(location.search);
+  const byId = id => BRANCHES.find(b => b.id === id);
+
+  const state = {
+    branch: byId(params.get('s')) ? params.get('s') : store.get('aj_qr_branch', null),
+    mesa: (params.get('mesa') || store.get('aj_qr_mesa', '') || '').toString().slice(0, 6),
+    q: '', order: [], note: ''
+  };
+  if (state.branch && !byId(state.branch)) state.branch = null;
+  const orderKey = () => `aj_orden_${state.branch || 'x'}_${state.mesa || 'x'}`;
+  const loadOrder = () => { const o = store.get(orderKey(), { items: [], note: '' }); state.order = o.items || []; state.note = o.note || ''; };
+  const saveOrder = () => store.set(orderKey(), { items: state.order, note: state.note });
+  const DEMO = params.has('demo'); // vista previa dentro de la landing: no guarda sucursal/mesa
+  const persistCtx = () => { if (DEMO) return; store.set('aj_qr_branch', state.branch); store.set('aj_qr_mesa', state.mesa); };
+
+  /* ---------- toast ---------- */
+  function toast(msg) {
+    const el = document.createElement('div');
+    el.className = 'toast bg-navy text-white rounded-full px-5 py-2.5 text-sm shadow-xl';
+    el.innerHTML = msg; $('#toasts').appendChild(el);
+    setTimeout(() => { el.classList.add('out'); el.addEventListener('animationend', () => el.remove(), { once: true }); }, 1800);
+  }
+
+  /* ---------- sheet ---------- */
+  let sheetOnClose = null;
+  function openSheet(html, onClose) {
+    const sb = $('#sheetBody'); sb.onclick = sb.onchange = sb.oninput = null;
+    sb.innerHTML = html; sb.scrollTop = 0; sheetOnClose = onClose || null;
+    $('#sheet').classList.add('open'); $('#overlay').classList.add('open');
+    $('#sheet').setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+  }
+  function closeSheet() {
+    if (!state.branch) return; // la sucursal es obligatoria
+    $('#sheet').classList.remove('open'); $('#overlay').classList.remove('open');
+    $('#sheet').setAttribute('aria-hidden', 'true'); document.body.style.overflow = '';
+    if (sheetOnClose) { const f = sheetOnClose; sheetOnClose = null; f(); }
+  }
+  $('#sheetClose').addEventListener('click', closeSheet);
+  $('#overlay').addEventListener('click', closeSheet);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (!$('#waiter').classList.contains('hidden')) hideWaiter(); else closeSheet(); } });
+
+  /* ---------- sucursal / mesa ---------- */
+  function updateHeader() {
+    const b = byId(state.branch);
+    $('#branchChipText').textContent = b ? b.name : 'Elegir sucursal';
+    $('#mesaChipText').textContent = state.mesa || '—';
+    $('#welcome').textContent = b ? 'Acajutla ' + b.name : 'Restaurante Acajutla';
+  }
+  function branchPicker() {
+    openSheet(`
+      <h2 class="font-serif text-3xl text-navy pr-10">¿En qué sucursal estás?</h2>
+      <p class="text-sm text-slate-500 mt-1">Así tu orden llega con el nombre correcto${BRANCHES.some(b => b.ceviche) ? ' y ves el Bar de Ceviches donde aplica' : ''}.</p>
+      <div class="mt-4 grid gap-2">${BRANCHES.map(b => `
+        <button type="button" data-branch="${b.id}" class="flex items-center gap-3 text-left rounded-2xl bg-white ring-1 ${b.id === state.branch ? 'ring-navy ring-2' : 'ring-black/5'} p-4">
+          <span class="grid place-items-center w-9 h-9 rounded-full bg-mar-light text-navy font-serif text-lg">${b.n}</span>
+          <span class="flex-1"><span class="block font-semibold text-navy">${esc(b.name)}</span><span class="block text-xs text-slate-500">${esc(b.tag || '')}${b.ceviche ? ' · Bar de Ceviches' : ''}</span></span>
+        </button>`).join('')}</div>
+      <label class="block mt-5"><span class="text-sm text-slate-600">Número de mesa (opcional)</span>
+        <input id="mesaInput" type="text" inputmode="numeric" maxlength="6" value="${esc(state.mesa)}" class="field mt-1" placeholder="Ej. 12"></label>
+      <div class="h-4"></div>`);
+    $('#sheetBody').onclick = e => {
+      const t = e.target.closest('[data-branch]'); if (!t) return;
+      state.mesa = ($('#mesaInput').value || '').trim().slice(0, 6);
+      state.branch = t.dataset.branch; persistCtx(); loadOrder();
+      updateHeader(); renderMenu(); renderOrderBar(); closeSheet();
+      toast('Sucursal: ' + esc(byId(state.branch).name));
+    };
+  }
+  function mesaPicker() {
+    openSheet(`
+      <h2 class="font-serif text-3xl text-navy">Tu mesa</h2>
+      <p class="text-sm text-slate-500 mt-1">Viene en el código QR de tu mesa. Si no aparece, escríbela aquí.</p>
+      <input id="mesaInput2" type="text" inputmode="numeric" maxlength="6" value="${esc(state.mesa)}" class="field mt-4 text-2xl text-center" placeholder="Ej. 12">
+      <button id="mesaSave" type="button" class="mt-4 w-full rounded-full bg-sol text-navy-dark font-semibold py-3.5">Guardar</button><div class="h-4"></div>`);
+    $('#mesaSave').onclick = () => {
+      const prevKey = orderKey(), items = state.order, note = state.note;
+      state.mesa = $('#mesaInput2').value.trim().slice(0, 6); persistCtx();
+      store.set(orderKey(), { items, note }); if (prevKey !== orderKey()) store.set(prevKey, { items: [], note: '' });
+      updateHeader(); closeSheet();
+    };
+  }
+  $('#branchChip').addEventListener('click', branchPicker);
+  $('#mesaChip').addEventListener('click', mesaPicker);
+
+  /* ---------- menú ---------- */
+  function priceButtons(d) {
+    if (!d.opts.length) return '<span class="text-sm text-slate-500 italic">Precio según tamaño — pregunte a su mesero</span>';
+    return d.opts.map((o, i) => `<button type="button" data-add="${d.id}" data-opt="${i}" class="inline-flex items-center gap-2 rounded-full bg-sol-light active:bg-sol ring-1 ring-sol/70 text-navy-dark text-sm pl-3 pr-1 py-1" aria-label="Agregar ${esc(d.name)} ${esc(o[0])}">${o[0] ? `<span class="text-slate-600">${esc(o[0])}</span>` : ''}<span class="font-semibold">${money(o[1])}</span><span class="grid place-items-center w-7 h-7 rounded-full bg-white text-navy font-semibold">+</span></button>`).join('');
+  }
+  function dishHTML(d) {
+    const qty = state.order.filter(i => i.dish === d.id).reduce((a, i) => a + i.qty, 0);
+    return `<article id="dish-${d.id}" class="flex gap-3 bg-white rounded-2xl p-3 ring-1 ${qty ? 'ring-sol ring-2' : 'ring-black/5'} shadow-sm">
+      ${d.img ? `<button type="button" data-detail="${d.id}" class="shrink-0" aria-label="Ver foto de ${esc(d.name)}"><img src="img/${d.img}.webp" alt="" class="w-24 h-24 rounded-xl object-cover" loading="lazy"></button>` : ''}
+      <div class="min-w-0 flex-1">
+        <div class="flex items-start gap-2">
+          <h4 class="flex-1 font-serif text-[1.3rem] leading-tight text-navy">${esc(d.name)}</h4>
+          ${qty ? `<span class="shrink-0 rounded-full bg-navy text-white text-xs font-semibold px-2 py-0.5">${qty}</span>` : ''}
+        </div>
+        <div class="flex flex-wrap gap-1 mt-0.5">
+          ${d.chef ? '<span class="rounded-full bg-naranja-light text-naranja text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5">Chef</span>' : ''}
+          ${d.tag ? `<span class="rounded-full bg-mar-light text-navy text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5">${esc(d.tag)}</span>` : ''}
+        </div>
+        <p class="mt-1 text-sm text-slate-500 leading-snug">${esc(d.desc)}</p>
+        <div class="mt-2.5 flex flex-wrap gap-2">${priceButtons(d)}</div>
+      </div>
+    </article>`;
+  }
+  function cevicheCard() {
+    const b = byId(state.branch);
+    if (!b || !b.ceviche) return '';
+    return `<button type="button" id="openCeviche" class="olas-navy w-full text-left rounded-2xl p-5 text-white shadow-md flex items-center gap-4">
+      <span class="flex-1"><span class="block text-[10px] uppercase tracking-widest text-sol font-semibold">Solo en ${esc(b.name)}</span>
+      <span class="block font-serif text-2xl leading-tight">Bar de Ceviches <span class="italic text-sol">¡a tu antojo!</span></span>
+      <span class="block text-sm text-white/80">Arma tu ceviche: marisco, tamaño, preparación y extras.</span></span>
+      <span class="shrink-0 rounded-full bg-sol text-navy-dark font-semibold text-sm px-4 py-2">Armar</span></button>`;
+  }
+  function renderChips(activeId) {
+    $('#chips').innerHTML = CATS.map(c => `<a href="#cat-${c.id}" data-chip="${c.id}" class="shrink-0 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-sm text-slate-600 ${c.id === activeId ? 'chip-on' : ''}">${c.label}</a>`).join('');
+  }
+  function renderChef() {
+    const list = MENU.filter(d => d.chef || ['plato-bocas', 'trio-camarones'].includes(d.id));
+    $('#chefRow').innerHTML = list.map(d => `<button type="button" data-detail="${d.id}" class="shrink-0 w-40 text-left bg-white rounded-2xl overflow-hidden ring-1 ring-black/5 shadow-sm">
+      <img src="img/${d.img}.webp" alt="" class="w-full h-28 object-cover" loading="lazy">
+      <span class="block px-3 pt-2 font-serif text-lg leading-tight text-navy">${esc(d.name)}</span>
+      <span class="block px-3 pb-3 text-sm text-slate-500">${d.opts.length > 1 ? 'desde ' : ''}${money(Math.min(...d.opts.map(o => o[1])))}</span></button>`).join('');
+  }
+  function renderMenu() {
+    const q = norm(state.q.trim());
+    const items = MENU.filter(d => !q || norm(d.name + ' ' + d.desc + ' ' + (d.tag || '')).includes(q));
+    $('#chefWrap').classList.toggle('hidden', !!q);
+    $('#noResults').classList.toggle('hidden', items.length > 0);
+    $('#menuList').innerHTML = CATS.filter(c => items.some(d => d.cat === c.id)).map(c => `
+      <section id="cat-${c.id}" data-cat="${c.id}" class="pt-6 scroll-mt-[150px]">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="h-9 w-1.5 rounded-full" style="background:${c.color}"></span>
+          <div><h3 class="font-serif text-3xl leading-none" style="color:${c.color}">${c.label}</h3><p class="subtitulo text-xs text-slate-500 mt-1">${c.sub}</p></div>
+        </div>
+        <div class="grid gap-3">
+          ${c.id === 'cocteles' && !q ? cevicheCard() : ''}
+          ${items.filter(d => d.cat === c.id).map(dishHTML).join('')}
+        </div>
+        ${c.note ? `<p class="mt-3 text-xs text-slate-500 italic">${esc(c.note)}</p>` : ''}
+      </section>`).join('');
+    observeSections();
+  }
+  let searchT;
+  $('#search').addEventListener('input', e => { clearTimeout(searchT); searchT = setTimeout(() => { state.q = e.target.value; renderMenu(); }, 120); });
+
+  // resaltar la sección visible en los chips
+  let io;
+  function observeSections() {
+    if (io) io.disconnect();
+    io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { renderChips(en.target.dataset.cat); const chip = $(`[data-chip="${en.target.dataset.cat}"]`); if (chip) chip.scrollIntoView({ inline: 'center', block: 'nearest' }); }
+    }), { rootMargin: '-160px 0px -65% 0px' });
+    $$('#menuList section').forEach(s => io.observe(s));
+  }
+
+  /* ---------- detalle de platillo ---------- */
+  function showDetail(id) {
+    const d = MENU.find(x => x.id === id); if (!d) return;
+    openSheet(`
+      ${d.img ? `<img src="img/${d.img}.webp" alt="${esc(d.name)}" class="w-full aspect-[4/3] object-cover rounded-2xl">` : ''}
+      <h2 class="mt-4 font-serif text-3xl text-navy leading-tight pr-8">${esc(d.name)}</h2>
+      <p class="mt-2 text-slate-600">${esc(d.desc)}</p>
+      <div class="mt-4 flex flex-wrap gap-2">${priceButtons(d)}</div><div class="h-6"></div>`);
+  }
+
+  /* ---------- Bar de Ceviches ---------- */
+  const cevSel = { base: 'mixto', size: 'normal', sauce: 'limon', extra: new Set() };
+  const pick = (g, id) => CEV[g].items.find(o => o.id === id);
+  function cevCalc() {
+    const extras = CEV.extra.items.filter(o => cevSel.extra.has(o.id)), size = pick('size', cevSel.size);
+    return { base: pick('base', cevSel.base), size, sauce: pick('sauce', cevSel.sauce), extras, total: size.price + extras.reduce((a, o) => a + o.price, 0) };
+  }
+  function cevGroup(g, title) {
+    const G = CEV[g];
+    return `<fieldset class="mt-4"><legend class="font-serif text-xl text-navy mb-2">${title}</legend><div class="grid ${g === 'extra' ? '' : 'grid-cols-2'} gap-2">${G.items.map(o => {
+      const on = G.type === 'radio' ? cevSel[g] === o.id : cevSel.extra.has(o.id);
+      return `<label class="opt block"><input type="${G.type}" name="cev-${g}" value="${o.id}" class="sr-only" ${on ? 'checked' : ''}>
+        <span class="opt-card flex items-start gap-2.5 h-full rounded-xl bg-white border border-slate-200 p-3">
+          <span class="opt-dot mt-1 w-4 h-4 shrink-0 rounded-full border-2 border-slate-300"></span>
+          <span class="flex-1 text-sm">${esc(o.label)}${o.sub ? `<span class="block text-xs text-slate-500">${esc(o.sub)}</span>` : ''}</span>
+          ${o.price != null ? `<span class="text-sm font-semibold text-navy">${g === 'extra' ? '+' : ''}${money(o.price)}</span>` : ''}</span></label>`;
+    }).join('')}</div></fieldset>`;
+  }
+  function showCeviche() {
+    openSheet(`
+      <p class="text-[10px] uppercase tracking-widest text-naranja font-semibold">Bar de Ceviches</p>
+      <h2 class="font-serif text-3xl text-navy">¡A tu antojo!</h2>
+      ${cevGroup('base', 'Marisco')}${cevGroup('size', 'Tamaño')}${cevGroup('sauce', 'Preparación')}${cevGroup('extra', 'Extras')}
+      <div class="sticky bottom-0 -mx-5 mt-5 px-5 py-4 bg-papel border-t border-slate-200 flex items-center gap-4">
+        <span id="cevPrice" class="font-serif text-3xl text-navy">$0.00</span>
+        <button id="cevAdd" type="button" class="flex-1 rounded-full bg-sol text-navy-dark font-semibold py-3.5">Agregar a mi orden</button>
+      </div>`);
+    const upd = () => { $('#cevPrice').textContent = money(cevCalc().total); };
+    $('#sheetBody').onchange = e => {
+      const [, g] = e.target.name.split('-');
+      if (CEV[g].type === 'radio') cevSel[g] = e.target.value; else if (e.target.checked) cevSel.extra.add(e.target.value); else cevSel.extra.delete(e.target.value);
+      upd();
+    };
+    $('#cevAdd').onclick = () => {
+      const c = cevCalc(), ex = [...cevSel.extra].sort();
+      addLine({ key: `cev|${cevSel.base}|${cevSel.size}|${cevSel.sauce}|${ex.join(',')}`, dish: 'ceviche-bar', name: `Ceviche a tu antojo: ${c.base.label} ${c.size.label} · ${c.sauce.label}${c.extras.length ? ' · ' + c.extras.map(o => o.label.replace(/^Agrega |^Pídelo /, '')).join(', ') : ''}`, price: c.total });
+      $('#sheetBody').onchange = null; closeSheet(); toast('Ceviche agregado');
+    };
+    upd();
+  }
+
+  /* ---------- orden ---------- */
+  function addLine(line) {
+    const ex = state.order.find(i => i.key === line.key);
+    if (ex) ex.qty++; else state.order.push({ ...line, qty: 1 });
+    saveOrder(); renderOrderBar(true);
+    const el = document.getElementById('dish-' + line.dish);
+    if (el) el.outerHTML = dishHTML(MENU.find(d => d.id === line.dish));
+  }
+  function addDish(id, i) {
+    const d = MENU.find(x => x.id === id), [label, price] = d.opts[i];
+    addLine({ key: id + '|' + i, dish: id, name: d.name + (label ? ` (${label})` : ''), price });
+    toast('Agregado: ' + esc(d.name) + (label ? ' · ' + esc(label) : ''));
+  }
+  document.addEventListener('click', e => {
+    const add = e.target.closest('[data-add]'); if (add) { addDish(add.dataset.add, +add.dataset.opt); return; }
+    const det = e.target.closest('[data-detail]'); if (det) { showDetail(det.dataset.detail); return; }
+    if (e.target.closest('#openCeviche')) showCeviche();
+  });
+  const totals = () => { const sub = state.order.reduce((a, i) => a + i.price * i.qty, 0), tip = Math.round(sub * 10) / 100; return { sub, tip, total: sub + tip, count: state.order.reduce((a, i) => a + i.qty, 0) }; };
+  function renderOrderBar(bump) {
+    const t = totals();
+    $('#orderBar').classList.toggle('show', t.count > 0);
+    $('#barCount').textContent = t.count; $('#barTotal').textContent = money(t.total);
+    if (bump) { const b = $('#orderBarBtn'); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
+  }
+  function orderSheetHTML() {
+    const t = totals(), b = byId(state.branch);
+    if (!t.count) return `<div class="text-center py-10"><p class="text-4xl">🦐</p><p class="font-serif text-2xl text-navy mt-2">Tu orden está vacía</p><p class="text-sm text-slate-500">Toca el precio de un platillo para agregarlo.</p></div>`;
+    return `
+      <h2 class="font-serif text-3xl text-navy">Mi orden</h2>
+      <p class="text-sm text-slate-500">${esc(b.name)} · Mesa ${esc(state.mesa || '—')}</p>
+      <ul class="mt-4 space-y-2">${state.order.map(i => `
+        <li class="bg-white rounded-2xl p-3 ring-1 ring-black/5 flex items-center gap-3">
+          <div class="flex-1 min-w-0"><p class="text-sm leading-snug">${esc(i.name)}</p><p class="text-xs text-slate-400">${money(i.price)} c/u</p></div>
+          <div class="inline-flex items-center rounded-full border border-slate-200 bg-white">
+            <button type="button" data-dec="${esc(i.key)}" class="w-9 h-9 text-lg text-slate-500" aria-label="Quitar uno">−</button>
+            <span class="w-6 text-center text-sm font-semibold">${i.qty}</span>
+            <button type="button" data-inc="${esc(i.key)}" class="w-9 h-9 text-lg text-slate-500" aria-label="Agregar uno">+</button>
+          </div>
+        </li>`).join('')}</ul>
+      <label class="block mt-4"><span class="text-sm text-slate-600">Indicaciones para la cocina</span>
+        <textarea id="orderNote" rows="2" class="field mt-1 resize-none" placeholder="Guarniciones, sin picante, término de la carne…">${esc(state.note)}</textarea></label>
+      <dl class="mt-4 space-y-1 text-sm">
+        <div class="flex justify-between text-slate-600"><dt>Subtotal</dt><dd>${money(t.sub)}</dd></div>
+        <div class="flex justify-between text-slate-600"><dt>Propina (10%)</dt><dd>${money(t.tip)}</dd></div>
+        <div class="flex justify-between text-navy font-semibold text-lg pt-2 border-t border-slate-200"><dt>Total estimado</dt><dd>${money(t.total)}</dd></div>
+      </dl>
+      <div class="sticky bottom-0 -mx-5 mt-4 px-5 py-4 bg-papel border-t border-slate-200 grid gap-2">
+        <button id="showWaiter" type="button" class="w-full rounded-full bg-sol text-navy-dark font-semibold py-4 text-lg">Mostrar al mesero</button>
+        ${b.wa ? `<button id="sendWa" type="button" class="btn-wa w-full rounded-full font-semibold py-3">Enviar a la sucursal por WhatsApp</button>` : ''}
+        <button id="clearOrder" type="button" class="text-xs text-slate-400 py-1">Vaciar orden</button>
+      </div>`;
+  }
+  function showOrder() {
+    openSheet(orderSheetHTML());
+    $('#sheetBody').onclick = e => {
+      const btn = e.target.closest('button'); if (!btn) return;
+      const k = btn.dataset.inc || btn.dataset.dec;
+      if (k) {
+        const it = state.order.find(i => i.key === k); if (!it) return;
+        if (btn.dataset.inc) it.qty++; else { it.qty--; if (it.qty < 1) state.order = state.order.filter(i => i !== it); }
+        saveOrder(); renderOrderBar(); const y = $('#sheetBody').scrollTop; $('#sheetBody').innerHTML = orderSheetHTML(); $('#sheetBody').scrollTop = y; renderMenu();
+      } else if (btn.id === 'showWaiter') showWaiter();
+      else if (btn.id === 'sendWa') sendWhatsApp();
+      else if (btn.id === 'clearOrder') { state.order = []; state.note = ''; saveOrder(); renderOrderBar(); renderMenu(); closeSheet(); toast('Orden vaciada'); }
+    };
+    $('#sheetBody').oninput = e => { if (e.target.id === 'orderNote') { state.note = e.target.value; saveOrder(); } };
+  }
+  $('#orderBarBtn').addEventListener('click', showOrder);
+
+  function orderText() {
+    const b = byId(state.branch), t = totals();
+    return ['*ORDEN — RESTAURANTE ACAJUTLA*', `Sucursal: ${b.name}`, `Mesa: ${state.mesa || 'sin indicar'}`, '',
+      ...state.order.map(i => `• ${i.qty} x ${i.name} — ${money(i.price * i.qty)}`), '',
+      state.note ? `Indicaciones: ${state.note}\n` : null,
+      `Subtotal: ${money(t.sub)}`, `Propina (10%): ${money(t.tip)}`, `*Total estimado: ${money(t.total)}*`].filter(l => l !== null).join('\n');
+  }
+  function sendWhatsApp() { const b = byId(state.branch); window.open(`https://wa.me/${b.wa}?text=${encodeURIComponent(orderText())}`, '_blank', 'noopener'); }
+  function showWaiter() {
+    const b = byId(state.branch), t = totals();
+    const now = new Date().toLocaleTimeString('es-SV', { hour: '2-digit', minute: '2-digit' });
+    $('#waiterBody').innerHTML = `
+      <div class="olas rounded-3xl p-6 text-white text-center">
+        <p class="text-sm uppercase tracking-widest text-white/80">${esc(b.name)}</p>
+        <p class="font-serif text-6xl leading-none mt-2">Mesa ${esc(state.mesa || '—')}</p>
+        <p class="text-sm text-white/80 mt-2">Orden de las ${now}</p>
+      </div>
+      <ul class="mt-6 divide-y divide-slate-200">${state.order.map(i => `
+        <li class="py-3 flex gap-4 text-lg"><span class="font-semibold text-navy w-10 shrink-0">${i.qty}×</span><span class="flex-1">${esc(i.name)}</span></li>`).join('')}</ul>
+      ${state.note ? `<p class="mt-4 rounded-2xl bg-sol-light ring-1 ring-sol p-4 text-lg"><strong>Indicaciones:</strong> ${esc(state.note)}</p>` : ''}
+      <div class="mt-6 flex justify-between items-baseline border-t-2 border-navy pt-4"><span class="text-slate-600">Total estimado (incluye 10%)</span><span class="font-serif text-4xl text-navy">${money(t.total)}</span></div>`;
+    $('#toasts').innerHTML = ''; $('#waiter').classList.remove('hidden'); $('#waiter').scrollTop = 0;
+  }
+  function hideWaiter() { $('#waiter').classList.add('hidden'); }
+  $('#waiterBack').addEventListener('click', hideWaiter);
+
+  /* ---------- init ---------- */
+  if (state.branch) { persistCtx(); }
+  loadOrder(); updateHeader(); renderChips(CATS[0].id); renderChef(); renderMenu(); renderOrderBar();
+  const goHash = () => { const el = location.hash && document.getElementById(location.hash.slice(1)); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 60); };
+  if (!state.branch) { branchPicker(); sheetOnClose = goHash; } else goHash();
+})();
+</script>
+</body>
+</html>
