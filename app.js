@@ -22,9 +22,9 @@
 
   /* ---------- Recomendación del chef (enlaza al menú) ---------- */
   const chef = MENU.filter(d => d.chef || ['plato-bocas', 'trio-camarones', 'lomito-camaron', 'pollo-gratinado'].includes(d.id));
-  $('#chefRow').innerHTML = chef.map(d => {
+  $('#chefRow').innerHTML = chef.map((d, i) => {
     const from = Math.min(...d.opts.map(o => o[1]));
-    return `<a href="menu.html#dish-${d.id}" class="shrink-0 w-[78%] sm:w-[19rem] flex flex-col bg-white rounded-3xl overflow-hidden shadow-md shadow-navy/10 ring-1 ring-black/5 group">
+    return `<a href="menu.html#dish-${d.id}" data-reveal="up" style="--d:${Math.min(i, 4) * 110}ms" class="lift shrink-0 w-[78%] sm:w-[19rem] flex flex-col bg-white rounded-3xl overflow-hidden shadow-md shadow-navy/10 ring-1 ring-black/5 group">
       <div class="relative overflow-hidden"><img src="img/${d.img}.webp" alt="${esc(d.name)}" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition duration-500" loading="lazy">
         ${d.chef ? '<span class="absolute top-3 left-3 rounded-full bg-white/95 text-naranja text-[10px] font-semibold uppercase tracking-widest px-3 py-1">Recomendación del chef</span>' : ''}</div>
       <div class="p-5 flex flex-col flex-1">
@@ -59,7 +59,7 @@
     if (st.user) list.sort((x, y) => x.d - y.d);
     $('#branchGrid').innerHTML = list.map(({ b, d }, i) => {
       const open = isOpen(b);
-      return `<article class="bg-papel rounded-3xl p-6 flex flex-col ring-1 ${st.user && i === 0 ? 'ring-2 ring-sol' : 'ring-black/5'} hover:shadow-xl hover:shadow-navy/10 transition border-t-4 ${b.ceviche ? 'border-sol' : 'border-mar'}">
+      return `<article data-reveal="up" style="--d:${Math.min(i, 5) * 90}ms" class="lift bg-papel rounded-3xl p-6 flex flex-col ring-1 ${st.user && i === 0 ? 'ring-2 ring-sol' : 'ring-black/5'} hover:shadow-xl hover:shadow-navy/10 transition border-t-4 ${b.ceviche ? 'border-sol' : 'border-mar'}">
         ${st.user && i === 0 ? '<span class="self-start -mt-1 mb-3 rounded-full bg-sol text-navy-dark text-[11px] font-semibold uppercase tracking-wider px-3 py-1">La más cercana a ti</span>' : ''}
         <div class="flex items-start justify-between gap-3">
           <div class="flex items-center gap-3">
